@@ -134,7 +134,9 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
-    runtimeOnly fg.deobf("maven.modrinth:jei:15.20.0.129")
+    runtimeOnly fg.deobf("maven.modrinth:jei:p7yZWpEg")
+    runtimeOnly fg.deobf("maven.modrinth:tinore:Vu5Cndla")
+    runtimeOnly fg.deobf("maven.modrinth:the-easiest-silver:JzKOtndp")
 
     runtimeOnly fg.deobf("maven.modrinth:architectury-api:9.2.14+forge")
     runtimeOnly fg.deobf("maven.modrinth:cloth-config:11.1.136+forge")
