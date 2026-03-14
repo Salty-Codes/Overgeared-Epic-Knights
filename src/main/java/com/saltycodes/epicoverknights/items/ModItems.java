@@ -7,45 +7,40 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.util.Collections;
+import java.util.EnumMap;
+import java.util.Map;
+
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS,
             EpicOverKnights.MODID);
 
-    public static final RegistryObject<Item> COPPER_STYLET_BLADE = ITEMS.register("copper_stylet_blade", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> GOLD_STYLET_BLADE = ITEMS.register("gold_stylet_blade", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> TIN_STYLET_BLADE = ITEMS.register("tin_stylet_blade", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> STONE_STYLET_BLADE = ITEMS.register("stone_stylet_blade", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> SILVER_STYLET_BLADE = ITEMS.register("silver_stylet_blade", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> BRONZE_STYLET_BLADE = ITEMS.register("bronze_stylet_blade", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> IRON_STYLET_BLADE = ITEMS.register("iron_stylet_blade", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> STEEL_STYLET_BLADE = ITEMS.register("steel_stylet_blade", () -> new Item(new Item.Properties()));
+    /**
+     * All blade items, keyed by BladeType → BladeMaterial → RegistryObject.
+     * To add a new blade type, add an entry to {@link BladeType}.
+     * To add a new material, add an entry to {@link BladeMaterial}.
+     */
+    public static final Map<BladeType, Map<BladeMaterial, RegistryObject<Item>>> BLADES;
 
-    public static final RegistryObject<Item> BRONZE_SHORTSWORD_BLADE = ITEMS.register("bronze_shortsword_blade", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> COPPER_SHORTSWORD_BLADE = ITEMS.register("copper_shortsword_blade", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> GOLD_SHORTSWORD_BLADE = ITEMS.register("gold_shortsword_blade", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> IRON_SHORTSWORD_BLADE = ITEMS.register("iron_shortsword_blade", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> SILVER_SHORTSWORD_BLADE = ITEMS.register("silver_shortsword_blade", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> STEEL_SHORTSWORD_BLADE = ITEMS.register("steel_shortsword_blade", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> STONE_SHORTSWORD_BLADE = ITEMS.register("stone_shortsword_blade", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> TIN_SHORTSWORD_BLADE = ITEMS.register("tin_shortsword_blade", () -> new Item(new Item.Properties()));
+    static {
+        Map<BladeType, Map<BladeMaterial, RegistryObject<Item>>> blades = new EnumMap<>(BladeType.class);
+        for (BladeType type : BladeType.values()) {
+            Map<BladeMaterial, RegistryObject<Item>> materialMap = new EnumMap<>(BladeMaterial.class);
+            for (BladeMaterial material : BladeMaterial.values()) {
+                String id = material.getName() + "_" + type.getName() + "_blade";
+                materialMap.put(material, ITEMS.register(id, () -> new Item(new Item.Properties())));
+            }
+            blades.put(type, Collections.unmodifiableMap(materialMap));
+        }
+        BLADES = Collections.unmodifiableMap(blades);
+    }
 
-    public static final RegistryObject<Item> BRONZE_KATZBALGER_BLADE = ITEMS.register("bronze_katzbalger_blade", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> COPPER_KATZBALGER_BLADE = ITEMS.register("copper_katzbalger_blade", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> GOLD_KATZBALGER_BLADE = ITEMS.register("gold_katzbalger_blade", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> IRON_KATZBALGER_BLADE = ITEMS.register("iron_katzbalger_blade", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> SILVER_KATZBALGER_BLADE = ITEMS.register("silver_katzbalger_blade", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> STEEL_KATZBALGER_BLADE = ITEMS.register("steel_katzbalger_blade", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> STONE_KATZBALGER_BLADE = ITEMS.register("stone_katzbalger_blade", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> TIN_KATZBALGER_BLADE = ITEMS.register("tin_katzbalger_blade", () -> new Item(new Item.Properties()));
-
-    public static final RegistryObject<Item> BRONZE_PIKE_BLADE = ITEMS.register("bronze_pike_blade", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> COPPER_PIKE_BLADE = ITEMS.register("copper_pike_blade", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> GOLD_PIKE_BLADE = ITEMS.register("gold_pike_blade", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> IRON_PIKE_BLADE = ITEMS.register("iron_pike_blade", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> SILVER_PIKE_BLADE = ITEMS.register("silver_pike_blade", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> STEEL_PIKE_BLADE = ITEMS.register("steel_pike_blade", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> STONE_PIKE_BLADE = ITEMS.register("stone_pike_blade", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> TIN_PIKE_BLADE = ITEMS.register("tin_pike_blade", () -> new Item(new Item.Properties()));
+    /**
+     * Convenience method to get a specific blade's RegistryObject.
+     */
+    public static RegistryObject<Item> getBlade(BladeType type, BladeMaterial material) {
+        return BLADES.get(type).get(material);
+    }
 
     public static void register(IEventBus bus) {
         ITEMS.register(bus);

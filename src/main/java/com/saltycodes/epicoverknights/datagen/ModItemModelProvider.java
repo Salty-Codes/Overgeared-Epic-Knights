@@ -1,6 +1,8 @@
 package com.saltycodes.epicoverknights.datagen;
 
 import com.saltycodes.epicoverknights.EpicOverKnights;
+import com.saltycodes.epicoverknights.items.BladeMaterial;
+import com.saltycodes.epicoverknights.items.BladeType;
 import com.saltycodes.epicoverknights.items.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -16,41 +18,11 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        simpleItem(ModItems.COPPER_STYLET_BLADE);
-        simpleItem(ModItems.GOLD_STYLET_BLADE);
-        simpleItem(ModItems.TIN_STYLET_BLADE);
-        simpleItem(ModItems.STONE_STYLET_BLADE);
-        simpleItem(ModItems.SILVER_STYLET_BLADE);
-        simpleItem(ModItems.BRONZE_STYLET_BLADE);
-        simpleItem(ModItems.IRON_STYLET_BLADE);
-        simpleItem(ModItems.STEEL_STYLET_BLADE);
-
-        simpleItem(ModItems.BRONZE_SHORTSWORD_BLADE);
-        simpleItem(ModItems.COPPER_SHORTSWORD_BLADE);
-        simpleItem(ModItems.GOLD_SHORTSWORD_BLADE);
-        simpleItem(ModItems.IRON_SHORTSWORD_BLADE);
-        simpleItem(ModItems.SILVER_SHORTSWORD_BLADE);
-        simpleItem(ModItems.STEEL_SHORTSWORD_BLADE);
-        simpleItem(ModItems.STONE_SHORTSWORD_BLADE);
-        simpleItem(ModItems.TIN_SHORTSWORD_BLADE);
-
-        simpleItem(ModItems.BRONZE_KATZBALGER_BLADE);
-        simpleItem(ModItems.COPPER_KATZBALGER_BLADE);
-        simpleItem(ModItems.GOLD_KATZBALGER_BLADE);
-        simpleItem(ModItems.IRON_KATZBALGER_BLADE);
-        simpleItem(ModItems.SILVER_KATZBALGER_BLADE);
-        simpleItem(ModItems.STEEL_KATZBALGER_BLADE);
-        simpleItem(ModItems.STONE_KATZBALGER_BLADE);
-        simpleItem(ModItems.TIN_KATZBALGER_BLADE);
-
-        simpleItem(ModItems.BRONZE_PIKE_BLADE);
-        simpleItem(ModItems.COPPER_PIKE_BLADE);
-        simpleItem(ModItems.GOLD_PIKE_BLADE);
-        simpleItem(ModItems.IRON_PIKE_BLADE);
-        simpleItem(ModItems.SILVER_PIKE_BLADE);
-        simpleItem(ModItems.STEEL_PIKE_BLADE);
-        simpleItem(ModItems.STONE_PIKE_BLADE);
-        simpleItem(ModItems.TIN_PIKE_BLADE);
+        for (BladeType type : BladeType.values()) {
+            for (BladeMaterial material : BladeMaterial.values()) {
+                simpleItem(ModItems.getBlade(type, material));
+            }
+        }
     }
 
     private void simpleItem(RegistryObject<Item> item) {
