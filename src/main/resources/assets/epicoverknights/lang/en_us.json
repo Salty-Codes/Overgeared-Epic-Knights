@@ -16,5 +16,14 @@
   "item.epicoverknights.bronze_shortsword_blade": "Bronze Short Sword Blade",
   "item.epicoverknights.iron_shortsword_blade": "Iron Short Sword Blade",
   "item.epicoverknights.steel_shortsword_blade": "Steel Short Sword Blade",
-  "tooltype.overgeared.shortsword": "Short Sword"
+  "tooltype.overgeared.shortsword": "Short Sword",
+  "item.epicoverknights.copper_katzbalger_blade": "Copper Katzbalger Blade",
+  "item.epicoverknights.gold_katzbalger_blade": "Gold Katzbalger Blade",
+  "item.epicoverknights.tin_katzbalger_blade": "Tin Katzbalger Blade",
+  "item.epicoverknights.stone_katzbalger_blade": "Stone Katzbalger Blade",
+  "item.epicoverknights.silver_katzbalger_blade": "Silver Katzbalger Blade",
+  "item.epicoverknights.bronze_katzbalger_blade": "Bronze Katzbalger Blade",
+  "item.epicoverknights.iron_katzbalger_blade": "Iron Katzbalger Blade",
+  "item.epicoverknights.steel_katzbalger_blade": "Steel Katzbalger Blade",
+  "tooltype.overgeared.katzbalger": "Katzbalger"
 }

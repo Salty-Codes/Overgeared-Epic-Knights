@@ -29,6 +29,16 @@ public class ModItems {
     public static final RegistryObject<Item> STONE_SHORTSWORD_BLADE = ITEMS.register("stone_shortsword_blade", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> TIN_SHORTSWORD_BLADE = ITEMS.register("tin_shortsword_blade", () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> BRONZE_KATZBALGER_BLADE = ITEMS.register("bronze_katzbalger_blade", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> COPPER_KATZBALGER_BLADE = ITEMS.register("copper_katzbalger_blade", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> GOLD_KATZBALGER_BLADE = ITEMS.register("gold_katzbalger_blade", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> IRON_KATZBALGER_BLADE = ITEMS.register("iron_katzbalger_blade", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SILVER_KATZBALGER_BLADE = ITEMS.register("silver_katzbalger_blade", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> STEEL_KATZBALGER_BLADE = ITEMS.register("steel_katzbalger_blade", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> STONE_KATZBALGER_BLADE = ITEMS.register("stone_katzbalger_blade", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> TIN_KATZBALGER_BLADE = ITEMS.register("tin_katzbalger_blade", () -> new Item(new Item.Properties()));
+
+
     public static void register(IEventBus bus) {
         ITEMS.register(bus);
     }
