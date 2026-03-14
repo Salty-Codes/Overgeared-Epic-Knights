@@ -8,19 +8,27 @@ import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Mod.EventBusSubscriber(modid = EpicOverKnights.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class RecipeRemover {
 
     /**
-     * Weapon types from magistuarmory whose recipes should be removed for every {@link BladeMaterial}.
+     * Weapon types from magistuarmory whose recipes should be removed for every external recipe material.
      * To also remove recipes for a new weapon type, add it here by its magistuarmory name.
      */
-    private static final String[] MAGISTU_WEAPON_TYPES = {"stylet", "shortsword", "katzbalger"};
+    private static final String[] MAGISTU_WEAPON_TYPES = {"stylet", "shortsword", "katzbalger", "pike"};
+
+    /**
+     * Material names used by magistuarmory recipe IDs.
+     * This intentionally includes external materials like diamond without making them local BladeMaterials.
+     */
+    private static final Set<String> MAGISTU_RECIPE_MATERIALS = Stream.concat(
+            Arrays.stream(BladeMaterial.values()).map(BladeMaterial::getName),
+            Stream.of("diamond")
+    ).collect(Collectors.toUnmodifiableSet());
 
     /**
      * Extra magistuarmory recipes that are not tied to a material/weapon combination.
@@ -36,9 +44,7 @@ public class RecipeRemover {
             ResourceLocation.fromNamespaceAndPath("magistuarmory", "steel_ingot_to_steel_nuggets"),
             ResourceLocation.fromNamespaceAndPath("magistuarmory", "steel_nuggets_to_steel_ingot"),
             ResourceLocation.fromNamespaceAndPath("magistuarmory", "furnace/steel_ingot_blasting"),
-            ResourceLocation.fromNamespaceAndPath("magistuarmory", "furnace/steel_nugget_blasting"),
-            // diamond_stylet only exists in magistuarmory, not as a BladeMaterial
-            ResourceLocation.fromNamespaceAndPath("magistuarmory", "diamond_stylet")
+            ResourceLocation.fromNamespaceAndPath("magistuarmory", "furnace/steel_nugget_blasting")
     );
 
     private static final Set<ResourceLocation> RECIPES_TO_REMOVE = buildRecipesToRemove();
@@ -46,9 +52,9 @@ public class RecipeRemover {
     private static Set<ResourceLocation> buildRecipesToRemove() {
         Set<ResourceLocation> toRemove = new HashSet<>(EXTRA_RECIPES_TO_REMOVE);
         for (String weaponType : MAGISTU_WEAPON_TYPES) {
-            for (BladeMaterial material : BladeMaterial.values()) {
+            for (String material : MAGISTU_RECIPE_MATERIALS) {
                 toRemove.add(ResourceLocation.fromNamespaceAndPath(
-                        "magistuarmory", material.getName() + "_" + weaponType));
+                        "magistuarmory", material + "_" + weaponType));
             }
         }
         return Set.copyOf(toRemove);
