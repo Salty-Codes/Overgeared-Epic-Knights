@@ -1,0 +1,16 @@
+{
+  "type": "overgeared:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "epicoverknights:iron_shortsword_blade"
+    },
+    {
+      "item": "magistuarmory:pole"
+    }
+  ],
+  "result": {
+    "item": "magistuarmory:iron_ranseur"
+  }
+}
+
