@@ -1,0 +1,15 @@
+{
+  "type": "overgeared:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "epicoverknights:stone_bastardsword_blade"
+    },
+    {
+      "item": "magistuarmory:hilt"
+    }
+  ],
+  "result": {
+    "item": "magistuarmory:stone_bastardsword"
+  }
+}

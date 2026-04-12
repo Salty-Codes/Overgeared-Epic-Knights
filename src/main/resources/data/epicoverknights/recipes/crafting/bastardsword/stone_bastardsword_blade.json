@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "I",
+    "#"
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:cobblestone"
+    },
+    "#": {
+      "item": "epicoverknights:stone_shortsword_blade"
+    }
+  },
+  "result": {
+    "item": "epicoverknights:stone_bastardsword_blade"
+  }
+}

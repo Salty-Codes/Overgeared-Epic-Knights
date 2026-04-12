@@ -1,0 +1,27 @@
+{
+  "type": "overgeared:item_to_tooltype",
+  "item": [
+    {
+      "item": "epicoverknights:copper_ahlspiess_blade"
+    },
+    {
+      "item": "epicoverknights:tin_ahlspiess_blade"
+    },
+    {
+      "item": "epicoverknights:bronze_ahlspiess_blade"
+    },
+    {
+      "item": "epicoverknights:iron_ahlspiess_blade"
+    },
+    {
+      "item": "epicoverknights:gold_ahlspiess_blade"
+    },
+    {
+      "item": "epicoverknights:silver_ahlspiess_blade"
+    },
+    {
+      "item": "epicoverknights:steel_ahlspiess_blade"
+    }
+  ],
+  "tooltype": "ahlspiess"
+}

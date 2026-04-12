@@ -1,0 +1,32 @@
+{
+  "type": "overgeared:forging",
+  "category": "misc",
+  "blueprint": [
+    "bastardsword"
+  ],
+  "requires_blueprint": false,
+  "tier": "iron",
+  "hammering": 5,
+  "has_polishing": true,
+  "has_quality": true,
+  "key": {
+    "I": {
+      "tag": "forge:ingots/silver"
+    },
+    "#": {
+      "item": "epicoverknights:silver_shortsword_blade"
+    }
+  },
+  "minimum_quality": "poor",
+  "need_quenching": true,
+  "needs_minigame": true,
+  "pattern": [
+    "I  ",
+    "#  ",
+    "   "
+  ],
+  "result": {
+    "item": "epicoverknights:silver_bastardsword_blade"
+  },
+  "show_notification": true
+}
