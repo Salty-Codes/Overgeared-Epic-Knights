@@ -15,7 +15,8 @@ public enum BladeType {
     ESTOC("estoc"),
     CLAYMORE("claymore"),
     ZWEIHANDER("zweihander"),
-    LOCHABERAXE("lochaberaxe");
+    LOCHABERAXE("lochaberaxe"),
+    CONCAVEHALBERD("concavehalberd");
 
     private final String name;
 

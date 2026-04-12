@@ -88,5 +88,14 @@
   "item.epicoverknights.bronze_lochaberaxe_blade": "Bronze Lochaber Axe Blade",
   "item.epicoverknights.iron_lochaberaxe_blade": "Iron Lochaber Axe Blade",
   "item.epicoverknights.steel_lochaberaxe_blade": "Steel Lochaber Axe Blade",
-  "tooltype.overgeared.lochaberaxe": "Lochaber Axe"
+  "tooltype.overgeared.lochaberaxe": "Lochaber Axe",
+  "item.epicoverknights.copper_concavehalberd_blade": "Copper Concave Halberd Blade",
+  "item.epicoverknights.gold_concavehalberd_blade": "Gold Concave Halberd Blade",
+  "item.epicoverknights.tin_concavehalberd_blade": "Tin Concave Halberd Blade",
+  "item.epicoverknights.stone_concavehalberd_blade": "Stone Concave Halberd Blade",
+  "item.epicoverknights.silver_concavehalberd_blade": "Silver Concave Halberd Blade",
+  "item.epicoverknights.bronze_concavehalberd_blade": "Bronze Concave Halberd Blade",
+  "item.epicoverknights.iron_concavehalberd_blade": "Iron Concave Halberd Blade",
+  "item.epicoverknights.steel_concavehalberd_blade": "Steel Concave Halberd Blade",
+  "tooltype.overgeared.concavehalberd": "Concave Halberd"
 }

@@ -1,0 +1,18 @@
+{
+  "type": "overgeared:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "epicoverknights:stone_concavehalberd_blade"
+    },
+    {
+      "item": "magistuarmory:pole"
+    },
+    {
+      "tag": "forge:rods/wooden"
+    }
+  ],
+  "result": {
+    "item": "magistuarmory:stone_concavehalberd"
+  }
+}
