@@ -106,5 +106,14 @@
   "item.epicoverknights.bronze_heavymace_blade": "Bronze Heavy Mace Blade",
   "item.epicoverknights.iron_heavymace_blade": "Iron Heavy Mace Blade",
   "item.epicoverknights.steel_heavymace_blade": "Steel Heavy Mace Blade",
-  "tooltype.overgeared.heavymace": "Heavy Mace"
+  "tooltype.overgeared.heavymace": "Heavy Mace",
+  "item.epicoverknights.copper_heavywarhammer_blade": "Copper Heavy War Hammer Blade",
+  "item.epicoverknights.gold_heavywarhammer_blade": "Gold Heavy War Hammer Blade",
+  "item.epicoverknights.tin_heavywarhammer_blade": "Tin Heavy War Hammer Blade",
+  "item.epicoverknights.stone_heavywarhammer_blade": "Stone Heavy War Hammer Blade",
+  "item.epicoverknights.silver_heavywarhammer_blade": "Silver Heavy War Hammer Blade",
+  "item.epicoverknights.bronze_heavywarhammer_blade": "Bronze Heavy War Hammer Blade",
+  "item.epicoverknights.iron_heavywarhammer_blade": "Iron Heavy War Hammer Blade",
+  "item.epicoverknights.steel_heavywarhammer_blade": "Steel Heavy War Hammer Blade",
+  "tooltype.overgeared.heavywarhammer": "Heavy War Hammer"
 }
