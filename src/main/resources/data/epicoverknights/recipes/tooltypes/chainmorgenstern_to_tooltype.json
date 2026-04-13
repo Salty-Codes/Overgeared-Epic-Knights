@@ -1,0 +1,27 @@
+{
+  "type": "overgeared:item_to_tooltype",
+  "item": [
+    {
+      "item": "epicoverknights:copper_morgenstern_blade"
+    },
+    {
+      "item": "epicoverknights:tin_morgenstern_blade"
+    },
+    {
+      "item": "epicoverknights:bronze_morgenstern_blade"
+    },
+    {
+      "item": "epicoverknights:iron_morgenstern_blade"
+    },
+    {
+      "item": "epicoverknights:gold_morgenstern_blade"
+    },
+    {
+      "item": "epicoverknights:silver_morgenstern_blade"
+    },
+    {
+      "item": "epicoverknights:steel_morgenstern_blade"
+    }
+  ],
+  "tooltype": "chainmorgenstern"
+}

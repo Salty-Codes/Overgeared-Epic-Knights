@@ -1,0 +1,13 @@
+{
+  "type": "overgeared:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    { "item": "epicoverknights:stone_morgenstern_blade" },
+    { "tag": "magistuarmory:chains/steel" },
+    { "item": "magistuarmory:hilt" },
+    { "tag": "forge:rods/wooden" }
+  ],
+  "result": {
+    "item": "magistuarmory:stone_chainmorgenstern"
+  }
+}

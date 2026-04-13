@@ -133,5 +133,6 @@
   "item.epicoverknights.bronze_morgenstern_blade": "Bronze Morningstar Blade",
   "item.epicoverknights.iron_morgenstern_blade": "Iron Morningstar Blade",
   "item.epicoverknights.steel_morgenstern_blade": "Steel Morningstar Blade",
-  "tooltype.overgeared.morgenstern": "Morningstar"
+  "tooltype.overgeared.morgenstern": "Morningstar",
+  "tooltype.overgeared.chainmorgenstern": "Flail"
 }
