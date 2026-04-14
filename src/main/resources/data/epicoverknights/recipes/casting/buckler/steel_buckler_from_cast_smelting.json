@@ -1,0 +1,15 @@
+{
+  "type": "overgeared:cast_smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.35,
+  "group": "misc",
+  "input": {
+    "steel": 36
+  },
+  "need_polishing": true,
+  "result": {
+    "item": "magistuarmory:steel_buckler"
+  },
+  "tool_type": "buckler"
+}

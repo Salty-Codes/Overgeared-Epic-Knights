@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "minecraft:diamond"
+  },
+  "base": {
+    "item": "magistuarmory:steel_buckler"
+  },
+  "result": {
+    "item": "magistuarmory:diamond_buckler"
+  },
+  "template": {
+    "item": "overgeared:diamond_upgrade_smithing_template"
+  }
+}

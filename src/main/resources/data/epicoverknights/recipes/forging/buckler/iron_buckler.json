@@ -1,0 +1,21 @@
+{
+  "type": "overgeared:forging",
+  "category": "misc",
+  "hammering": 7,
+  "has_quality": true,
+  "key": {
+    "P": { "item": "overgeared:iron_plate" },
+    "S": { "tag": "forge:ingots/steel" }
+  },
+  "need_quenching": true,
+  "needs_minigame": true,
+  "pattern": [
+    "   ",
+    "PPS",
+    "PP "
+  ],
+  "result": {
+    "item": "magistuarmory:iron_buckler"
+  },
+  "show_notification": true
+}
