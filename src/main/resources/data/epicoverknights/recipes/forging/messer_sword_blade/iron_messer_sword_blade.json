@@ -1,0 +1,35 @@
+{
+  "type": "overgeared:forging",
+  "category": "misc",
+  "blueprint": [
+    "messer_sword"
+  ],
+  "requires_blueprint": false,
+  "tier": "iron",
+  "hammering": 6,
+  "has_polishing": true,
+  "has_quality": true,
+  "key": {
+    "I": {
+      "item": "overgeared:heated_iron_ingot"
+    },
+    "N": {
+      "tag": "forge:nuggets/iron"
+    },
+    "B": {
+      "item": "epicoverknights:iron_shortsword_blade"
+    }
+  },
+  "minimum_quality": "poor",
+  "need_quenching": true,
+  "needs_minigame": true,
+  "pattern": [
+    "IN ",
+    "B  ",
+    "   "
+  ],
+  "result": {
+    "item": "epicoverknights:iron_messer_sword_blade"
+  },
+  "show_notification": true
+}

@@ -47,7 +47,8 @@ public class RecipeRemover {
             ResourceLocation.fromNamespaceAndPath("magistuarmory", "furnace/steel_nugget_blasting"),
             ResourceLocation.fromNamespaceAndPath("magistuarmory", "blacksmith_hammer"),
             ResourceLocation.fromNamespaceAndPath("magistuarmory", "barbedclub"),
-            ResourceLocation.fromNamespaceAndPath("magistuarmory", "pitchfork")
+            ResourceLocation.fromNamespaceAndPath("magistuarmory", "pitchfork"),
+            ResourceLocation.fromNamespaceAndPath("magistuarmory", "messer_sword")
     );
 
     private static final Set<ResourceLocation> RECIPES_TO_REMOVE = buildRecipesToRemove();

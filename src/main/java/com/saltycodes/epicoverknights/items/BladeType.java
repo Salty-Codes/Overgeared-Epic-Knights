@@ -33,7 +33,8 @@ public enum BladeType {
     GUISARME("guisarme"),
     BLACKSMITH_HAMMER("blacksmith_hammer", BladeMaterial.STEEL),
     BARBED_CLUB("barbed_club", BladeMaterial.STEEL),
-    PITCHFORK("pitchfork", BladeMaterial.STEEL);
+    PITCHFORK("pitchfork", BladeMaterial.STEEL),
+    MESSER_SWORD("messer_sword", BladeMaterial.IRON);
 
     private final String name;
     private final Set<BladeMaterial> materials;
