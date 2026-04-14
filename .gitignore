@@ -25,3 +25,15 @@ run
 forge*changelog.txt
 /run-data/
 /.claude/
+
+# Generated data cache
+src/generated/resources/.cache/
+
+# JVM crash logs
+hs_err_pid*.log
+replay_pid*.log
+
+# OS-specific
+.DS_Store
+Thumbs.db
+desktop.ini
