@@ -1,0 +1,15 @@
+{
+  "type": "overgeared:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "epicoverknights:steel_pitchfork_blade"
+    },
+    {
+      "item": "magistuarmory:pole"
+    }
+  ],
+  "result": {
+    "item": "magistuarmory:pitchfork"
+  }
+}

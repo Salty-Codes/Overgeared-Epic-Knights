@@ -147,5 +147,7 @@
   "item.epicoverknights.steel_blacksmith_hammer_blade": "Steel Blacksmith Hammer Blade",
   "tooltype.overgeared.blacksmith_hammer": "Blacksmith Hammer",
   "item.epicoverknights.steel_barbed_club_blade": "Steel Barbed Club Blade",
-  "tooltype.overgeared.barbed_club": "Barbed Club"
+  "tooltype.overgeared.barbed_club": "Barbed Club",
+  "item.epicoverknights.steel_pitchfork_blade": "Steel Pitchfork Blade",
+  "tooltype.overgeared.pitchfork": "Pitchfork"
 }
