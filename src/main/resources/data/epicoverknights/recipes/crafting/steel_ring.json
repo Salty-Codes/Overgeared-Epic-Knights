@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " N ",
+    "N N",
+    " N "
+  ],
+  "key": {
+    "N": { "item": "overgeared:steel_nugget" }
+  },
+  "result": {
+    "item": "magistuarmory:steel_ring",
+    "count": 1
+  }
+}
