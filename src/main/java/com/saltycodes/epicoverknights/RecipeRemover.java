@@ -89,7 +89,15 @@ public class RecipeRemover {
             ResourceLocation.fromNamespaceAndPath("magistuarmory", "silver_tartsche"),
             ResourceLocation.fromNamespaceAndPath("magistuarmory", "tin_tartsche"),
             ResourceLocation.fromNamespaceAndPath("magistuarmory", "bronze_tartsche"),
-            ResourceLocation.fromNamespaceAndPath("magistuarmory", "diamond_tartsche")
+            ResourceLocation.fromNamespaceAndPath("magistuarmory", "diamond_tartsche"),
+            ResourceLocation.fromNamespaceAndPath("magistuarmory", "iron_ellipticalshield"),
+            ResourceLocation.fromNamespaceAndPath("magistuarmory", "copper_ellipticalshield"),
+            ResourceLocation.fromNamespaceAndPath("magistuarmory", "gold_ellipticalshield"),
+            ResourceLocation.fromNamespaceAndPath("magistuarmory", "steel_ellipticalshield"),
+            ResourceLocation.fromNamespaceAndPath("magistuarmory", "silver_ellipticalshield"),
+            ResourceLocation.fromNamespaceAndPath("magistuarmory", "tin_ellipticalshield"),
+            ResourceLocation.fromNamespaceAndPath("magistuarmory", "bronze_ellipticalshield"),
+            ResourceLocation.fromNamespaceAndPath("magistuarmory", "diamond_ellipticalshield")
     );
 
     private static final Set<ResourceLocation> RECIPES_TO_REMOVE = buildRecipesToRemove();

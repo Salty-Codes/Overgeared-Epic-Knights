@@ -1,0 +1,21 @@
+{
+  "type": "overgeared:forging",
+  "category": "misc",
+  "hammering": 6,
+  "has_quality": true,
+  "key": {
+    "P": { "item": "overgeared:copper_plate" },
+    "S": { "item": "magistuarmory:wood_ellipticalshield" }
+  },
+  "need_quenching": true,
+  "needs_minigame": true,
+  "pattern": [
+    " P ",
+    "PSP",
+    " P "
+  ],
+  "result": {
+    "item": "magistuarmory:copper_ellipticalshield"
+  },
+  "show_notification": true
+}
