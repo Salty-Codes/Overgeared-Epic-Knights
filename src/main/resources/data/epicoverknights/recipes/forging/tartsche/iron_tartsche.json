@@ -1,0 +1,21 @@
+{
+  "type": "overgeared:forging",
+  "category": "misc",
+  "hammering": 6,
+  "has_quality": true,
+  "key": {
+    "P": { "item": "overgeared:iron_plate" },
+    "S": { "item": "magistuarmory:wood_tartsche" }
+  },
+  "need_quenching": true,
+  "needs_minigame": true,
+  "pattern": [
+    " P ",
+    "PSP",
+    " P "
+  ],
+  "result": {
+    "item": "magistuarmory:iron_tartsche"
+  },
+  "show_notification": true
+}
