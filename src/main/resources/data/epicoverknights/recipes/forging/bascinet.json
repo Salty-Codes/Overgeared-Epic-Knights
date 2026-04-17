@@ -1,0 +1,21 @@
+{
+  "type": "overgeared:forging",
+  "category": "armor",
+  "hammering": 4,
+  "has_quality": true,
+  "key": {
+    "P": { "item": "overgeared:steel_plate" },
+    "N": { "item": "magistuarmory:norman_helmet" }
+  },
+  "need_quenching": true,
+  "needs_minigame": true,
+  "pattern": [
+    "   ",
+    "PNP",
+    "   "
+  ],
+  "result": {
+    "item": "magistuarmory:bascinet"
+  },
+  "show_notification": true
+}

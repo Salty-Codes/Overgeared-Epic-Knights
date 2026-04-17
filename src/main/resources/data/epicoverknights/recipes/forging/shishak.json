@@ -1,0 +1,22 @@
+{
+  "type": "overgeared:forging",
+  "category": "armor",
+  "hammering": 8,
+  "has_quality": true,
+  "key": {
+    "I": { "item": "overgeared:heated_steel_ingot" },
+    "C": { "item": "magistuarmory:steel_chainmail" },
+    "N": { "item": "overgeared:steel_nugget" }
+  },
+  "need_quenching": true,
+  "needs_minigame": true,
+  "pattern": [
+    "III",
+    "INI",
+    "CCC"
+  ],
+  "result": {
+    "item": "magistuarmory:shishak"
+  },
+  "show_notification": true
+}

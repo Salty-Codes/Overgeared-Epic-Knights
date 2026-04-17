@@ -1,0 +1,21 @@
+{
+  "type": "overgeared:forging",
+  "category": "armor",
+  "hammering": 7,
+  "has_quality": true,
+  "key": {
+    "I": { "item": "overgeared:heated_steel_ingot" },
+    "C": { "item": "magistuarmory:steel_chainmail" }
+  },
+  "need_quenching": true,
+  "needs_minigame": true,
+  "pattern": [
+    "III",
+    "I I",
+    "CCC"
+  ],
+  "result": {
+    "item": "magistuarmory:norman_helmet"
+  },
+  "show_notification": true
+}
