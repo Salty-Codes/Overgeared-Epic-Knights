@@ -124,7 +124,11 @@ public class RecipeRemover {
             ResourceLocation.fromNamespaceAndPath("magistuarmory", "diamond_kiteshield"),
             ResourceLocation.fromNamespaceAndPath("magistuarmory", "steel_ring"),
             ResourceLocation.fromNamespaceAndPath("magistuarmory", "barbute"),
-            ResourceLocation.fromNamespaceAndPath("magistuarmory", "halfarmor_chestplate")
+            ResourceLocation.fromNamespaceAndPath("magistuarmory", "halfarmor_chestplate"),
+            ResourceLocation.fromNamespaceAndPath("magistuarmory", "armet"),
+            ResourceLocation.fromNamespaceAndPath("magistuarmory", "knight_chestplate"),
+            ResourceLocation.fromNamespaceAndPath("magistuarmory", "knight_leggings"),
+            ResourceLocation.fromNamespaceAndPath("magistuarmory", "knight_boots")
     );
 
     private static final Set<ResourceLocation> RECIPES_TO_REMOVE = buildRecipesToRemove();

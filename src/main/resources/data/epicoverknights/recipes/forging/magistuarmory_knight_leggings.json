@@ -1,0 +1,20 @@
+{
+  "type": "overgeared:forging",
+  "category": "armor",
+  "hammering": 9,
+  "has_quality": true,
+  "key": {
+    "P": { "item": "overgeared:steel_plate" }
+  },
+  "need_quenching": true,
+  "needs_minigame": true,
+  "pattern": [
+    "PPP",
+    "P P",
+    "P P"
+  ],
+  "result": {
+    "item": "magistuarmory:knight_leggings"
+  },
+  "show_notification": true
+}
