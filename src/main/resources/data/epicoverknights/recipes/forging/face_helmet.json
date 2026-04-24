@@ -1,0 +1,21 @@
+{
+  "type": "overgeared:forging",
+  "category": "armor",
+  "hammering": 7,
+  "has_quality": true,
+  "key": {
+    "H": { "item": "magistuarmory:shishak" },
+    "S": { "item": "magistuarmory:small_steel_plate" }
+  },
+  "need_quenching": true,
+  "needs_minigame": true,
+  "pattern": [
+    "   ",
+    "SHS",
+    "SSS"
+  ],
+  "result": {
+    "item": "magistuarmory:face_helmet"
+  },
+  "show_notification": true
+}
