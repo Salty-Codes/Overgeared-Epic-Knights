@@ -1,7 +1,7 @@
 modLoader="javafml"
 loaderVersion="${loader_version_range}"
 license="${mod_license}"
-#issueTrackerURL="https://..."
+issueTrackerURL="https://github.com/Salty-Codes/Overgeared-Epic-Knights-Compat/issues"
 
 [[mods]]
 modId="${mod_id}"
