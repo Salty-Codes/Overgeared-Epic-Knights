@@ -55,7 +55,7 @@ This keeps the crafting process consistent with how Overgeared handles its own g
 | Minecraft Version | Status |
 |-------------------|--------|
 | 1.20.1 | 🟢 Supported |
-| 1.21.1 | 🟡 Planned |
+| 1.21.1 | 🟢 Supported |
 
 ## Requirements
 
