@@ -1,0 +1,15 @@
+{
+  "type": "overgeared:cast_smelting",
+  "category": "misc",
+  "cookingtime": 150,
+  "experience": 0.2,
+  "group": "misc",
+  "input": {
+    "iron": 28
+  },
+  "need_polishing": true,
+  "result": {
+    "item": "overgeared_epic_knights:iron_messer_sword_blade"
+  },
+  "tool_type": "messer_sword"
+}

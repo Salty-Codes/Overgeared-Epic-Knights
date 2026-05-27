@@ -1,0 +1,15 @@
+{
+  "type": "overgeared:cast_smelting",
+  "category": "misc",
+  "cookingtime": 150,
+  "experience": 0.15,
+  "group": "misc",
+  "input": {
+    "bronze": 45
+  },
+  "need_polishing": true,
+  "result": {
+    "item": "overgeared_epic_knights:bronze_heavywarhammer_blade"
+  },
+  "tool_type": "heavywarhammer"
+}

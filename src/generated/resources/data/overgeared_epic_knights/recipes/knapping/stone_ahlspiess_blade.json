@@ -1,0 +1,15 @@
+{
+  "type": "overgeared:rock_knapping",
+  "ingredient": {
+    "item": "minecraft:cobblestone"
+  },
+  "pattern": [
+    "  x",
+    "xx ",
+    " x "
+  ],
+  "result": {
+    "item": "overgeared_epic_knights:stone_ahlspiess_blade"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,30 @@
+{
+  "type": "overgeared:forging",
+  "blueprint": [
+    "concavehalberd"
+  ],
+  "category": "misc",
+  "group": "",
+  "hammering": 6,
+  "has_polishing": true,
+  "has_quality": true,
+  "key": {
+    "#": {
+      "item": "overgeared:heated_steel_ingot"
+    }
+  },
+  "minimum_quality": "poor",
+  "need_quenching": true,
+  "pattern": [
+    "## ",
+    "# #",
+    "   "
+  ],
+  "quality_difficulty": "none",
+  "requires_blueprint": false,
+  "result": {
+    "item": "overgeared_epic_knights:steel_concavehalberd_blade"
+  },
+  "show_notification": true,
+  "tier": "iron"
+}

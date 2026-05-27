@@ -1,0 +1,15 @@
+{
+  "type": "overgeared:cast_blasting",
+  "category": "misc",
+  "cookingtime": 150,
+  "experience": 0.35,
+  "group": "misc",
+  "input": {
+    "steel": 18
+  },
+  "need_polishing": true,
+  "result": {
+    "item": "overgeared_epic_knights:steel_bastardsword_blade"
+  },
+  "tool_type": "bastardsword"
+}

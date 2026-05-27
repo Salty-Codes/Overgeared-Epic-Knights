@@ -1,0 +1,15 @@
+{
+  "type": "overgeared:cast_blasting",
+  "category": "misc",
+  "cookingtime": 150,
+  "experience": 0.2,
+  "group": "misc",
+  "input": {
+    "iron": 27
+  },
+  "need_polishing": true,
+  "result": {
+    "item": "overgeared_epic_knights:iron_morgenstern_blade"
+  },
+  "tool_type": "morgenstern"
+}

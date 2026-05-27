@@ -1,0 +1,27 @@
+{
+  "type": "overgeared:item_to_tooltype",
+  "item": [
+    {
+      "item": "overgeared_epic_knights:bronze_stylet_blade"
+    },
+    {
+      "item": "overgeared_epic_knights:copper_stylet_blade"
+    },
+    {
+      "item": "overgeared_epic_knights:gold_stylet_blade"
+    },
+    {
+      "item": "overgeared_epic_knights:iron_stylet_blade"
+    },
+    {
+      "item": "overgeared_epic_knights:silver_stylet_blade"
+    },
+    {
+      "item": "overgeared_epic_knights:steel_stylet_blade"
+    },
+    {
+      "item": "overgeared_epic_knights:tin_stylet_blade"
+    }
+  ],
+  "tooltype": "stylet"
+}

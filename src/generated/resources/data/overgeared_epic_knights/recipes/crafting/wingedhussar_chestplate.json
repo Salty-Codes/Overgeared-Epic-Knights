@@ -1,0 +1,15 @@
+{
+  "type": "overgeared:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "overgeared_epic_knights:hussar_wings"
+    },
+    {
+      "item": "magistuarmory:halfarmor_chestplate"
+    }
+  ],
+  "result": {
+    "item": "magistuarmory:wingedhussar_chestplate"
+  }
+}

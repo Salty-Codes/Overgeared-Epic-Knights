@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_blade": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "overgeared_epic_knights:steel_claymore_blade"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "overgeared_epic_knights:forging/claymore_blade/steel_claymore_blade"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_blade",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "overgeared_epic_knights:forging/claymore_blade/steel_claymore_blade"
+    ]
+  },
+  "sends_telemetry_event": false
+}

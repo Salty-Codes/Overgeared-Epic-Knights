@@ -1,0 +1,29 @@
+{
+  "type": "overgeared:forging",
+  "blueprint": [
+    "armet"
+  ],
+  "category": "armor",
+  "hammering": 5,
+  "has_quality": true,
+  "key": {
+    "B": {
+      "item": "magistuarmory:barbute"
+    },
+    "P": {
+      "item": "overgeared:steel_plate"
+    }
+  },
+  "need_quenching": true,
+  "needs_minigame": true,
+  "pattern": [
+    "   ",
+    "PBP",
+    " P "
+  ],
+  "requires_blueprint": false,
+  "result": {
+    "item": "magistuarmory:armet"
+  },
+  "show_notification": true
+}

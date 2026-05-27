@@ -1,0 +1,29 @@
+{
+  "type": "overgeared:forging",
+  "blueprint": [
+    "greathelm"
+  ],
+  "category": "armor",
+  "hammering": 9,
+  "has_quality": true,
+  "key": {
+    "C": {
+      "item": "magistuarmory:steel_chainmail"
+    },
+    "I": {
+      "item": "overgeared:heated_steel_ingot"
+    }
+  },
+  "need_quenching": true,
+  "needs_minigame": true,
+  "pattern": [
+    "III",
+    "I I",
+    "ICI"
+  ],
+  "requires_blueprint": false,
+  "result": {
+    "item": "magistuarmory:greathelm"
+  },
+  "show_notification": true
+}

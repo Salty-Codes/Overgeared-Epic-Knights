@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "minecraft:diamond"
+  },
+  "base": {
+    "item": "magistuarmory:steel_bastardsword"
+  },
+  "result": {
+    "item": "magistuarmory:diamond_bastardsword"
+  },
+  "template": {
+    "item": "overgeared:diamond_upgrade_smithing_template"
+  }
+}

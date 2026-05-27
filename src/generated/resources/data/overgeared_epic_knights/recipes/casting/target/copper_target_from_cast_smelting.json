@@ -1,0 +1,15 @@
+{
+  "type": "overgeared:cast_smelting",
+  "category": "misc",
+  "cookingtime": 150,
+  "experience": 0.1,
+  "group": "misc",
+  "input": {
+    "copper": 36
+  },
+  "need_polishing": true,
+  "result": {
+    "item": "magistuarmory:copper_target"
+  },
+  "tool_type": "target"
+}

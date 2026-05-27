@@ -1,0 +1,15 @@
+{
+  "type": "overgeared:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "overgeared_epic_knights:steel_zweihander_blade"
+    },
+    {
+      "item": "magistuarmory:hilt"
+    }
+  ],
+  "result": {
+    "item": "magistuarmory:steel_zweihander"
+  }
+}

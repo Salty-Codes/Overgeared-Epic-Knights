@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "minecraft:diamond"
+  },
+  "base": {
+    "item": "magistuarmory:steel_pike"
+  },
+  "result": {
+    "item": "magistuarmory:diamond_pike"
+  },
+  "template": {
+    "item": "overgeared:diamond_upgrade_smithing_template"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "type": "overgeared:forging",
+  "blueprint": [
+    "pitchfork"
+  ],
+  "category": "misc",
+  "hammering": 3,
+  "has_polishing": true,
+  "has_quality": true,
+  "key": {
+    "#": {
+      "item": "overgeared:steel_nugget"
+    }
+  },
+  "minimum_quality": "poor",
+  "need_quenching": true,
+  "needs_minigame": true,
+  "pattern": [
+    "###",
+    "###",
+    " # "
+  ],
+  "requires_blueprint": false,
+  "result": {
+    "item": "overgeared_epic_knights:steel_pitchfork_blade"
+  },
+  "show_notification": true,
+  "tier": "iron"
+}

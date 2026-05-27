@@ -1,0 +1,15 @@
+{
+  "type": "overgeared:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "overgeared_epic_knights:steel_pike_blade"
+    },
+    {
+      "item": "magistuarmory:pole"
+    }
+  ],
+  "result": {
+    "item": "magistuarmory:steel_pike"
+  }
+}

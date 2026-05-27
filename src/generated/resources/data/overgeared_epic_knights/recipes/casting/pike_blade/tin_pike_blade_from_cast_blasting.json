@@ -1,0 +1,15 @@
+{
+  "type": "overgeared:cast_blasting",
+  "category": "misc",
+  "cookingtime": 150,
+  "experience": 0.1,
+  "group": "misc",
+  "input": {
+    "tin": 9
+  },
+  "need_polishing": true,
+  "result": {
+    "item": "overgeared_epic_knights:tin_pike_blade"
+  },
+  "tool_type": "pike"
+}

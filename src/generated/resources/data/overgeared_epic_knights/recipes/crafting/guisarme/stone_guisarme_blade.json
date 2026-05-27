@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "overgeared_epic_knights:stone_shortsword_blade"
+    },
+    "I": {
+      "item": "minecraft:cobblestone"
+    }
+  },
+  "pattern": [
+    "#I"
+  ],
+  "result": {
+    "item": "overgeared_epic_knights:stone_guisarme_blade"
+  }
+}

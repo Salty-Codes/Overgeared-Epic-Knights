@@ -1,0 +1,27 @@
+{
+  "type": "overgeared:item_to_tooltype",
+  "item": [
+    {
+      "item": "overgeared_epic_knights:bronze_concavehalberd_blade"
+    },
+    {
+      "item": "overgeared_epic_knights:copper_concavehalberd_blade"
+    },
+    {
+      "item": "overgeared_epic_knights:gold_concavehalberd_blade"
+    },
+    {
+      "item": "overgeared_epic_knights:iron_concavehalberd_blade"
+    },
+    {
+      "item": "overgeared_epic_knights:silver_concavehalberd_blade"
+    },
+    {
+      "item": "overgeared_epic_knights:steel_concavehalberd_blade"
+    },
+    {
+      "item": "overgeared_epic_knights:tin_concavehalberd_blade"
+    }
+  ],
+  "tooltype": "concavehalberd"
+}

@@ -1,0 +1,30 @@
+{
+  "type": "overgeared:forging",
+  "blueprint": [
+    "lochaberaxe"
+  ],
+  "category": "misc",
+  "group": "",
+  "hammering": 5,
+  "has_polishing": true,
+  "has_quality": true,
+  "key": {
+    "#": {
+      "item": "overgeared:heated_copper_ingot"
+    }
+  },
+  "minimum_quality": "poor",
+  "need_quenching": true,
+  "pattern": [
+    "## ",
+    "#  ",
+    "   "
+  ],
+  "quality_difficulty": "none",
+  "requires_blueprint": false,
+  "result": {
+    "item": "overgeared_epic_knights:copper_lochaberaxe_blade"
+  },
+  "show_notification": true,
+  "tier": "stone"
+}

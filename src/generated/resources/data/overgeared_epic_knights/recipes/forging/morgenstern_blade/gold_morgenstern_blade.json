@@ -1,0 +1,30 @@
+{
+  "type": "overgeared:forging",
+  "blueprint": [
+    "morgenstern"
+  ],
+  "category": "misc",
+  "group": "",
+  "hammering": 5,
+  "has_polishing": true,
+  "has_quality": true,
+  "key": {
+    "#": {
+      "tag": "forge:ingots/gold"
+    }
+  },
+  "minimum_quality": "poor",
+  "need_quenching": true,
+  "pattern": [
+    " # ",
+    "# #",
+    "   "
+  ],
+  "quality_difficulty": "none",
+  "requires_blueprint": false,
+  "result": {
+    "item": "overgeared_epic_knights:gold_morgenstern_blade"
+  },
+  "show_notification": true,
+  "tier": "iron"
+}

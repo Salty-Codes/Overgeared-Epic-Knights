@@ -1,0 +1,15 @@
+{
+  "type": "overgeared:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "overgeared_epic_knights:iron_messer_sword_blade"
+    },
+    {
+      "item": "magistuarmory:hilt"
+    }
+  ],
+  "result": {
+    "item": "magistuarmory:messer_sword"
+  }
+}

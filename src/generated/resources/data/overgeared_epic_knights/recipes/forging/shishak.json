@@ -1,0 +1,32 @@
+{
+  "type": "overgeared:forging",
+  "blueprint": [
+    "shishak"
+  ],
+  "category": "armor",
+  "hammering": 8,
+  "has_quality": true,
+  "key": {
+    "C": {
+      "item": "magistuarmory:steel_chainmail"
+    },
+    "I": {
+      "item": "overgeared:heated_steel_ingot"
+    },
+    "N": {
+      "item": "overgeared:steel_nugget"
+    }
+  },
+  "need_quenching": true,
+  "needs_minigame": true,
+  "pattern": [
+    "III",
+    "INI",
+    "CCC"
+  ],
+  "requires_blueprint": false,
+  "result": {
+    "item": "magistuarmory:shishak"
+  },
+  "show_notification": true
+}

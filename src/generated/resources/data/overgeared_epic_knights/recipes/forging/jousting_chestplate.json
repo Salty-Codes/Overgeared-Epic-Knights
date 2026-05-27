@@ -1,0 +1,29 @@
+{
+  "type": "overgeared:forging",
+  "blueprint": [
+    "jousting_chestplate"
+  ],
+  "category": "armor",
+  "hammering": 5,
+  "has_quality": true,
+  "key": {
+    "k": {
+      "item": "magistuarmory:knight_chestplate"
+    },
+    "p": {
+      "item": "overgeared:steel_plate"
+    }
+  },
+  "need_quenching": true,
+  "needs_minigame": true,
+  "pattern": [
+    "pkp",
+    "ppp",
+    "ppp"
+  ],
+  "requires_blueprint": false,
+  "result": {
+    "item": "magistuarmory:jousting_chestplate"
+  },
+  "show_notification": true
+}

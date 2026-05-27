@@ -1,0 +1,29 @@
+{
+  "type": "overgeared:forging",
+  "blueprint": [
+    "rondache"
+  ],
+  "category": "misc",
+  "hammering": 10,
+  "has_quality": true,
+  "key": {
+    "P": {
+      "item": "overgeared_epic_knights:silver_plate"
+    },
+    "S": {
+      "item": "magistuarmory:wood_rondache"
+    }
+  },
+  "need_quenching": false,
+  "needs_minigame": true,
+  "pattern": [
+    "PPP",
+    "PSP",
+    "PPP"
+  ],
+  "requires_blueprint": false,
+  "result": {
+    "item": "magistuarmory:silver_rondache"
+  },
+  "show_notification": true
+}

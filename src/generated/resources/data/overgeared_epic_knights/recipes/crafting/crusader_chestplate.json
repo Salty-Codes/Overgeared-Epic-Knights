@@ -1,0 +1,15 @@
+{
+  "type": "overgeared:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "overgeared_epic_knights:crusader_surcoat"
+    },
+    {
+      "item": "magistuarmory:platemail_chestplate"
+    }
+  ],
+  "result": {
+    "item": "magistuarmory:crusader_chestplate"
+  }
+}

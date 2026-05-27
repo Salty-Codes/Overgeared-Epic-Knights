@@ -17,5 +17,14 @@ public class DataGenerators {
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 
         generator.addProvider(event.includeClient(), new ModItemModelProvider(packOutput, existingFileHelper));
+
+        generator.addProvider(event.includeServer(),
+                new OvergearedBuilderRecipeProvider(packOutput, OvergearedEpicKnights.MODID));
+
+        generator.addProvider(event.includeServer(),
+                new OvergearedRecipeProvider(packOutput, OvergearedEpicKnights.MODID));
+
+        generator.addProvider(event.includeServer(),
+                new OvergearedStaticDataProvider(packOutput));
     }
 }

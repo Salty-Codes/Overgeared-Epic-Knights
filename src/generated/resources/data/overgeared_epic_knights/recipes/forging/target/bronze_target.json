@@ -1,0 +1,29 @@
+{
+  "type": "overgeared:forging",
+  "blueprint": [
+    "target"
+  ],
+  "category": "misc",
+  "hammering": 7,
+  "has_quality": true,
+  "key": {
+    "P": {
+      "item": "overgeared_epic_knights:bronze_plate"
+    },
+    "S": {
+      "tag": "forge:ingots/steel"
+    }
+  },
+  "need_quenching": true,
+  "needs_minigame": true,
+  "pattern": [
+    "   ",
+    "PP ",
+    "PPS"
+  ],
+  "requires_blueprint": false,
+  "result": {
+    "item": "magistuarmory:bronze_target"
+  },
+  "show_notification": true
+}

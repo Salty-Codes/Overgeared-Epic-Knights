@@ -1,0 +1,15 @@
+{
+  "type": "overgeared:cast_blasting",
+  "category": "misc",
+  "cookingtime": 150,
+  "experience": 0.3,
+  "group": "misc",
+  "input": {
+    "silver": 9
+  },
+  "need_polishing": true,
+  "result": {
+    "item": "overgeared_epic_knights:silver_pike_blade"
+  },
+  "tool_type": "pike"
+}

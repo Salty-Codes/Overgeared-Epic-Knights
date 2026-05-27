@@ -1,0 +1,13 @@
+{
+  "type": "overgeared:casting",
+  "cookingtime": 150,
+  "experience": 0.1,
+  "input": {
+    "copper": 36
+  },
+  "need_polishing": true,
+  "result": {
+    "item": "magistuarmory:copper_buckler"
+  },
+  "tool_type": "buckler"
+}
