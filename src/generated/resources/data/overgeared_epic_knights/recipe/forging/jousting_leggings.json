@@ -1,0 +1,30 @@
+{
+  "type": "overgeared:forging",
+  "blueprint": [
+    "jousting_leggings"
+  ],
+  "category": "armor",
+  "hammering": 5,
+  "has_quality": true,
+  "key": {
+    "k": {
+      "item": "magistuarmory:knight_leggings"
+    },
+    "p": {
+      "item": "overgeared:steel_plate"
+    }
+  },
+  "need_quenching": true,
+  "needs_minigame": true,
+  "pattern": [
+    "ppp",
+    "pkp",
+    "p p"
+  ],
+  "requires_blueprint": false,
+  "result": {
+    "count": 1,
+    "id": "magistuarmory:jousting_leggings"
+  },
+  "show_notification": true
+}

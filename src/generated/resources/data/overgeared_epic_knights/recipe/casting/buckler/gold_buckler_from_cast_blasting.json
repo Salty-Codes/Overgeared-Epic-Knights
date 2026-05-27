@@ -1,0 +1,16 @@
+{
+  "type": "overgeared:cast_blasting",
+  "category": "misc",
+  "cookingtime": 150,
+  "experience": 0.25,
+  "group": "misc",
+  "input": {
+    "gold": 36
+  },
+  "need_polishing": true,
+  "result": {
+    "count": 1,
+    "id": "magistuarmory:gold_buckler"
+  },
+  "tool_type": "buckler"
+}

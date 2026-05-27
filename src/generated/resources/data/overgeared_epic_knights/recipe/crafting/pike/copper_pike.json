@@ -1,0 +1,16 @@
+{
+  "type": "overgeared:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "overgeared_epic_knights:copper_pike_blade"
+    },
+    {
+      "item": "magistuarmory:pole"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "magistuarmory:copper_pike"
+  }
+}

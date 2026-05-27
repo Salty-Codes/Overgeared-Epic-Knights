@@ -1,0 +1,27 @@
+{
+  "type": "overgeared:forging",
+  "blueprint": [
+    "guisarme"
+  ],
+  "hammering": 5,
+  "key": {
+    "#": {
+      "item": "overgeared_epic_knights:tin_shortsword_blade"
+    },
+    "I": {
+      "tag": "c:ingots/tin"
+    }
+  },
+  "needs_minigame": true,
+  "pattern": [
+    "#I ",
+    "   ",
+    "   "
+  ],
+  "result": {
+    "count": 1,
+    "id": "overgeared_epic_knights:tin_guisarme_blade"
+  },
+  "show_notification": false,
+  "tier": "stone"
+}

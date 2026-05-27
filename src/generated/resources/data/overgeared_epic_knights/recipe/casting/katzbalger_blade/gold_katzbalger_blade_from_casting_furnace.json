@@ -1,0 +1,14 @@
+{
+  "type": "overgeared:casting",
+  "cookingtime": 150,
+  "experience": 0.25,
+  "input": {
+    "gold": 18
+  },
+  "need_polishing": true,
+  "result": {
+    "count": 1,
+    "id": "overgeared_epic_knights:gold_katzbalger_blade"
+  },
+  "tool_type": "katzbalger"
+}

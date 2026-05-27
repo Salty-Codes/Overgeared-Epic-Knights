@@ -1,0 +1,24 @@
+{
+  "type": "overgeared:forging",
+  "blueprint": [
+    "heavywarhammer"
+  ],
+  "hammering": 7,
+  "key": {
+    "#": {
+      "tag": "c:ingots/tin"
+    }
+  },
+  "needs_minigame": true,
+  "pattern": [
+    "## ",
+    "# #",
+    "#  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "overgeared_epic_knights:tin_heavywarhammer_blade"
+  },
+  "show_notification": false,
+  "tier": "stone"
+}

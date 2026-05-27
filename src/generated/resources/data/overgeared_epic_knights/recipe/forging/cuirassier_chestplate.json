@@ -1,0 +1,30 @@
+{
+  "type": "overgeared:forging",
+  "blueprint": [
+    "cuirassier_chestplate"
+  ],
+  "category": "armor",
+  "hammering": 9,
+  "has_quality": true,
+  "key": {
+    "I": {
+      "item": "overgeared:heated_steel_ingot"
+    },
+    "P": {
+      "item": "overgeared:steel_plate"
+    }
+  },
+  "need_quenching": true,
+  "needs_minigame": true,
+  "pattern": [
+    " I ",
+    "III",
+    "PIP"
+  ],
+  "requires_blueprint": false,
+  "result": {
+    "count": 1,
+    "id": "magistuarmory:cuirassier_chestplate"
+  },
+  "show_notification": true
+}

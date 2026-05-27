@@ -1,0 +1,24 @@
+{
+  "type": "overgeared:forging",
+  "blueprint": [
+    "lochaberaxe"
+  ],
+  "hammering": 5,
+  "key": {
+    "#": {
+      "item": "overgeared:heated_copper_ingot"
+    }
+  },
+  "needs_minigame": true,
+  "pattern": [
+    "## ",
+    "#  ",
+    "   "
+  ],
+  "result": {
+    "count": 1,
+    "id": "overgeared_epic_knights:copper_lochaberaxe_blade"
+  },
+  "show_notification": false,
+  "tier": "stone"
+}

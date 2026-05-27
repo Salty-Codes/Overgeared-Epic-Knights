@@ -1,0 +1,22 @@
+{
+  "type": "overgeared:forging",
+  "hammering": 3,
+  "has_quality": false,
+  "key": {
+    "#": {
+      "tag": "c:ingots/bronze"
+    }
+  },
+  "need_quenching": false,
+  "pattern": [
+    "#  ",
+    "   ",
+    "   "
+  ],
+  "result": {
+    "count": 1,
+    "id": "overgeared_epic_knights:bronze_plate"
+  },
+  "show_notification": false,
+  "tier": "stone"
+}

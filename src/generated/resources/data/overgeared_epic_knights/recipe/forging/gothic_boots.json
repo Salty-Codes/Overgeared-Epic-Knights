@@ -1,0 +1,30 @@
+{
+  "type": "overgeared:forging",
+  "blueprint": [
+    "gothic_boots"
+  ],
+  "category": "armor",
+  "hammering": 6,
+  "has_quality": true,
+  "key": {
+    "N": {
+      "item": "overgeared:steel_nugget"
+    },
+    "P": {
+      "item": "overgeared:steel_plate"
+    }
+  },
+  "need_quenching": true,
+  "needs_minigame": true,
+  "pattern": [
+    "P P",
+    "P P",
+    "N N"
+  ],
+  "requires_blueprint": false,
+  "result": {
+    "count": 1,
+    "id": "magistuarmory:gothic_boots"
+  },
+  "show_notification": true
+}

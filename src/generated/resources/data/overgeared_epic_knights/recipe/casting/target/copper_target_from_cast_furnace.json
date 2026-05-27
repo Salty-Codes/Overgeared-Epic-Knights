@@ -1,0 +1,14 @@
+{
+  "type": "overgeared:casting",
+  "cookingtime": 150,
+  "experience": 0.1,
+  "input": {
+    "copper": 36
+  },
+  "need_polishing": true,
+  "result": {
+    "count": 1,
+    "id": "magistuarmory:copper_target"
+  },
+  "tool_type": "target"
+}

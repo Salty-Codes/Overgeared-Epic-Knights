@@ -1,0 +1,30 @@
+{
+  "type": "overgeared:forging",
+  "blueprint": [
+    "kastenbrust_leggings"
+  ],
+  "category": "armor",
+  "hammering": 11,
+  "has_quality": true,
+  "key": {
+    "P": {
+      "item": "overgeared:steel_plate"
+    },
+    "S": {
+      "item": "magistuarmory:small_steel_plate"
+    }
+  },
+  "need_quenching": true,
+  "needs_minigame": true,
+  "pattern": [
+    "PPP",
+    "PSP",
+    "PSP"
+  ],
+  "requires_blueprint": false,
+  "result": {
+    "count": 1,
+    "id": "magistuarmory:kastenbrust_leggings"
+  },
+  "show_notification": true
+}

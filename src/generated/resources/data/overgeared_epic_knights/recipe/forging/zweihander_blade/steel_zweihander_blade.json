@@ -1,0 +1,26 @@
+{
+  "type": "overgeared:forging",
+  "blueprint": [
+    "zweihander"
+  ],
+  "hammering": 6,
+  "key": {
+    "#": {
+      "item": "overgeared_epic_knights:steel_shortsword_blade"
+    },
+    "I": {
+      "tag": "c:ingots/steel"
+    }
+  },
+  "needs_minigame": true,
+  "pattern": [
+    "  I",
+    "I# ",
+    " I "
+  ],
+  "result": {
+    "count": 1,
+    "id": "overgeared_epic_knights:steel_zweihander_blade"
+  },
+  "show_notification": false
+}

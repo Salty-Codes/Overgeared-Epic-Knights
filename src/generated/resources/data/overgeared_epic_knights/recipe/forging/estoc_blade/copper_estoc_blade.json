@@ -1,0 +1,27 @@
+{
+  "type": "overgeared:forging",
+  "blueprint": [
+    "estoc"
+  ],
+  "hammering": 5,
+  "key": {
+    "#": {
+      "item": "overgeared_epic_knights:copper_shortsword_blade"
+    },
+    "I": {
+      "tag": "c:ingots/copper"
+    }
+  },
+  "needs_minigame": true,
+  "pattern": [
+    " I ",
+    "#  ",
+    "   "
+  ],
+  "result": {
+    "count": 1,
+    "id": "overgeared_epic_knights:copper_estoc_blade"
+  },
+  "show_notification": false,
+  "tier": "stone"
+}

@@ -1,0 +1,23 @@
+{
+  "type": "overgeared:forging",
+  "blueprint": [
+    "lucernhammer"
+  ],
+  "hammering": 5,
+  "key": {
+    "#": {
+      "tag": "c:ingots/silver"
+    }
+  },
+  "needs_minigame": true,
+  "pattern": [
+    "## ",
+    "  #",
+    "   "
+  ],
+  "result": {
+    "count": 1,
+    "id": "overgeared_epic_knights:silver_lucernhammer_blade"
+  },
+  "show_notification": false
+}

@@ -1,0 +1,24 @@
+{
+  "type": "overgeared:forging",
+  "blueprint": [
+    "stylet"
+  ],
+  "hammering": 3,
+  "key": {
+    "#": {
+      "tag": "c:ingots/bronze"
+    }
+  },
+  "needs_minigame": true,
+  "pattern": [
+    "  #",
+    "   ",
+    "   "
+  ],
+  "result": {
+    "count": 1,
+    "id": "overgeared_epic_knights:bronze_stylet_blade"
+  },
+  "show_notification": false,
+  "tier": "stone"
+}

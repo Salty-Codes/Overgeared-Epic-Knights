@@ -1,0 +1,30 @@
+{
+  "type": "overgeared:forging",
+  "blueprint": [
+    "barbute"
+  ],
+  "category": "armor",
+  "hammering": 7,
+  "has_quality": true,
+  "key": {
+    "I": {
+      "item": "overgeared:heated_steel_ingot"
+    },
+    "P": {
+      "item": "overgeared:steel_plate"
+    }
+  },
+  "need_quenching": true,
+  "needs_minigame": true,
+  "pattern": [
+    "   ",
+    "III",
+    "P P"
+  ],
+  "requires_blueprint": false,
+  "result": {
+    "count": 1,
+    "id": "magistuarmory:barbute"
+  },
+  "show_notification": true
+}

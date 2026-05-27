@@ -1,0 +1,15 @@
+{
+  "type": "overgeared:cast_smelting",
+  "cookingtime": 150,
+  "experience": 0.25,
+  "group": "misc",
+  "input": {
+    "gold": 18
+  },
+  "need_polishing": true,
+  "result": {
+    "count": 1,
+    "id": "overgeared_epic_knights:gold_shortsword_blade"
+  },
+  "tool_type": "shortsword"
+}

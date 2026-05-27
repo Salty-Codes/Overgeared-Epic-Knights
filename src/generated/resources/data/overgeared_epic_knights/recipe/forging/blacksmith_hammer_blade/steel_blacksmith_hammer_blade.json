@@ -1,0 +1,30 @@
+{
+  "type": "overgeared:forging",
+  "blueprint": [
+    "blacksmith_hammer"
+  ],
+  "category": "misc",
+  "hammering": 7,
+  "has_polishing": true,
+  "has_quality": true,
+  "key": {
+    "#": {
+      "item": "overgeared:heated_steel_ingot"
+    }
+  },
+  "minimum_quality": "poor",
+  "need_quenching": true,
+  "needs_minigame": true,
+  "pattern": [
+    "###",
+    "# #",
+    "   "
+  ],
+  "requires_blueprint": false,
+  "result": {
+    "count": 1,
+    "id": "overgeared_epic_knights:steel_blacksmith_hammer_blade"
+  },
+  "show_notification": true,
+  "tier": "iron"
+}

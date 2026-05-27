@@ -1,0 +1,14 @@
+{
+  "type": "overgeared:casting",
+  "cookingtime": 150,
+  "experience": 0.2,
+  "input": {
+    "iron": 45
+  },
+  "need_polishing": true,
+  "result": {
+    "count": 1,
+    "id": "overgeared_epic_knights:iron_heavywarhammer_blade"
+  },
+  "tool_type": "heavywarhammer"
+}

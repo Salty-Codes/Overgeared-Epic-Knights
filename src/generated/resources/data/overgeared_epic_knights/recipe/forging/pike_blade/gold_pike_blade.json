@@ -1,0 +1,23 @@
+{
+  "type": "overgeared:forging",
+  "blueprint": [
+    "pike"
+  ],
+  "hammering": 3,
+  "key": {
+    "#": {
+      "tag": "c:ingots/gold"
+    }
+  },
+  "needs_minigame": true,
+  "pattern": [
+    "   ",
+    " # ",
+    "   "
+  ],
+  "result": {
+    "count": 1,
+    "id": "overgeared_epic_knights:gold_pike_blade"
+  },
+  "show_notification": false
+}

@@ -1,0 +1,14 @@
+{
+  "type": "overgeared:casting",
+  "cookingtime": 150,
+  "experience": 0.3,
+  "input": {
+    "silver": 36
+  },
+  "need_polishing": true,
+  "result": {
+    "count": 1,
+    "id": "magistuarmory:silver_buckler"
+  },
+  "tool_type": "buckler"
+}

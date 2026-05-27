@@ -1,0 +1,16 @@
+{
+  "type": "overgeared:cast_smelting",
+  "category": "misc",
+  "cookingtime": 150,
+  "experience": 0.2,
+  "group": "misc",
+  "input": {
+    "iron": 36
+  },
+  "need_polishing": true,
+  "result": {
+    "count": 1,
+    "id": "magistuarmory:iron_target"
+  },
+  "tool_type": "target"
+}

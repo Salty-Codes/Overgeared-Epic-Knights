@@ -1,0 +1,23 @@
+{
+  "type": "overgeared:forging",
+  "blueprint": [
+    "concavehalberd"
+  ],
+  "hammering": 6,
+  "key": {
+    "#": {
+      "item": "overgeared:heated_iron_ingot"
+    }
+  },
+  "needs_minigame": true,
+  "pattern": [
+    "## ",
+    "# #",
+    "   "
+  ],
+  "result": {
+    "count": 1,
+    "id": "overgeared_epic_knights:iron_concavehalberd_blade"
+  },
+  "show_notification": false
+}

@@ -1,0 +1,15 @@
+{
+  "type": "overgeared:cast_blasting",
+  "cookingtime": 150,
+  "experience": 0.2,
+  "group": "misc",
+  "input": {
+    "iron": 18
+  },
+  "need_polishing": true,
+  "result": {
+    "count": 1,
+    "id": "overgeared_epic_knights:iron_estoc_blade"
+  },
+  "tool_type": "estoc"
+}

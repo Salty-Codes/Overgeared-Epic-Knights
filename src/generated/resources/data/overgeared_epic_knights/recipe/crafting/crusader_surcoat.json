@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "F": {
+      "item": "magistuarmory:woolen_fabric"
+    }
+  },
+  "pattern": [
+    "F F",
+    "F F",
+    "FFF"
+  ],
+  "result": {
+    "count": 1,
+    "id": "overgeared_epic_knights:crusader_surcoat"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "type": "overgeared:forging",
+  "blueprint": [
+    "cuirassier_helmet"
+  ],
+  "category": "armor",
+  "hammering": 7,
+  "has_quality": true,
+  "key": {
+    "I": {
+      "item": "overgeared:heated_steel_ingot"
+    },
+    "P": {
+      "item": "overgeared:steel_plate"
+    }
+  },
+  "need_quenching": true,
+  "needs_minigame": true,
+  "pattern": [
+    "   ",
+    "PIP",
+    "P P"
+  ],
+  "requires_blueprint": false,
+  "result": {
+    "count": 1,
+    "id": "magistuarmory:cuirassier_helmet"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,9 @@
+{
+  "knapping": [
+    {
+      "item": "overgeared:cobblestone",
+      "sound": "minecraft:block.stone.break",
+      "texture": "minecraft:textures/block/glass.png"
+    }
+  ]
+}

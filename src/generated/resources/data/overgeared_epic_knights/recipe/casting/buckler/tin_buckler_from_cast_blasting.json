@@ -1,0 +1,16 @@
+{
+  "type": "overgeared:cast_blasting",
+  "category": "misc",
+  "cookingtime": 150,
+  "experience": 0.1,
+  "group": "misc",
+  "input": {
+    "tin": 36
+  },
+  "need_polishing": true,
+  "result": {
+    "count": 1,
+    "id": "magistuarmory:tin_buckler"
+  },
+  "tool_type": "buckler"
+}

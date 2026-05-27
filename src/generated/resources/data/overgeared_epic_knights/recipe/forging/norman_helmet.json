@@ -1,0 +1,30 @@
+{
+  "type": "overgeared:forging",
+  "blueprint": [
+    "norman_helmet"
+  ],
+  "category": "armor",
+  "hammering": 7,
+  "has_quality": true,
+  "key": {
+    "C": {
+      "item": "magistuarmory:steel_chainmail"
+    },
+    "I": {
+      "item": "overgeared:heated_steel_ingot"
+    }
+  },
+  "need_quenching": true,
+  "needs_minigame": true,
+  "pattern": [
+    "III",
+    "I I",
+    "CCC"
+  ],
+  "requires_blueprint": false,
+  "result": {
+    "count": 1,
+    "id": "magistuarmory:norman_helmet"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,30 @@
+{
+  "type": "overgeared:forging",
+  "blueprint": [
+    "buckler"
+  ],
+  "category": "misc",
+  "hammering": 7,
+  "has_quality": true,
+  "key": {
+    "P": {
+      "item": "overgeared_epic_knights:silver_plate"
+    },
+    "S": {
+      "tag": "c:ingots/steel"
+    }
+  },
+  "need_quenching": true,
+  "needs_minigame": true,
+  "pattern": [
+    "   ",
+    "PPS",
+    "PP "
+  ],
+  "requires_blueprint": false,
+  "result": {
+    "count": 1,
+    "id": "magistuarmory:silver_buckler"
+  },
+  "show_notification": true
+}

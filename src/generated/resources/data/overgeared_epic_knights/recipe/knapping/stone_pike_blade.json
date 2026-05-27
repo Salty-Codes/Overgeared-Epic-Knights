@@ -1,0 +1,16 @@
+{
+  "type": "overgeared:rock_knapping",
+  "ingredient": {
+    "item": "minecraft:cobblestone"
+  },
+  "pattern": [
+    "   ",
+    " x ",
+    "   "
+  ],
+  "result": {
+    "count": 1,
+    "id": "overgeared_epic_knights:stone_pike_blade"
+  },
+  "show_notification": true
+}

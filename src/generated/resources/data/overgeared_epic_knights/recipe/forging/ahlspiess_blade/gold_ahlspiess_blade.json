@@ -1,0 +1,23 @@
+{
+  "type": "overgeared:forging",
+  "blueprint": [
+    "ahlspiess"
+  ],
+  "hammering": 5,
+  "key": {
+    "#": {
+      "tag": "c:ingots/gold"
+    }
+  },
+  "needs_minigame": true,
+  "pattern": [
+    "  #",
+    "## ",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "overgeared_epic_knights:gold_ahlspiess_blade"
+  },
+  "show_notification": false
+}

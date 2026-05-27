@@ -1,0 +1,9 @@
+{
+  "type": "overgeared:item_to_tooltype",
+  "item": [
+    {
+      "item": "overgeared_epic_knights:steel_pitchfork_blade"
+    }
+  ],
+  "tooltype": "pitchfork"
+}

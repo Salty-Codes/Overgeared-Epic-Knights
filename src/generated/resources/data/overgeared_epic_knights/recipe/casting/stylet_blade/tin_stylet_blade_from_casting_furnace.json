@@ -1,0 +1,14 @@
+{
+  "type": "overgeared:casting",
+  "cookingtime": 150,
+  "experience": 0.1,
+  "input": {
+    "tin": 9
+  },
+  "need_polishing": true,
+  "result": {
+    "count": 1,
+    "id": "overgeared_epic_knights:tin_stylet_blade"
+  },
+  "tool_type": "stylet"
+}

@@ -1,0 +1,14 @@
+{
+  "type": "overgeared:casting",
+  "cookingtime": 150,
+  "experience": 0.1,
+  "input": {
+    "copper": 36
+  },
+  "need_polishing": true,
+  "result": {
+    "count": 1,
+    "id": "overgeared_epic_knights:copper_concavehalberd_blade"
+  },
+  "tool_type": "concavehalberd"
+}

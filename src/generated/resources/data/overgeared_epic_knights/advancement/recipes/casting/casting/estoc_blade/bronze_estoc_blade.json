@@ -1,0 +1,20 @@
+{
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "overgeared_epic_knights:casting/estoc_blade/bronze_estoc_blade"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "overgeared_epic_knights:casting/estoc_blade/bronze_estoc_blade"
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "overgeared_epic_knights:item/bronze_shortsword_blade"
+  }
+}

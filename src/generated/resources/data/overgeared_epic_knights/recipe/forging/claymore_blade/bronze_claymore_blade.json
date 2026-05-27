@@ -1,0 +1,27 @@
+{
+  "type": "overgeared:forging",
+  "blueprint": [
+    "claymore"
+  ],
+  "hammering": 5,
+  "key": {
+    "#": {
+      "item": "overgeared_epic_knights:bronze_shortsword_blade"
+    },
+    "I": {
+      "tag": "c:ingots/bronze"
+    }
+  },
+  "needs_minigame": true,
+  "pattern": [
+    "I# ",
+    "   ",
+    "   "
+  ],
+  "result": {
+    "count": 1,
+    "id": "overgeared_epic_knights:bronze_claymore_blade"
+  },
+  "show_notification": false,
+  "tier": "stone"
+}

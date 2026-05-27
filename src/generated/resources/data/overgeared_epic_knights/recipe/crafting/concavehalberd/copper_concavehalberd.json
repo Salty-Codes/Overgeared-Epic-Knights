@@ -1,0 +1,19 @@
+{
+  "type": "overgeared:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "overgeared_epic_knights:copper_concavehalberd_blade"
+    },
+    {
+      "item": "magistuarmory:pole"
+    },
+    {
+      "tag": "c:rods/wooden"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "magistuarmory:copper_concavehalberd"
+  }
+}

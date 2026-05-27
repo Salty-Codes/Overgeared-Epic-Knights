@@ -1,0 +1,31 @@
+{
+  "criteria": {
+    "has_blade": {
+      "conditions": {
+        "items": [
+          {
+            "items": "overgeared_epic_knights:bronze_guisarme_blade"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "overgeared_epic_knights:casting/guisarme_blade/bronze_guisarme_blade"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_blade"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "overgeared_epic_knights:casting/guisarme_blade/bronze_guisarme_blade"
+    ]
+  }
+}

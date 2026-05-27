@@ -1,0 +1,33 @@
+{
+  "type": "overgeared:forging",
+  "blueprint": [
+    "kastenbrust_chestplate"
+  ],
+  "category": "armor",
+  "hammering": 9,
+  "has_quality": true,
+  "key": {
+    "H": {
+      "item": "magistuarmory:halfarmor_chestplate"
+    },
+    "P": {
+      "item": "overgeared:steel_plate"
+    },
+    "S": {
+      "item": "magistuarmory:small_steel_plate"
+    }
+  },
+  "need_quenching": true,
+  "needs_minigame": true,
+  "pattern": [
+    "P P",
+    "PHP",
+    "SPS"
+  ],
+  "requires_blueprint": false,
+  "result": {
+    "count": 1,
+    "id": "magistuarmory:kastenbrust_chestplate"
+  },
+  "show_notification": true
+}
