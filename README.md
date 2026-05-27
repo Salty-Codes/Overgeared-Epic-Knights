@@ -74,11 +74,16 @@ This keeps the crafting process consistent with how Overgeared handles its own g
 </td>
 </tr></table>
 
-## A Note on AI-Assisted Development
-I was unable to get [_Epic Knights_](https://modrinth.com/mod/epic-knights-shields-armor-and-weapons) and [_Overgeared_](https://modrinth.com/mod/overgeared) running as compile-time dependencies, which meant I couldn't use their APIs directly. 
-As a result, a large number of JSON files had to be written by hand.
-A process that is highly repetitive, time-consuming, and error-prone.
+## Credits & Disclaimer
 
-For this reason, I used Claude Code to assist with generating the JSON. 
-**My own work** on every item (and every material per item) still involved creating the blade or component texture, registering it, and designing the forging recipe.
-The AI handled the mechanical transcription work in between.
+### Original Mods
+- **[Epic Knights: Shields, Armor and Weapons](https://modrinth.com/mod/epic-knights-shields-armor-and-weapons)** - Medieval weapons and armor system
+- **[Overgeared](https://modrinth.com/mod/overgeared)** - Material-based forging and crafting system
+
+### Disclaimer
+This is an **unofficial** compatibility mod created by the community.
+
+All rights to the original mods remain with their respective creators. This mod only provides integration between Epic Knights and Overgeared by adding compatible recipes, intermediate crafting components, and blueprints to bridge the two systems.
+
+### Development Tools
+Parts of this mod's JSON generation were assisted by Claude Code to handle the repetitive transcription work involved in creating recipes for multiple items and materials. All design decisions, textures, recipe balancing, and item registration were done manually.
