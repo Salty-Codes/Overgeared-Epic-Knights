@@ -623,9 +623,11 @@ public class OvergearedRecipeProvider implements DataProvider {
         // knight_leggings
         {
             JsonObject obj = armorForgingBase("knight_leggings", "armor", 9, true, true, true);
-            JsonObject key = new JsonObject(); key.add("P", itemRef("overgeared:steel_plate"));
+            JsonObject key = new JsonObject();
+            key.add("P", itemRef("overgeared:steel_plate"));
+            key.add("I", itemRef("overgeared:heated_steel_ingot"));
             obj.add("key", key);
-            obj.add("pattern", strArray(new String[]{"PPP", "P P", "P P"}));
+            obj.add("pattern", strArray(new String[]{"PPP", "I I", "P P"}));
             obj.add("result", resultRef("magistuarmory:knight_leggings"));
             obj.addProperty("show_notification", true);
             save(cache, futures, "forging/knight_leggings", obj);
@@ -633,9 +635,11 @@ public class OvergearedRecipeProvider implements DataProvider {
         // knight_boots
         {
             JsonObject obj = armorForgingBase("knight_boots", "armor", 6, true, true, true);
-            JsonObject key = new JsonObject(); key.add("P", itemRef("overgeared:steel_plate"));
+            JsonObject key = new JsonObject();
+            key.add("P", itemRef("overgeared:steel_plate"));
+            key.add("I", itemRef("overgeared:heated_steel_ingot"));
             obj.add("key", key);
-            obj.add("pattern", strArray(new String[]{"   ", "P P", "P P"}));
+            obj.add("pattern", strArray(new String[]{"   ", "I I", "P P"}));
             obj.add("result", resultRef("magistuarmory:knight_boots"));
             obj.addProperty("show_notification", true);
             save(cache, futures, "forging/knight_boots", obj);

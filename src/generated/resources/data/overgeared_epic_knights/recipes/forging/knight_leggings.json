@@ -7,6 +7,9 @@
   "hammering": 9,
   "has_quality": true,
   "key": {
+    "I": {
+      "item": "overgeared:heated_steel_ingot"
+    },
     "P": {
       "item": "overgeared:steel_plate"
     }
@@ -15,7 +18,7 @@
   "needs_minigame": true,
   "pattern": [
     "PPP",
-    "P P",
+    "I I",
     "P P"
   ],
   "requires_blueprint": false,
