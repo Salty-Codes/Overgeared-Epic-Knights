@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "overgeared:empty_blueprint"
+    },
+    {
+      "item": "magistuarmory:steel_rondache"
+    }
+  ],
+  "result": {
+    "components": {
+      "overgeared:blueprint_data": {
+        "quality": "well",
+        "tool_type": "rondache",
+        "uses": 0
+      }
+    },
+    "count": 1,
+    "id": "overgeared:blueprint"
+  }
+}

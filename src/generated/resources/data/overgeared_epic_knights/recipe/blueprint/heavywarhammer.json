@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "overgeared:empty_blueprint"
+    },
+    {
+      "item": "overgeared_epic_knights:steel_heavywarhammer_blade"
+    }
+  ],
+  "result": {
+    "components": {
+      "overgeared:blueprint_data": {
+        "quality": "well",
+        "tool_type": "heavywarhammer",
+        "uses": 0
+      }
+    },
+    "count": 1,
+    "id": "overgeared:blueprint"
+  }
+}

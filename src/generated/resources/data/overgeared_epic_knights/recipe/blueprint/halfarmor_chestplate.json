@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "overgeared:empty_blueprint"
+    },
+    {
+      "item": "magistuarmory:halfarmor_chestplate"
+    }
+  ],
+  "result": {
+    "components": {
+      "overgeared:blueprint_data": {
+        "quality": "well",
+        "tool_type": "halfarmor_chestplate",
+        "uses": 0
+      }
+    },
+    "count": 1,
+    "id": "overgeared:blueprint"
+  }
+}

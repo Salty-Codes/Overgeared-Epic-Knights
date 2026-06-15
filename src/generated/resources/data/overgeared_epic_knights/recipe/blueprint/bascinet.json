@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "overgeared:empty_blueprint"
+    },
+    {
+      "item": "magistuarmory:bascinet"
+    }
+  ],
+  "result": {
+    "components": {
+      "overgeared:blueprint_data": {
+        "quality": "well",
+        "tool_type": "bascinet",
+        "uses": 0
+      }
+    },
+    "count": 1,
+    "id": "overgeared:blueprint"
+  }
+}

@@ -45,12 +45,9 @@ public class OvergearedStaticDataProvider implements DataProvider {
     private void generateBlueprintTooltypes(CachedOutput cache, List<CompletableFuture<?>> futures) {
         JsonObject obj = new JsonObject();
         JsonArray tooltypes = new JsonArray();
-        // Weapons: derived from BladeType so every blade (SIMPLE/COMPOUND/HARDCODED)
-        // is blueprintable and new blade types are covered automatically.
         for (BladeType type : BladeType.values()) {
             tooltypes.add(type.getName().toUpperCase(Locale.ROOT));
         }
-        // Shields + armour (magistuarmory items, not BladeTypes) — kept explicit.
         for (String t : new String[]{
                 "BUCKLER","HEATERSHIELD","ELLIPTICALSHIELD","KITESHIELD",
                 "PAVESE","RONDACHE","ROUNDSHIELD","TARTSCHE","TARGET",
