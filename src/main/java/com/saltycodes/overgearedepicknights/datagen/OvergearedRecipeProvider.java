@@ -1014,11 +1014,13 @@ public class OvergearedRecipeProvider implements DataProvider {
     private void saveBlueprintRecipe(CachedOutput cache, List<CompletableFuture<?>> futures,
                                      String toolType, String representativeItem) {
         JsonObject obj = new JsonObject();
-        obj.addProperty("type", "minecraft:crafting_shapeless");
+        obj.addProperty("type", "overgeared:crafting_shapeless");
         obj.addProperty("category", "misc");
         JsonArray ingredients = new JsonArray();
         ingredients.add(itemRef("overgeared:empty_blueprint"));
-        ingredients.add(itemRef(representativeItem));
+        JsonObject template = itemRef(representativeItem);
+        template.addProperty("remainder", true);
+        ingredients.add(template);
         obj.add("ingredients", ingredients);
 
         JsonObject result = new JsonObject();

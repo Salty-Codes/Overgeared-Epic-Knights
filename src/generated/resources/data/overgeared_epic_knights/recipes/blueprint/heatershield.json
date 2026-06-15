@@ -1,12 +1,13 @@
 {
-  "type": "minecraft:crafting_shapeless",
+  "type": "overgeared:crafting_shapeless",
   "category": "misc",
   "ingredients": [
     {
       "item": "overgeared:empty_blueprint"
     },
     {
-      "item": "magistuarmory:steel_heatershield"
+      "item": "magistuarmory:steel_heatershield",
+      "remainder": true
     }
   ],
   "result": {

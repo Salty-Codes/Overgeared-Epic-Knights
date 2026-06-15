@@ -1,12 +1,13 @@
 {
-  "type": "minecraft:crafting_shapeless",
+  "type": "overgeared:crafting_shapeless",
   "category": "misc",
   "ingredients": [
     {
       "item": "overgeared:empty_blueprint"
     },
     {
-      "item": "overgeared_epic_knights:steel_morgenstern_blade"
+      "item": "overgeared_epic_knights:steel_morgenstern_blade",
+      "remainder": true
     }
   ],
   "result": {

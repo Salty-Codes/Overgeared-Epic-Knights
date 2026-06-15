@@ -1,12 +1,13 @@
 {
-  "type": "minecraft:crafting_shapeless",
+  "type": "overgeared:crafting_shapeless",
   "category": "misc",
   "ingredients": [
     {
       "item": "overgeared:empty_blueprint"
     },
     {
-      "item": "magistuarmory:platemail_chestplate"
+      "item": "magistuarmory:platemail_chestplate",
+      "remainder": true
     }
   ],
   "result": {
