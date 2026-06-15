@@ -27,6 +27,23 @@ public class OvergearedRecipeProvider implements DataProvider {
             BladeMaterial.TIN
     };
 
+    // Blueprint-craft representative items.
+    private static final String[] SHIELD_BLUEPRINT_TYPES = {
+            "buckler","heatershield","ellipticalshield","kiteshield",
+            "pavese","rondache","roundshield","tartsche","target"
+    };
+    private static final String[] ARMOR_BLUEPRINT_TYPES = {
+            "armet","barbute","bascinet","grand_bascinet","face_helmet",
+            "greathelm","kettlehat","norman_helmet","sallet","shishak","stechhelm",
+            "crusader_leggings","cuirassier_chestplate","cuirassier_helmet",
+            "gothic_boots","gothic_chestplate","gothic_leggings",
+            "halfarmor_chestplate","jousting_boots","jousting_chestplate","jousting_leggings",
+            "kastenbrust_boots","kastenbrust_chestplate","kastenbrust_leggings",
+            "knight_boots","knight_chestplate","knight_leggings",
+            "platemail_chestplate","platemail_leggings",
+            "xivcenturyknight_chestplate","xivcenturyknight_leggings"
+    };
+
     public OvergearedRecipeProvider(PackOutput output, String modId) {
         this.recipePaths = output.createPathProvider(PackOutput.Target.DATA_PACK, "recipes");
         this.modId = modId;
@@ -45,6 +62,7 @@ public class OvergearedRecipeProvider implements DataProvider {
         generateShieldForging(cache, futures);
         generateShieldCasting(cache, futures);
         generateArmorForging(cache, futures);
+        generateBlueprintCrafting(cache, futures);
         generateToolCastPlaceholders(cache, futures);
         return CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new));
     }
@@ -963,6 +981,55 @@ public class OvergearedRecipeProvider implements DataProvider {
     }
 
     // ── JSON helpers ──────────────────────────────────────────────────────────
+
+    // ── Craftable blueprints ─────────────────────────────────────────────────
+    // Alternative to the drafting-table selector: craft a ready-made blueprint by
+    // combining an empty blueprint with the item that blueprint forges.
+
+    private void generateBlueprintCrafting(CachedOutput cache, List<CompletableFuture<?>> futures) {
+        // Weapons: representative = the steel (or first non-stone) blade the blueprint forges.
+        for (BladeType type : BladeType.values()) {
+            BladeMaterial mat = canonicalBladeMaterial(type);
+            String blade = modId + ":" + mat.getName() + "_" + type.getName() + type.getSuffix();
+            saveBlueprintRecipe(cache, futures, type.getName(), blade);
+        }
+        for (String t : SHIELD_BLUEPRINT_TYPES) {
+            saveBlueprintRecipe(cache, futures, t, "magistuarmory:steel_" + t);
+        }
+        for (String t : ARMOR_BLUEPRINT_TYPES) {
+            saveBlueprintRecipe(cache, futures, t, "magistuarmory:" + t);
+        }
+    }
+
+    private static BladeMaterial canonicalBladeMaterial(BladeType type) {
+        BladeMaterial first = null;
+        for (BladeMaterial m : type.getMaterials()) {
+            if (m == BladeMaterial.STONE) continue;
+            if (m == BladeMaterial.STEEL) return m;
+            if (first == null) first = m;
+        }
+        return first != null ? first : BladeMaterial.STEEL;
+    }
+
+    private void saveBlueprintRecipe(CachedOutput cache, List<CompletableFuture<?>> futures,
+                                     String toolType, String representativeItem) {
+        JsonObject obj = new JsonObject();
+        obj.addProperty("type", "minecraft:crafting_shapeless");
+        obj.addProperty("category", "misc");
+        JsonArray ingredients = new JsonArray();
+        ingredients.add(itemRef("overgeared:empty_blueprint"));
+        ingredients.add(itemRef(representativeItem));
+        obj.add("ingredients", ingredients);
+
+        JsonObject result = new JsonObject();
+        result.addProperty("item", "overgeared:blueprint");
+        result.addProperty("count", 1);
+        // Forge reads "nbt" (SNBT string) on the result; Quality "well" matches the drafting table.
+        result.addProperty("nbt", "{ToolType:\"" + toolType + "\",Quality:\"well\",Uses:0}");
+        obj.add("result", result);
+
+        save(cache, futures, "blueprint/" + toolType, obj);
+    }
 
     private JsonObject itemRef(String id) {
         JsonObject o = new JsonObject();

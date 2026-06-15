@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "overgeared:empty_blueprint"
+    },
+    {
+      "item": "magistuarmory:steel_buckler"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "item": "overgeared:blueprint",
+    "nbt": "{ToolType:\"buckler\",Quality:\"well\",Uses:0}"
+  }
+}
