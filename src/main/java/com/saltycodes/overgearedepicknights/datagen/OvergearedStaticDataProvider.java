@@ -2,6 +2,7 @@ package com.saltycodes.overgearedepicknights.datagen;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.saltycodes.overgearedepicknights.items.BladeType;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
@@ -9,6 +10,7 @@ import net.minecraft.data.PackOutput;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.CompletableFuture;
 
 // Generates blueprint_tooltypes, casting_tooltypes, knapping_resources, and item tags.
@@ -41,8 +43,13 @@ public class OvergearedStaticDataProvider implements DataProvider {
     private void generateBlueprintTooltypes(CachedOutput cache, List<CompletableFuture<?>> futures) {
         JsonObject obj = new JsonObject();
         JsonArray tooltypes = new JsonArray();
+        // Weapons: derived from BladeType so every blade (SIMPLE/COMPOUND/HARDCODED)
+        // is blueprintable and new blade types are covered automatically.
+        for (BladeType type : BladeType.values()) {
+            tooltypes.add(type.getName().toUpperCase(Locale.ROOT));
+        }
+        // Shields + armour (magistuarmory items, not BladeTypes) — kept explicit.
         for (String t : new String[]{
-                "STYLET","SHORTSWORD","KATZBALGER","PIKE",
                 "BUCKLER","HEATERSHIELD","ELLIPTICALSHIELD","KITESHIELD",
                 "PAVESE","RONDACHE","ROUNDSHIELD","TARTSCHE","TARGET",
                 "ARMET","BARBUTE","BASCINET","GRAND_BASCINET","FACE_HELMET",
