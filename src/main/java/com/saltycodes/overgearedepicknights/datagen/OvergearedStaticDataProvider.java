@@ -2,6 +2,7 @@ package com.saltycodes.overgearedepicknights.datagen;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.saltycodes.overgearedepicknights.Mappings;
 import com.saltycodes.overgearedepicknights.items.BladeType;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
@@ -111,7 +112,7 @@ public class OvergearedStaticDataProvider implements DataProvider {
         values.add("minecraft:cobblestone");
         obj.add("values", values);
         saveTo(cache, futures,
-                "overgeared", "tags/items/knappables", obj);
+                "overgeared", Mappings.TAG_ITEM_DIR + "/knappables", obj);
     }
 
     // ── forge: item tags ──────────────────────────────────────────────────────
@@ -123,7 +124,7 @@ public class OvergearedStaticDataProvider implements DataProvider {
         JsonArray ingotVals = new JsonArray();
         ingotVals.add("overgeared:steel_ingot");
         steelIngot.add("values", ingotVals);
-        saveTo(cache, futures, "forge", "tags/items/ingots/steel", steelIngot);
+        saveTo(cache, futures, Mappings.COMMON, Mappings.TAG_ITEM_DIR + "/ingots/steel", steelIngot);
 
         // forge:nuggets/steel → overgeared:steel_nugget  (replace=true)
         JsonObject steelNugget = new JsonObject();
@@ -131,7 +132,7 @@ public class OvergearedStaticDataProvider implements DataProvider {
         JsonArray nuggetVals = new JsonArray();
         nuggetVals.add("overgeared:steel_nugget");
         steelNugget.add("values", nuggetVals);
-        saveTo(cache, futures, "forge", "tags/items/nuggets/steel", steelNugget);
+        saveTo(cache, futures, Mappings.COMMON, Mappings.TAG_ITEM_DIR + "/nuggets/steel", steelNugget);
 
         // forge:plates/steel → overgeared:steel_plate  (replace=true)
         JsonObject steelPlate = new JsonObject();
@@ -139,7 +140,7 @@ public class OvergearedStaticDataProvider implements DataProvider {
         JsonArray plateVals = new JsonArray();
         plateVals.add("overgeared:steel_plate");
         steelPlate.add("values", plateVals);
-        saveTo(cache, futures, "forge", "tags/items/plates/steel", steelPlate);
+        saveTo(cache, futures, Mappings.COMMON, Mappings.TAG_ITEM_DIR + "/plates/steel", steelPlate);
 
         // forge:forged/steel (non-replace) — all steel weapons/items that can be smelted to nuggets
         JsonObject forgedSteel = new JsonObject();
@@ -174,7 +175,7 @@ public class OvergearedStaticDataProvider implements DataProvider {
                 "magistuarmory:face_helmet","magistuarmory:lamellar_chestplate"
         }) forgedVals.add(item);
         forgedSteel.add("values", forgedVals);
-        saveTo(cache, futures, "forge", "tags/items/forged/steel", forgedSteel);
+        saveTo(cache, futures, Mappings.COMMON, Mappings.TAG_ITEM_DIR + "/forged/steel", forgedSteel);
     }
 
     // ── IO ────────────────────────────────────────────────────────────────────

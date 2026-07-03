@@ -1,13 +1,21 @@
 package com.saltycodes.overgearedepicknights.items;
 
 import net.minecraft.resources.ResourceLocation;
+//? if forge {
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+//?} else {
+/*import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+*///?}
 
+//? if forge {
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+//?}
 public class ModCreativeModeTabs {
+    //? if forge {
     @SubscribeEvent
+    //?}
     public static void onBuildCreativeTab(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey().location().equals(ResourceLocation.fromNamespaceAndPath("overgeared", "overgeared_tab"))) {
             for (BladeType type : BladeType.values()) {

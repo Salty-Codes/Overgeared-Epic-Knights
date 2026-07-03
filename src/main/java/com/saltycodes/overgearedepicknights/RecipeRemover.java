@@ -2,17 +2,28 @@ package com.saltycodes.overgearedepicknights;
 
 import com.saltycodes.overgearedepicknights.items.BladeMaterial;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeManager;
+//? if forge {
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+//?} else {
+/*import net.minecraft.world.item.crafting.RecipeHolder;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.server.ServerStartingEvent;
+*///?}
 
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+//? if forge {
 @Mod.EventBusSubscriber(modid = OvergearedEpicKnights.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+//?} else {
+/*@EventBusSubscriber(modid = OvergearedEpicKnights.MODID)
+*///?}
 public class RecipeRemover {
 
     /**
@@ -170,14 +181,21 @@ public class RecipeRemover {
     @SubscribeEvent
     public static void onServerStarting(ServerStartingEvent event) {
         RecipeManager recipeManager = event.getServer().getRecipeManager();
+        //? if forge {
         Map<ResourceLocation, Recipe<?>> recipes = new HashMap<>();
-
         recipeManager.getRecipes().forEach(recipe -> {
             if (!RECIPES_TO_REMOVE.contains(recipe.getId())) {
                 recipes.put(recipe.getId(), recipe);
             }
         });
-
+        //?} else {
+        /*Map<ResourceLocation, RecipeHolder<?>> recipes = new HashMap<>();
+        recipeManager.getRecipes().forEach(holder -> {
+            if (!RECIPES_TO_REMOVE.contains(holder.id())) {
+                recipes.put(holder.id(), holder);
+            }
+        });
+        *///?}
         recipeManager.replaceRecipes(recipes.values());
     }
 }

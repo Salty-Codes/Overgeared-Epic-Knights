@@ -7,9 +7,15 @@ import com.saltycodes.overgearedepicknights.items.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+//? if forge {
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
+//?} else {
+/*import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredItem;
+*///?}
 
 public class ModItemModelProvider extends ItemModelProvider {
     public ModItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
@@ -31,10 +37,19 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.HUSSAR_WINGS);
     }
 
+    //? if forge {
     private void simpleItem(RegistryObject<Item> item) {
         assert item.getId() != null;
         withExistingParent(item.getId().getPath(),
                 ResourceLocation.parse("item/generated")).texture("layer0",
                 ResourceLocation.fromNamespaceAndPath(OvergearedEpicKnights.MODID, "item/" + item.getId().getPath()));
     }
+    //?} else {
+    /*private void simpleItem(DeferredItem<Item> item) {
+        String path = item.getKey().location().getPath();
+        withExistingParent(path, ResourceLocation.parse("item/generated"))
+                .texture("layer0", ResourceLocation.fromNamespaceAndPath(
+                        OvergearedEpicKnights.MODID, "item/" + path));
+    }
+    *///?}
 }

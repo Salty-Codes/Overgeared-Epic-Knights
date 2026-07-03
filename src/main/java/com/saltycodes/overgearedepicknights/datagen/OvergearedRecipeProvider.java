@@ -2,6 +2,7 @@ package com.saltycodes.overgearedepicknights.datagen;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.saltycodes.overgearedepicknights.Mappings;
 import com.saltycodes.overgearedepicknights.items.BladeMaterial;
 import com.saltycodes.overgearedepicknights.items.BladeType;
 import net.minecraft.data.CachedOutput;
@@ -45,7 +46,7 @@ public class OvergearedRecipeProvider implements DataProvider {
     };
 
     public OvergearedRecipeProvider(PackOutput output, String modId) {
-        this.recipePaths = output.createPathProvider(PackOutput.Target.DATA_PACK, "recipes");
+        this.recipePaths = output.createPathProvider(PackOutput.Target.DATA_PACK, Mappings.RECIPE_DIR);
         this.modId = modId;
     }
 
@@ -121,7 +122,7 @@ public class OvergearedRecipeProvider implements DataProvider {
             JsonObject obj = forgingBase("messer_sword", "iron", 6);
             JsonObject key = new JsonObject();
             key.add("I", itemRef("overgeared:heated_iron_ingot"));
-            key.add("N", tagRef("forge:nuggets/iron"));
+            key.add("N", tagRef(Mappings.COMMON + ":nuggets/iron"));
             key.add("B", itemRef(modId + ":iron_shortsword_blade"));
             obj.add("key", key);
             obj.add("pattern", strArray(new String[]{"IN ", "B  ", "   "}));
@@ -216,7 +217,7 @@ public class OvergearedRecipeProvider implements DataProvider {
         key.add("#", itemRef(modId + ":stone_shortsword_blade"));
         obj.add("key", key);
         JsonObject result = new JsonObject();
-        result.addProperty("item", modId + ":stone_" + type.getName() + "_blade");
+        result.addProperty(Mappings.RESULT_KEY, modId + ":stone_" + type.getName() + "_blade");
         obj.add("result", result);
         save(cache, futures, "crafting/" + type.getName() + "/stone_" + type.getName() + "_blade", obj);
     }
@@ -232,7 +233,7 @@ public class OvergearedRecipeProvider implements DataProvider {
             ingredients.add(itemRef(bladeId));
             ingredients.add(tagRef("magistuarmory:chains/steel"));
             ingredients.add(itemRef("magistuarmory:hilt"));
-            ingredients.add(tagRef("forge:rods/wooden"));
+            ingredients.add(tagRef(Mappings.COMMON + ":rods/wooden"));
             obj.add("ingredients", ingredients);
             obj.add("result", resultRef("magistuarmory:" + mat.getName() + "_chainmorgenstern"));
             save(cache, futures,
@@ -253,7 +254,10 @@ public class OvergearedRecipeProvider implements DataProvider {
             key.add("F", itemRef("magistuarmory:woolen_fabric"));
             obj.add("key", key);
             JsonObject result = new JsonObject();
-            result.addProperty("item", modId + ":crusader_surcoat");
+            result.addProperty(Mappings.RESULT_KEY, modId + ":crusader_surcoat");
+            //? if neoforge {
+            /*result.addProperty("count", 1);
+            *///?}
             obj.add("result", result);
             save(cache, futures, "crafting/crusader_surcoat", obj);
         }
@@ -269,7 +273,10 @@ public class OvergearedRecipeProvider implements DataProvider {
             key.add("S", itemRef("minecraft:stick"));
             obj.add("key", key);
             JsonObject result = new JsonObject();
-            result.addProperty("item", modId + ":hussar_wings");
+            result.addProperty(Mappings.RESULT_KEY, modId + ":hussar_wings");
+            //? if neoforge {
+            /*result.addProperty("count", 1);
+            *///?}
             obj.add("result", result);
             save(cache, futures, "crafting/hussar_wings", obj);
         }
@@ -307,7 +314,7 @@ public class OvergearedRecipeProvider implements DataProvider {
             key.add("N", itemRef("overgeared:steel_nugget"));
             obj.add("key", key);
             JsonObject result = new JsonObject();
-            result.addProperty("item", "magistuarmory:steel_ring");
+            result.addProperty(Mappings.RESULT_KEY, "magistuarmory:steel_ring");
             result.addProperty("count", 8);
             obj.add("result", result);
             save(cache, futures, "crafting/steel_ring", obj);
@@ -341,7 +348,10 @@ public class OvergearedRecipeProvider implements DataProvider {
         key.add("p", itemRef("magistuarmory:pole"));
         obj.add("key", key);
         JsonObject result = new JsonObject();
-        result.addProperty("item", "magistuarmory:heavy_crossbow");
+        result.addProperty(Mappings.RESULT_KEY, "magistuarmory:heavy_crossbow");
+        //? if neoforge {
+        /*result.addProperty("count", 1);
+        *///?}
         obj.add("result", result);
         save(cache, futures, "crafting/heavy_crossbow/steel_heavy_crossbow", obj);
     }
@@ -424,7 +434,7 @@ public class OvergearedRecipeProvider implements DataProvider {
         obj.add("addition", itemRef("minecraft:diamond"));
         obj.add("base", itemRef(base));
         JsonObject res = new JsonObject();
-        res.addProperty("item", result);
+        res.addProperty(Mappings.RESULT_KEY, result);
         obj.add("result", res);
         obj.add("template", itemRef(template));
         return obj;
@@ -438,7 +448,7 @@ public class OvergearedRecipeProvider implements DataProvider {
         obj.addProperty("category", "misc");
         obj.addProperty("cookingtime", 200);
         obj.addProperty("experience", 0.1f);
-        obj.add("ingredient", tagRef("forge:forged/steel"));
+        obj.add("ingredient", tagRef(Mappings.COMMON + ":forged/steel"));
         obj.addProperty("result", "overgeared:steel_nugget");
         save(cache, futures, "blasting/overgeared_steel_nugget_from_blasting", obj);
     }
@@ -900,7 +910,7 @@ public class OvergearedRecipeProvider implements DataProvider {
             JsonObject obj = shieldForgingBase("buckler", 7, true);
             JsonObject key = new JsonObject();
             key.add("P", itemRef(plateItem(mat)));
-            key.add("S", tagRef("forge:ingots/steel"));
+            key.add("S", tagRef(Mappings.COMMON + ":ingots/steel"));
             obj.add("key", key);
             obj.add("pattern", strArray(new String[]{"   ", "PPS", "PP "}));
             obj.add("result", resultRef("magistuarmory:" + mat.getName() + "_buckler"));
@@ -912,7 +922,7 @@ public class OvergearedRecipeProvider implements DataProvider {
             JsonObject obj = shieldForgingBase("target", 7, true);
             JsonObject key = new JsonObject();
             key.add("P", itemRef(plateItem(mat)));
-            key.add("S", tagRef("forge:ingots/steel"));
+            key.add("S", tagRef(Mappings.COMMON + ":ingots/steel"));
             obj.add("key", key);
             obj.add("pattern", strArray(new String[]{"   ", "PP ", "PPS"}));
             obj.add("result", resultRef("magistuarmory:" + mat.getName() + "_target"));
@@ -1024,10 +1034,21 @@ public class OvergearedRecipeProvider implements DataProvider {
         obj.add("ingredients", ingredients);
 
         JsonObject result = new JsonObject();
-        result.addProperty("item", "overgeared:blueprint");
+        result.addProperty(Mappings.RESULT_KEY, "overgeared:blueprint");
         result.addProperty("count", 1);
-        // Forge reads "nbt" (SNBT string) on the result; Quality "well" matches the drafting table.
+        //? if forge {
+        // 1.20.1 reads "nbt" (SNBT string) on the result; Quality "well" matches the drafting table.
         result.addProperty("nbt", "{ToolType:\"" + toolType + "\",Quality:\"well\",Uses:0}");
+        //?} else {
+        /*// 1.21.1 carries the blueprint state as a data component instead of NBT.
+        JsonObject components = new JsonObject();
+        JsonObject data = new JsonObject();
+        data.addProperty("tool_type", toolType);
+        data.addProperty("quality", "well"); // matches the drafting table's default
+        data.addProperty("uses", 0);
+        components.add("overgeared:blueprint_data", data);
+        result.add("components", components);
+        *///?}
         obj.add("result", result);
 
         save(cache, futures, "blueprint/" + toolType, obj);
@@ -1041,7 +1062,10 @@ public class OvergearedRecipeProvider implements DataProvider {
 
     private JsonObject resultRef(String id) {
         JsonObject o = new JsonObject();
-        o.addProperty("item", id);
+        o.addProperty(Mappings.RESULT_KEY, id);
+        //? if neoforge {
+        /*o.addProperty("count", 1);
+        *///?}
         return o;
     }
 
@@ -1098,13 +1122,13 @@ public class OvergearedRecipeProvider implements DataProvider {
 
     private void save(CachedOutput cache, List<CompletableFuture<?>> futures,
                       String recipePath, JsonObject json) {
-        Path path = recipePaths.json(new ResourceLocation(modId, recipePath));
+        Path path = recipePaths.json(ResourceLocation.fromNamespaceAndPath(modId, recipePath));
         futures.add(DataProvider.saveStable(cache, json, path));
     }
 
     private void saveAs(CachedOutput cache, List<CompletableFuture<?>> futures,
                         String namespace, String recipePath, JsonObject json) {
-        Path path = recipePaths.json(new ResourceLocation(namespace, recipePath));
+        Path path = recipePaths.json(ResourceLocation.fromNamespaceAndPath(namespace, recipePath));
         futures.add(DataProvider.saveStable(cache, json, path));
     }
 }

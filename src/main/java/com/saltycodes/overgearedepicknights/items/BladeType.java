@@ -1,5 +1,6 @@
 package com.saltycodes.overgearedepicknights.items;
 
+import com.saltycodes.overgearedepicknights.Mappings;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.EnumSet;
@@ -44,27 +45,27 @@ public enum BladeType {
     CONCAVEHALBERD("concavehalberd", 36,
             new String[]{"xx ","x x","   "},
             ForgeMode.SIMPLE, 6, new String[]{"## ","# #","   "},
-            new String[]{"item:magistuarmory:pole", "tag:forge:rods/wooden"}),
+            new String[]{"item:magistuarmory:pole", "tag:" + Mappings.COMMON + ":rods/wooden"}),
 
     HEAVYMACE("heavymace", 27,
             new String[]{" xx","  x","   "},
             ForgeMode.SIMPLE, 5, new String[]{" ##","  #","   "},
-            new String[]{"item:magistuarmory:hilt", "tag:forge:rods/wooden"}),
+            new String[]{"item:magistuarmory:hilt", "tag:" + Mappings.COMMON + ":rods/wooden"}),
 
     HEAVYWARHAMMER("heavywarhammer", 45,
             new String[]{"xx ","x x","x  "},
             ForgeMode.SIMPLE, 7, new String[]{"## ","# #","#  "},
-            new String[]{"item:magistuarmory:hilt", "tag:forge:rods/wooden"}),
+            new String[]{"item:magistuarmory:hilt", "tag:" + Mappings.COMMON + ":rods/wooden"}),
 
     LUCERNHAMMER("lucernhammer", 27,
             new String[]{"xx ","  x","   "},
             ForgeMode.SIMPLE, 5, new String[]{"## ","  #","   "},
-            new String[]{"item:magistuarmory:hilt", "tag:forge:rods/wooden"}),
+            new String[]{"item:magistuarmory:hilt", "tag:" + Mappings.COMMON + ":rods/wooden"}),
 
     MORGENSTERN("morgenstern", 27,
             new String[]{" x ","x x","   "},
             ForgeMode.SIMPLE, 5, new String[]{" # ","# #","   "},
-            new String[]{"item:magistuarmory:hilt", "tag:forge:rods/wooden"}),
+            new String[]{"item:magistuarmory:hilt", "tag:" + Mappings.COMMON + ":rods/wooden"}),
 
     // ── COMPOUND forging (I = material ingot, # = same-material shortsword blade) ──
 
@@ -103,13 +104,13 @@ public enum BladeType {
     BLACKSMITH_HAMMER("blacksmith_hammer", 45,
             null,
             ForgeMode.HARDCODED, 7, null,
-            new String[]{"item:magistuarmory:hilt", "tag:forge:rods/wooden"},
+            new String[]{"item:magistuarmory:hilt", "tag:" + Mappings.COMMON + ":rods/wooden"},
             BladeMaterial.STEEL),
 
     BARBED_CLUB("barbed_club", 0,  // no casting
             null,
             ForgeMode.HARDCODED, 5, null,
-            new String[]{"tag:forge:rods/wooden"},
+            new String[]{"tag:" + Mappings.COMMON + ":rods/wooden"},
             BladeMaterial.STEEL),
 
     PITCHFORK("pitchfork", 7,
