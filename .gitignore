@@ -17,6 +17,13 @@ out
 build
 .gradle
 
+# Stonecutter — generated per-version subproject anchors and processed/generated sources
+/versions/
+.stonecutter
+
+# DataGen output is per-node (versions/<id>/src/generated) and never committed
+/src/generated/
+
 # other
 eclipse
 run
