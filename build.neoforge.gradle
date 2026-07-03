@@ -1,0 +1,123 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'net.neoforged.moddev' version '2.0.141'
+    id 'idea'
+}
+
+// ---- NeoForge 1.21.1 node values ----
+ext {
+    minecraft_version = '1.21.1'
+    minecraft_version_range = '[1.21.1]'
+    neo_version = '21.1.230'
+    loader_version_range = '[1,)'
+    parchment_minecraft = '1.21.1'
+    parchment_mappings = '2024.11.17'
+}
+
+version = "${minecraft_version}-${mod_version}"
+group = mod_group_id
+base { archivesName = mod_id }
+
+sourceSets.main.resources {
+    srcDir('src/generated/resources')
+    exclude('**/*.bbmodel')
+    exclude('**/.cache/**')
+}
+
+repositories {
+    maven {
+        name = 'LocalMods'
+        url = "${rootProject.projectDir}/libs/mvn"
+        metadataSources { artifact() } // jars only, no POMs
+    }
+    maven { url "https://api.modrinth.com/maven" }
+    maven { url "https://www.cursemaven.com" }
+}
+
+// NeoForge 1.21.1 ships Java 21.
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+neoForge {
+    version = neo_version
+
+    parchment {
+        mappingsVersion = parchment_mappings
+        minecraftVersion = parchment_minecraft
+    }
+
+    runs {
+        client {
+            client()
+            systemProperty 'neoforge.enabledGameTestNamespaces', mod_id
+        }
+        server {
+            server()
+            programArgument '--nogui'
+            systemProperty 'neoforge.enabledGameTestNamespaces', mod_id
+        }
+        gameTestServer {
+            type = "gameTestServer"
+            systemProperty 'neoforge.enabledGameTestNamespaces', mod_id
+        }
+        data {
+            data()
+            programArguments.addAll '--mod', mod_id, '--all',
+                    '--output', file('src/generated/resources/').absolutePath,
+                    '--existing', rootProject.file('src/main/resources').absolutePath
+        }
+        configureEach {
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+            logLevel = org.slf4j.event.Level.DEBUG
+        }
+    }
+
+    mods {
+        "${mod_id}" {
+            sourceSet(sourceSets.main)
+        }
+    }
+}
+
+// localRuntime = present for dev runs but not exported to dependents.
+configurations { runtimeClasspath.extendsFrom localRuntime }
+
+dependencies {
+    // Overgeared — compile (builder API) + runtime. 1.21.1 mods are in official mappings (no remap).
+    compileOnly "maven.modrinth:overgeared:rBaLtSNX"
+    localRuntime "maven.modrinth:overgeared:rBaLtSNX"
+
+    // Epic Knights — runtime only, local jar with the DataGen fix (1.21.1 jars are official-mapped).
+    localRuntime "local:epic-knights-neoforge:10.12"
+
+    // Runtime deps + dev tooling.
+    localRuntime "maven.modrinth:architectury-api:ZxYGwlk0"
+    localRuntime "maven.modrinth:cloth-config:izKINKFg"
+    localRuntime "maven.modrinth:emi:5sIPA1To"
+}
+
+// Expand placeholders in the NeoForge metadata only; keep the Forge file out of this jar.
+tasks.named('processResources', ProcessResources).configure {
+    exclude 'META-INF/mods.toml'
+    var replaceProperties = [
+            minecraft_version      : minecraft_version,
+            minecraft_version_range: minecraft_version_range,
+            neo_version            : neo_version,
+            loader_version_range   : loader_version_range,
+            mod_id                 : mod_id, mod_name: mod_name,
+            mod_license            : mod_license, mod_version: version,
+    ]
+    inputs.properties replaceProperties
+    filesMatching('META-INF/neoforge.mods.toml') {
+        expand replaceProperties
+    }
+}
+
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+
+publishing {
+    publications { register('mavenJava', MavenPublication) { from components.java } }
+    repositories { maven { url "file://${project.projectDir}/repo" } }
+}
+
+idea { module { downloadSources = true; downloadJavadoc = true } }

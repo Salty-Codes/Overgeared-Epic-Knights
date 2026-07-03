@@ -1,0 +1,117 @@
+plugins {
+    id 'idea'
+    id 'maven-publish'
+    id 'net.neoforged.moddev.legacyforge' version '2.0.141'
+}
+
+// ---- Forge 1.20.1 node values ----
+ext {
+    minecraft_version = '1.20.1'
+    minecraft_version_range = '[1.20.1,1.20.2)'
+    forge_version = '47.4.10'
+    forge_version_range = '[47,)'
+    loader_version_range = '[47,)'
+    parchment_minecraft = '1.20.1'
+    parchment_mappings = '2023.09.03'
+}
+
+version = "${minecraft_version}-${mod_version}"
+group = mod_group_id
+base { archivesName = mod_id }
+
+// Forge 1.20.1 ships Java 17.
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+repositories {
+    // Local file maven repo holding the Epic Knights jars (so mod* remap transforms apply).
+    maven {
+        name = 'LocalMods'
+        url = "${rootProject.projectDir}/libs/mvn"
+        metadataSources { artifact() } // jars only, no POMs
+    }
+    maven { name = 'Modrinth'; url = 'https://api.modrinth.com/maven' }
+    maven { name = 'CurseMaven'; url = 'https://www.cursemaven.com' }
+}
+
+legacyForge {
+    version = "${minecraft_version}-${forge_version}"
+
+    parchment {
+        minecraftVersion = parchment_minecraft
+        mappingsVersion = parchment_mappings
+    }
+
+    validateAccessTransformers = true
+
+    runs {
+        client {
+            client()
+            systemProperty 'forge.enabledGameTestNamespaces', mod_id
+        }
+        server {
+            server()
+            programArgument '--nogui'
+            systemProperty 'forge.enabledGameTestNamespaces', mod_id
+        }
+        data {
+            data()
+            programArguments.addAll '--mod', mod_id, '--all',
+                    '--output', file('src/generated/resources/').absolutePath,
+                    '--existing', rootProject.file('src/main/resources').absolutePath
+        }
+        configureEach {
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+            logLevel = org.slf4j.event.Level.DEBUG
+        }
+    }
+
+    mods {
+        "${mod_id}" {
+            sourceSet sourceSets.main
+        }
+    }
+}
+
+sourceSets.main.resources {
+    srcDir 'src/generated/resources'
+    exclude '**/.cache/**' // datagen bookkeeping, never shipped
+}
+
+dependencies {
+    // Overgeared — compile (builder API) + runtime. Production (SRG) jars; mod* configs remap to official.
+    modCompileOnly "maven.modrinth:overgeared:1.20.1-1.6.29"
+    modRuntimeOnly "maven.modrinth:overgeared:1.20.1-1.6.29"
+
+    // Epic Knights — runtime only, local jar with the DataGen fix (see BACKPORT.md §4).
+    // mod* config remaps it SRG->official, like the Modrinth deps.
+    modRuntimeOnly "local:epic-knights-forge:10.11"
+
+    // Runtime deps (mods Overgeared/EK rely on, plus dev-time tooling).
+    modRuntimeOnly "maven.modrinth:architectury-api:9.2.14+forge"
+    modRuntimeOnly "maven.modrinth:cloth-config:11.1.136+forge"
+    modRuntimeOnly "maven.modrinth:jei:p7yZWpEg"
+    modRuntimeOnly "maven.modrinth:jade:11.13.2+forge"
+}
+
+// Expand placeholders in the Forge metadata only; keep the NeoForge file out of this jar.
+tasks.named('processResources', ProcessResources).configure {
+    exclude 'META-INF/neoforge.mods.toml'
+    var replaceProperties = [
+            minecraft_version   : minecraft_version, minecraft_version_range: minecraft_version_range,
+            forge_version       : forge_version, forge_version_range: forge_version_range,
+            loader_version_range: loader_version_range,
+            mod_id              : mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: version,
+            mod_authors         : mod_authors, mod_description: mod_description,
+    ]
+    inputs.properties replaceProperties
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand replaceProperties + [project: project]
+    }
+}
+
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+
+publishing {
+    publications { register('mavenJava', MavenPublication) { from components.java } }
+    repositories { maven { url "file://${project.projectDir}/repo" } }
+}
