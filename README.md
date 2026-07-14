@@ -48,7 +48,7 @@ This keeps the crafting process consistent with how Overgeared handles its own g
 | DLC | Status |
 |-----|--------|
 | [Epic Knights: Shields, Armor and Weapons](https://modrinth.com/mod/epic-knights-shields-armor-and-weapons) | 🟢 Supported |
-| [Epic Knights: Addon](https://modrinth.com/mod/epic-knights-addon) | 🟡 Planned |
+| [Epic Knights: Addon](https://modrinth.com/mod/epic-knights-addon) | 🔵 In Progress|
 | [Epic Knights: Slavic Armory](https://modrinth.com/mod/epic-knights-slavic-armory) | 🟡 Planned |
 | [Epic Knights: Antique Legacy](https://modrinth.com/mod/epic-knights-antique-legacy) | 🟡 Planned|
 
