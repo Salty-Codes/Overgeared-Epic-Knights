@@ -80,10 +80,6 @@ public class OvergearedRecipeProvider implements DataProvider {
             JsonObject obj = new JsonObject();
             obj.addProperty("type", "overgeared:forging");
             obj.addProperty("category", e.category());
-            if (e.blueprint() != null) {
-                obj.add("blueprint", strArray(new String[]{e.blueprint()}));
-                obj.addProperty("requires_blueprint", false);
-            }
             obj.addProperty("hammering", e.hammering());
             obj.addProperty("has_quality", e.quality());
             obj.addProperty("need_quenching", e.quench());
@@ -548,6 +544,7 @@ public class OvergearedRecipeProvider implements DataProvider {
 
     private void generateBlueprintCrafting(CachedOutput cache, List<CompletableFuture<?>> futures) {
         // Weapons: representative = the steel (or first non-stone) blade the blueprint forges.
+        // Armour has no blueprints — Overgeared itself doesn't use them for armour either.
         for (BladeType type : types) {
             saveBlueprintRecipe(cache, futures, type.getTooltype(), type.itemId(type.canonicalMaterial()));
         }
@@ -555,9 +552,6 @@ public class OvergearedRecipeProvider implements DataProvider {
             for (String t : ForgingTable.SHIELDS.keySet()) {
                 saveBlueprintRecipe(cache, futures, t, "magistuarmory:steel_" + t);
             }
-        }
-        for (ForgingTable.Entry e : ForgingTable.of(addon)) {
-            if (e.blueprint() != null) saveBlueprintRecipe(cache, futures, e.blueprint(), e.result());
         }
     }
 

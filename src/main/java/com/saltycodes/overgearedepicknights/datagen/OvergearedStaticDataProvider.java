@@ -61,9 +61,6 @@ public class OvergearedStaticDataProvider implements DataProvider {
             tooltypes.add(type.getTooltype());
         }
         if (!addon) tooltypes.addAll(ForgingTable.SHIELDS.keySet());
-        for (ForgingTable.Entry entry : ForgingTable.of(addon)) {
-            if (entry.blueprint() != null) tooltypes.add(entry.blueprint());
-        }
         JsonObject obj = new JsonObject();
         JsonArray arr = new JsonArray();
         for (String t : tooltypes) arr.add(t.toUpperCase(Locale.ROOT));
@@ -186,7 +183,7 @@ public class OvergearedStaticDataProvider implements DataProvider {
             if (type.getMaterials().contains(BladeMaterial.STEEL)) items.add(type.resultId(BladeMaterial.STEEL));
         }
         for (ForgingTable.Entry entry : ForgingTable.of(addon)) {
-            if (entry.blueprint() != null && entry.usesSteel()) items.add(entry.result());
+            if (entry.quality() && entry.usesSteel()) items.add(entry.result());
         }
         for (ForgingTable.AssemblyOnly a : ForgingTable.assemblyOnly(addon)) {
             items.add(a.result().replace("{mat}", "steel"));

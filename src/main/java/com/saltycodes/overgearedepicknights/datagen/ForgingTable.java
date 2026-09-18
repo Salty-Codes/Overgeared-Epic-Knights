@@ -15,12 +15,9 @@ import java.util.Map;
 public final class ForgingTable {
     private ForgingTable() {}
 
-    public record Entry(String path, String displayName, String blueprint, String category, int hammering,
+    public record Entry(String path, String displayName, String category, int hammering,
                         String[] pattern, Map<Character, String> keys, String result,
                         boolean quality, boolean quench, boolean minigame, boolean addon) {
-        /** Blueprint tool type of this recipe, or {@code null} for plain parts like small plates. */
-        public String tooltype() { return blueprint; }
-
         /** True when steel goes into the piece — gold jewellery must not blast into steel nuggets. */
         public boolean usesSteel() {
             return keys.values().stream().anyMatch(spec -> spec.contains("steel") || spec.contains("chainmail"));
@@ -140,8 +137,8 @@ public final class ForgingTable {
         armor("spike_decoration", "Spike Decoration", "misc", 5, p("WW ", "I  ", "   "), k('W', WOOL_FABRIC), k('I', HEATED_STEEL));
         armor("two_plumes_decoration", "Two Plumes Decoration", "misc", 6, p("F F", "I I", "   "), k('F', FEATHER), k('I', HEATED_STEEL));
 
-        // small_steel_plate — plain part: no blueprint, no quality, no minigame
-        ENTRIES.add(new Entry("forging/small_steel_plate", "Small Steel Plate", null, "misc", 3,
+        // small_steel_plate — plain part: no quality, no minigame
+        ENTRIES.add(new Entry("forging/small_steel_plate", "Small Steel Plate", "misc", 3,
                 p("##", "##", "##"), keys(k('#', STEEL_NUGGET)), "magistuarmory:small_steel_plate",
                 false, true, false, false));
 
@@ -438,8 +435,6 @@ public final class ForgingTable {
         return out;
     }
 
-    public static List<Entry> all() { return List.copyOf(ENTRIES); }
-
     // ── row helpers ───────────────────────────────────────────────────────────
 
     private record Key(char c, String spec) {}
@@ -458,22 +453,17 @@ public final class ForgingTable {
     }
 
     private static void armor(String name, String displayName, String category, int hammering, String[] pattern, Key... keys) {
-        ENTRIES.add(new Entry("forging/" + name, displayName, name, category, hammering, pattern, keys(keys),
+        ENTRIES.add(new Entry("forging/" + name, displayName, category, hammering, pattern, keys(keys),
                 "magistuarmory:" + name, true, true, true, false));
     }
 
     private static void addon(String name, String displayName, String category, int hammering, String result,
                               String[] pattern, Key... keys) {
-        addon(name, displayName, category, hammering, result, name, pattern, keys);
+        ENTRIES.add(new Entry("forging/" + name, displayName, category, hammering, pattern, keys(keys),
+                result, true, true, true, true));
     }
 
     private static void assemble(String name, String base, String result, String... extra) {
         ASSEMBLIES.add(new Assembly(name, base, extra, result, true));
-    }
-
-    private static void addon(String name, String displayName, String category, int hammering, String result,
-                              String tooltype, String[] pattern, Key... keys) {
-        ENTRIES.add(new Entry("forging/" + name, displayName, tooltype, category, hammering, pattern, keys(keys),
-                result, true, true, true, true));
     }
 }

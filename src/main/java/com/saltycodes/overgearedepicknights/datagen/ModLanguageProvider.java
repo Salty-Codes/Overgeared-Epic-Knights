@@ -48,9 +48,6 @@ public class ModLanguageProvider extends LanguageProvider {
         for (Map.Entry<String, String> shield : ForgingTable.SHIELDS.entrySet()) {
             lang.put(TOOLTYPE + shield.getKey(), shield.getValue());
         }
-        for (ForgingTable.Entry entry : ForgingTable.all()) {
-            if (entry.blueprint() != null) lang.put(TOOLTYPE + entry.blueprint(), entry.displayName());
-        }
 
         lang.forEach(this::add);
     }
