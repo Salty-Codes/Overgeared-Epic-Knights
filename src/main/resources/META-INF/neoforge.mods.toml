@@ -91,14 +91,14 @@ Overgeared x Epic Knights — adds forging and casting recipes for Epic Knights 
 [[dependencies.${mod_id}]]
     modId="magistuarmory"
     type="required"
-    versionRange="[10.12,)"
+    versionRange="[10.15,)"
     ordering="AFTER"
     side="BOTH"
 
 [[dependencies.${mod_id}]]
     modId="overgeared"
     type="required"
-    versionRange="[1.6.17,)"
+    versionRange="[1.6.18.1,)"
     ordering="AFTER"
     side="BOTH"
 
