@@ -1,7 +1,7 @@
 Overgeared x Epic Knights Changelog
 =========================
 
-1.2.0 (2026-09-18)
+1.1.1 (2026-09-18)
 ------------------
 - Armour no longer needs or accepts a blueprint to forge — Overgeared itself doesn't
   gate armour on blueprints either, only weapons and shields keep theirs
