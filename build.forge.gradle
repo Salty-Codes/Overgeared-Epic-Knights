@@ -100,6 +100,12 @@ dependencies {
     // is shared by the forge and fabric builds).
     modRuntimeOnly "maven.modrinth:epic-knights-addon:xnYQSIH7"
 
+    // The other addons likewise. Modrinth version ids for Slavic Armory 2.1 and Antique Legacy 1.13;
+    // Dark Ages is only on CurseForge (file 7107406 = 1.1).
+    modRuntimeOnly "maven.modrinth:epic-knights-slavic-armory:Q5VtlZ47"
+    modRuntimeOnly "maven.modrinth:epic-knights-antique-legacy:4DhbZFhg"
+    modRuntimeOnly "curse.maven:epic-knights-dark-ages-addon-1361923:7107406"
+
     // Runtime deps (mods Overgeared/EK rely on, plus dev-time tooling).
     modRuntimeOnly "maven.modrinth:architectury-api:9.2.14+forge"
     modRuntimeOnly "maven.modrinth:cloth-config:11.1.136+forge"

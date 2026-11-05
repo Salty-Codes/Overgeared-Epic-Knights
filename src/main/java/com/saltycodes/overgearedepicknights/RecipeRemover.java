@@ -20,16 +20,20 @@ import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.slf4j.Logger;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
- * Removes the vanilla crafting recipes Epic Knights (and its addon) ship for everything this mod
+ * Removes the vanilla crafting recipes Epic Knights (and its addons) ship for everything this mod
  * forges instead. The rule is derived, not listed: any recipe from those mods whose result item is
  * also the result of one of our recipes is dropped. Adding a blade type or armour recipe therefore
- * needs no change here. The only hand-kept list covers Epic Knights' own steel ingot/nugget/plate
- * recipes, which are replaced by Overgeared's steel via tags rather than by a recipe of ours.
+ * needs no change here. The only hand-kept list covers the steel ingot/nugget/plate recipes, which
+ * are replaced by Overgeared's steel via tags rather than by a recipe of ours, and Antique Legacy's
+ * plates, which are replaced by the plates forged on the anvil.
  */
 //? if forge {
 @Mod.EventBusSubscriber(modid = OvergearedEpicKnights.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -40,7 +44,8 @@ public class RecipeRemover {
     private static final Logger LOGGER = LogUtils.getLogger();
 
     /** Namespaces whose recipes we replace. */
-    private static final Set<String> REPLACED_NAMESPACES = Set.of("magistuarmory", OvergearedEpicKnights.ADDON_MODID);
+    private static final Set<String> REPLACED_NAMESPACES = Stream.concat(Stream.of("magistuarmory"),
+            Arrays.stream(AddonPack.values()).map(AddonPack::modId)).collect(Collectors.toUnmodifiableSet());
 
     /** Epic Knights steel material recipes — superseded by Overgeared steel (see the item tags we generate). */
     private static final Set<ResourceLocation> EXTRA_RECIPES_TO_REMOVE = Set.of(
@@ -52,8 +57,12 @@ public class RecipeRemover {
             ResourceLocation.fromNamespaceAndPath("magistuarmory", "furnace/steel_nugget_blasting"),
             // lists the pitchfork and the rusted gear, which are steel; our copy leaves them out
             ResourceLocation.fromNamespaceAndPath("magistuarmory", "furnace/iron_nugget_blasting"),
-            // the addon's counterpart: its steel weapons blast into Overgeared nuggets via our forged/steel tag
-            ResourceLocation.fromNamespaceAndPath(OvergearedEpicKnights.ADDON_MODID, "furnace/steel_nugget_blasting")
+            // the addons' counterparts: their steel gear blasts into Overgeared nuggets via our forged/steel tag
+            ResourceLocation.fromNamespaceAndPath(AddonPack.EPIC_KNIGHTS_ADDON.modId(), "furnace/steel_nugget_blasting"),
+            ResourceLocation.fromNamespaceAndPath(AddonPack.SLAVIC_ARMORY.modId(), "furnace/steel_nugget_blasting"),
+            // plates come off the anvil: ours for bronze, Overgeared's for iron
+            ResourceLocation.fromNamespaceAndPath(AddonPack.ANTIQUE_LEGACY.modId(), "bronze_plate"),
+            ResourceLocation.fromNamespaceAndPath(AddonPack.ANTIQUE_LEGACY.modId(), "iron_plate")
     );
 
     @SubscribeEvent

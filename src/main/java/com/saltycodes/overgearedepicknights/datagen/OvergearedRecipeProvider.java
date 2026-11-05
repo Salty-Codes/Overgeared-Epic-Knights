@@ -2,6 +2,7 @@ package com.saltycodes.overgearedepicknights.datagen;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.saltycodes.overgearedepicknights.AddonPack;
 import com.saltycodes.overgearedepicknights.Mappings;
 import com.saltycodes.overgearedepicknights.items.BladeMaterial;
 import com.saltycodes.overgearedepicknights.items.BladeType;
@@ -21,15 +22,15 @@ import java.util.concurrent.CompletableFuture;
  * tool types, blueprints, smithing, blasting, shields and the odd special recipe.
  * Casting and blade forging are in {@link OvergearedBuilderRecipeProvider}.
  *
- * <p>With {@code addon = true} the provider writes only the Epic Knights: Addon share — the
- * per-{@link BladeType} recipes of the addon entries and the addon rows of {@link ForgingTable} —
- * under the {@code addon/} recipe path so nothing collides with the base pack.
+ * <p>With a {@code pack} the provider writes only that addon's share — the per-{@link BladeType}
+ * recipes of its entries and its rows of {@link ForgingTable} — under the {@code <pack>/} recipe
+ * path so nothing collides with the base pack.
  */
 public class OvergearedRecipeProvider implements DataProvider {
 
     private final PackOutput.PathProvider recipePaths;
     private final String modId;
-    private final boolean addon;
+    private final AddonPack pack;
     private final List<BladeType> types;
 
     private static final BladeMaterial[] SHIELD_MATS = {
@@ -38,11 +39,11 @@ public class OvergearedRecipeProvider implements DataProvider {
             BladeMaterial.TIN
     };
 
-    public OvergearedRecipeProvider(PackOutput output, String modId, boolean addon) {
+    public OvergearedRecipeProvider(PackOutput output, String modId, AddonPack pack) {
         this.recipePaths = output.createPathProvider(PackOutput.Target.DATA_PACK, Mappings.RECIPE_DIR);
         this.modId = modId;
-        this.addon = addon;
-        this.types = BladeType.of(addon);
+        this.pack = pack;
+        this.types = BladeType.of(pack);
     }
 
     @Override
@@ -52,11 +53,12 @@ public class OvergearedRecipeProvider implements DataProvider {
         generateAssembly(cache, futures);
         generateAssemblyOnly(cache, futures);
         generateArmorAssembly(cache, futures);
+        generateCrafted(cache, futures);
         generateKnapping(cache, futures);
         generateTooltypes(cache, futures);
         generateBlueprintCrafting(cache, futures);
         generateToolCastPlaceholders(cache, futures);
-        if (!addon) {
+        if (pack == null) {
             generateChainmorgensternAssembly(cache, futures);
             //? if forge {
             generateFlamebladedAssembly(cache, futures);
@@ -73,16 +75,17 @@ public class OvergearedRecipeProvider implements DataProvider {
 
     @Override
     public String getName() {
-        return "Overgeared Recipe Provider" + (addon ? " (addon)" : "");
+        return "Overgeared Recipe Provider" + (pack != null ? " (" + pack.packName() + ")" : "");
     }
 
     // ── Direct forging (ForgingTable: armour, plates, all-metal addon pieces) ──
 
     private void generateDirectForging(CachedOutput cache, List<CompletableFuture<?>> futures) {
-        for (ForgingTable.Entry e : ForgingTable.of(addon)) {
+        for (ForgingTable.Entry e : ForgingTable.of(pack)) {
             JsonObject obj = new JsonObject();
             obj.addProperty("type", "overgeared:forging");
             obj.addProperty("category", e.category());
+            if (e.tier() != null) obj.addProperty("tier", e.tier());
             obj.addProperty("hammering", e.hammering());
             obj.addProperty("has_quality", e.quality());
             obj.addProperty("need_quenching", e.quench());
@@ -187,8 +190,8 @@ public class OvergearedRecipeProvider implements DataProvider {
 
     /** Weapons without a blade item of their own: another blade plus handle parts (ranseur, glaive). */
     private void generateAssemblyOnly(CachedOutput cache, List<CompletableFuture<?>> futures) {
-        for (ForgingTable.AssemblyOnly a : ForgingTable.assemblyOnly(addon)) {
-            Iterable<BladeMaterial> materials = addon ? List.of(BladeMaterial.STEEL) : a.blade().getMaterials();
+        for (ForgingTable.AssemblyOnly a : ForgingTable.assemblyOnly(pack)) {
+            Iterable<BladeMaterial> materials = pack != null ? List.of(BladeMaterial.STEEL) : a.blade().getMaterials();
             for (BladeMaterial mat : materials) {
                 JsonObject obj = new JsonObject();
                 obj.addProperty("type", "overgeared:crafting_shapeless");
@@ -205,7 +208,7 @@ public class OvergearedRecipeProvider implements DataProvider {
 
     /** Armour from a forged base plus loose parts (ForgingTable.assemblies): the base's quality carries over. */
     private void generateArmorAssembly(CachedOutput cache, List<CompletableFuture<?>> futures) {
-        for (ForgingTable.Assembly a : ForgingTable.assemblies(addon)) {
+        for (ForgingTable.Assembly a : ForgingTable.assemblies(pack)) {
             JsonObject obj = new JsonObject();
             obj.addProperty("type", "overgeared:crafting_shapeless");
             obj.addProperty("category", "equipment");
@@ -215,6 +218,23 @@ public class OvergearedRecipeProvider implements DataProvider {
             obj.add("ingredients", ingredients);
             obj.add("result", resultRef(a.result()));
             save(cache, futures, "crafting/" + a.name(), obj);
+        }
+    }
+
+    /** Addon crafting recipes copied with Overgeared's steel (ForgingTable.crafted). */
+    private void generateCrafted(CachedOutput cache, List<CompletableFuture<?>> futures) {
+        for (ForgingTable.Crafted c : ForgingTable.crafted(pack)) {
+            JsonObject obj = new JsonObject();
+            obj.addProperty("type", "minecraft:crafting_shaped");
+            obj.addProperty("category", "equipment");
+            obj.add("pattern", strArray(c.pattern()));
+            JsonObject key = new JsonObject();
+            for (Map.Entry<Character, String> k : c.keys().entrySet()) {
+                key.add(String.valueOf(k.getKey()), parseIngredient(k.getValue()));
+            }
+            obj.add("key", key);
+            obj.add("result", resultRef(c.result()));
+            save(cache, futures, "crafting/" + c.name(), obj);
         }
     }
 
@@ -346,7 +366,7 @@ public class OvergearedRecipeProvider implements DataProvider {
             obj.addProperty("tooltype", type.getTooltype());
             save(cache, futures, "tooltypes/" + type.getName() + "_to_tooltype", obj);
         }
-        if (addon) return;
+        if (pack != null) return;
         // chainmorgenstern uses morgenstern blades
         JsonObject chain = new JsonObject();
         chain.addProperty("type", "overgeared:item_to_tooltype");
@@ -592,7 +612,7 @@ public class OvergearedRecipeProvider implements DataProvider {
         for (BladeType type : types) {
             saveBlueprintRecipe(cache, futures, type.getTooltype(), type.itemId(type.canonicalMaterial()));
         }
-        if (!addon) {
+        if (pack == null) {
             for (String t : ForgingTable.SHIELDS.keySet()) {
                 saveBlueprintRecipe(cache, futures, t, "magistuarmory:steel_" + t);
             }
@@ -646,7 +666,7 @@ public class OvergearedRecipeProvider implements DataProvider {
         for (BladeType type : types) {
             if (!tooltypes.contains(type.getTooltype())) tooltypes.add(type.getTooltype());
         }
-        if (!addon) tooltypes.add("chainmorgenstern");
+        if (pack == null) tooltypes.add("chainmorgenstern");
 
         for (String type : tooltypes) {
             saveAs(cache, futures, "overgeared", "clay_tool_cast/" + type, placeholder);
@@ -700,10 +720,10 @@ public class OvergearedRecipeProvider implements DataProvider {
 
     // ── IO ────────────────────────────────────────────────────────────────────
 
-    /** Saves under this mod's namespace; addon recipes get the {@code addon/} path prefix. */
+    /** Saves under this mod's namespace; addon recipes get the {@code <pack>/} path prefix. */
     private void save(CachedOutput cache, List<CompletableFuture<?>> futures,
                       String recipePath, JsonObject json) {
-        String path = (addon ? "addon/" : "") + recipePath;
+        String path = (pack != null ? pack.packName() + "/" : "") + recipePath;
         futures.add(DataProvider.saveStable(cache, json,
                 recipePaths.json(ResourceLocation.fromNamespaceAndPath(modId, path))));
     }

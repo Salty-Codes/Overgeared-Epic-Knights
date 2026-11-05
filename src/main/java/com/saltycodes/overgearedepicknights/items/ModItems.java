@@ -29,7 +29,7 @@ public class ModItems {
     /**
      * All blade items, keyed by BladeType → BladeMaterial → registered item holder.
      * Only {@link BladeType#active()} entries are registered: addon blades exist solely when
-     * Epic Knights: Addon is loaded.
+     * their addon is loaded.
      * To add a new blade type, add an entry to {@link BladeType}.
      * To add a new material, add an entry to {@link BladeMaterial}.
      */
@@ -71,7 +71,7 @@ public class ModItems {
     *///?}
         Map<BladeMaterial, ?> byMaterial = BLADES.get(type);
         if (byMaterial == null) {
-            throw new IllegalStateException(type + " is not registered (Epic Knights: Addon missing?)");
+            throw new IllegalStateException(type + " is not registered (its addon is missing?)");
         }
         //? if forge {
         return (RegistryObject<Item>) byMaterial.get(material);

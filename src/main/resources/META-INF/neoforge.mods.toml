@@ -108,10 +108,31 @@ Overgeared x Epic Knights — adds forging and casting recipes for Epic Knights 
 #[features.${mod_id}]
 #openGLVersion="[3.2,)"
 
-# Optional — Epic Knights: Addon. Its weapons get Overgeared recipes when it is present.
+# Optional — the Epic Knights addons. Their gear gets Overgeared recipes when they are present.
 [[dependencies.${mod_id}]]
     modId="magistuarmoryaddon"
     type="optional"
     versionRange="[2.5,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="slavicarmory"
+    type="optional"
+    versionRange="[2.4,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="antiquelegacy"
+    type="optional"
+    versionRange="[1.14,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="darkagesarmory"
+    type="optional"
+    versionRange="[1.5,)"
     ordering="AFTER"
     side="BOTH"

@@ -1,6 +1,5 @@
 package com.saltycodes.overgearedepicknights;
 
-import com.saltycodes.overgearedepicknights.items.BladeType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.repository.Pack;
@@ -20,9 +19,9 @@ import net.neoforged.neoforge.event.AddPackFindersEvent;
 *///?}
 
 /**
- * Everything that belongs to Epic Knights: Addon (recipes, tool types, tags) is generated into a
- * built-in datapack at {@code datapacks/addon} in the root of this jar. The vanilla loader ignores
- * that folder; this class registers it as an always-active pack — but only when the addon mod is
+ * Everything that belongs to an optional addon (recipes, tool types, tags) is generated into a
+ * built-in datapack at {@code datapacks/<pack>} in the root of this jar. The vanilla loader ignores
+ * that folder; this class registers each as an always-active pack — but only when its addon mod is
  * present, so a world without the addon never sees recipes for missing items.
  * (NeoForge resolves pack locations relative to the jar root, hence no {@code data/<modid>/} prefix.)
  */
@@ -30,27 +29,28 @@ import net.neoforged.neoforge.event.AddPackFindersEvent;
 @Mod.EventBusSubscriber(modid = OvergearedEpicKnights.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 //?}
 public class AddonDatapack {
-    /** Pack folder relative to the jar root; DataGen writes here (see DataGenerators). */
-    public static final String PATH = "datapacks/addon";
-    public static final String PACK_ID = OvergearedEpicKnights.MODID + ":addon";
-    public static final String TITLE = "Overgeared x Epic Knights: Addon";
-
     //? if forge {
     @SubscribeEvent
     //?}
     public static void onAddPackFinders(AddPackFindersEvent event) {
-        if (event.getPackType() != PackType.SERVER_DATA || !BladeType.isAddonLoaded()) return;
+        if (event.getPackType() != PackType.SERVER_DATA) return;
+        for (AddonPack pack : AddonPack.values()) {
+            if (pack.isLoaded()) register(event, pack);
+        }
+    }
+
+    private static void register(AddPackFindersEvent event, AddonPack pack) {
         //? if forge {
         Path root = ModList.get().getModFileById(OvergearedEpicKnights.MODID).getFile()
-                .findResource(PATH.split("/"));
-        PackResources resources = new PathPackResources(PACK_ID, true, root);
+                .findResource(pack.path().split("/"));
+        PackResources resources = new PathPackResources(pack.packId(), true, root);
         event.addRepositorySource(consumer -> consumer.accept(Pack.readMetaAndCreate(
-                PACK_ID, Component.literal(TITLE), true, id -> resources,
+                pack.packId(), Component.literal(pack.title()), true, id -> resources,
                 PackType.SERVER_DATA, Pack.Position.TOP, PackSource.BUILT_IN)));
         //?} else {
         /*event.addPackFinders(
-                ResourceLocation.fromNamespaceAndPath(OvergearedEpicKnights.MODID, PATH),
-                PackType.SERVER_DATA, Component.literal(TITLE), PackSource.BUILT_IN, true, Pack.Position.TOP);
+                ResourceLocation.fromNamespaceAndPath(OvergearedEpicKnights.MODID, pack.path()),
+                PackType.SERVER_DATA, Component.literal(pack.title()), PackSource.BUILT_IN, true, Pack.Position.TOP);
         *///?}
     }
 }

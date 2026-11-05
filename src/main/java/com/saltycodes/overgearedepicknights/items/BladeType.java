@@ -1,12 +1,8 @@
 package com.saltycodes.overgearedepicknights.items;
 
+import com.saltycodes.overgearedepicknights.AddonPack;
 import com.saltycodes.overgearedepicknights.Mappings;
 import com.saltycodes.overgearedepicknights.OvergearedEpicKnights;
-//? if forge {
-import net.minecraftforge.fml.ModList;
-//?} else {
-/*import net.neoforged.fml.ModList;
-*///?}
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,9 +29,9 @@ import java.util.Set;
  * </ul>
  * Assembly ingredients use {@code item:<id>} / {@code tag:<id>}.
  *
- * <p>Entries marked {@link Spec#addon()} belong to <em>Epic Knights: Addon</em>. Their items are only
- * registered when that mod is loaded and their data lands in the built-in {@code addon} datapack
- * (see {@code AddonDatapack}).
+ * <p>Entries with an {@link AddonPack} belong to that optional addon. Their items are only registered
+ * when that mod is loaded and their data lands in the addon's built-in datapack (see
+ * {@code AddonDatapack}).
  */
 public enum BladeType {
 
@@ -509,6 +505,290 @@ public enum BladeType {
             .key('N', "item:overgeared:steel_nugget")
             .assemble("tag:" + Mappings.COMMON + ":rods/wooden", "tag:magistuarmory:poles")),
 
+    // ── Epic Knights: Slavic Armory (steel only) ──
+
+    BARDICHE(spec("bardiche", "Bardiche").slavic()
+            .part("Head")
+            .cast(36)
+            .forge(6, "II ", "I  ", "I  ")
+            .key('I', "ingot")
+            .assemble("tag:magistuarmory:poles")),
+    ROGATINA(spec("rogatina", "Rogatina").slavic()
+            .part("Head")
+            .cast(10)
+            .forge(4, "  N", " I ", "   ")
+            .key('N', "item:overgeared:steel_nugget")
+            .key('I', "ingot")
+            .assemble("tag:magistuarmory:poles")),
+    RUS_AXE(spec("rus_axe", "Rus Axe").slavic()
+            .part("Head")
+            .cast(27)
+            .forge(5, "I I", " I ", "   ")
+            .key('I', "ingot")
+            .assemble("tag:" + Mappings.COMMON + ":rods/wooden", "tag:magistuarmory:hilts")),
+    RUS_SWORD(spec("rus_sword", "Rus Sword").slavic()
+            .cast(20)
+            .forge(5, " N ", " # ", " N ")
+            .key('N', "item:overgeared:steel_nugget")
+            .key('#', "blade:shortsword")
+            .assemble("tag:magistuarmory:hilts")),
+    WINGED_ROGATINA(spec("winged_rogatina", "Winged Rogatina").slavic()
+            .part("Head")
+            .cast(12)
+            .forge(6, "  N", "NI ", " N ")
+            .key('N', "item:overgeared:steel_nugget")
+            .key('I', "ingot")
+            .assemble("tag:magistuarmory:poles")),
+
+    // ── Epic Knights: Antique Legacy (iron only) ──
+
+    ANTIQUE_DAGGER(spec("antique_dagger", "Antique Dagger").antique()
+            .forge(6, "  N", "UI ", " U ")
+            .key('N', "tag:" + Mappings.COMMON + ":nuggets/iron")
+            .key('U', "tag:" + Mappings.COMMON + ":nuggets/bronze")
+            .key('I', "ingot")
+            .assemble("tag:magistuarmory:hilts")),
+    ANTIQUE_SPEAR(spec("antique_spear", "Antique Spear").antique()
+            .part("Head")
+            .cast(9)
+            .forge(3, " P ", "   ", "   ")
+            .key('P', "plate")
+            .assemble("tag:magistuarmory:poles")),
+    ANTIQUE_SWORD(spec("antique_sword", "Antique Sword").antique()
+            .forge(6, "  I", "UI ", " U ")
+            .key('I', "ingot")
+            .key('U', "tag:" + Mappings.COMMON + ":nuggets/bronze")
+            .assemble("tag:magistuarmory:hilts")),
+    CELTIC_SWORD(spec("celtic_sword", "Celtic Sword").antique()
+            .forge(6, " I ", " I ", "J J")
+            .key('I', "ingot")
+            .key('J', "tag:" + Mappings.COMMON + ":ingots/bronze")
+            .assemble("tag:magistuarmory:hilts")),
+    DORU(spec("doru", "Doru").antique()
+            .part("Head")
+            .forge(4, "  I", "   ", "U  ")
+            .key('I', "ingot")
+            .key('U', "tag:" + Mappings.COMMON + ":nuggets/bronze")
+            .assemble("tag:magistuarmory:poles")),
+    EARLY_SPATHA(spec("early_spatha", "Early Spatha").antique()
+            .cast(20)
+            .forge(6, "  I", "NI ", " N ")
+            .key('I', "ingot")
+            .key('N', "tag:" + Mappings.COMMON + ":nuggets/iron")
+            .assemble("tag:magistuarmory:hilts")),
+    GLADIATOR_SWORD(spec("gladiator_sword", "Gladiator Sword").antique()
+            .forge(5, "  I", "UI ", "   ")
+            .key('I', "ingot")
+            .key('U', "tag:" + Mappings.COMMON + ":nuggets/bronze")
+            .assemble("tag:magistuarmory:hilts")),
+    GLADIUS(spec("gladius", "Gladius").antique()
+            .cast(18)
+            .forge(4, "  I", " P ", "   ")
+            .key('I', "ingot")
+            .key('P', "item:overgeared:iron_plate")
+            .assemble("tag:magistuarmory:hilts")),
+    KOPIS(spec("kopis", "Kopis").antique()
+            .cast(19)
+            .forge(5, "NI ", " I ", "   ")
+            .key('N', "tag:" + Mappings.COMMON + ":nuggets/iron")
+            .key('I', "ingot")
+            .assemble("tag:" + Mappings.COMMON + ":rods/wooden")),
+    REPUBLIC_GLADIUS(spec("republic_gladius", "Republic Gladius").antique()
+            .cast(20)
+            .forge(6, "  I", "NP ", " N ")
+            .key('I', "ingot")
+            .key('N', "tag:" + Mappings.COMMON + ":nuggets/iron")
+            .key('P', "item:overgeared:iron_plate")
+            .assemble("tag:magistuarmory:hilts")),
+    RETIARIUS(spec("retiarius", "Retiarius").antique()
+            .part("Head")
+            .cast(12)
+            .forge(6, " NN", " IN", "   ")
+            .key('N', "tag:" + Mappings.COMMON + ":nuggets/iron")
+            .key('I', "ingot")
+            .assemble("tag:magistuarmory:poles")),
+    RHOMPHAIA(spec("rhomphaia", "Rhomphaia").antique()
+            .cast(19)
+            .forge(5, "IN ", " I ", "   ")
+            .key('I', "ingot")
+            .key('N', "tag:" + Mappings.COMMON + ":nuggets/iron")
+            .assemble("tag:magistuarmory:hilts")),
+    SARISSA(spec("sarissa", "Sarissa").antique()
+            .part("Head")
+            .cast(30)
+            .forge(6, " S*", "  S", "I  ")
+            .key('S', "item:antiquelegacy:small_iron_plate")
+            .key('*', "blade:antique_spear")
+            .key('I', "ingot")
+            .assemble("tag:magistuarmory:poles")),
+    SICA(spec("sica", "Sica").antique()
+            .cast(11)
+            .forge(5, "NN ", " I ", "   ")
+            .key('N', "tag:" + Mappings.COMMON + ":nuggets/iron")
+            .key('I', "ingot")
+            .assemble("tag:magistuarmory:hilts")),
+    SINGLE_EDGED_SWORD(spec("single_edged_sword", "Single-edged Sword").antique()
+            .cast(18)
+            .forge(4, "   ", "  I", " I ")
+            .key('I', "ingot")
+            .assemble("tag:magistuarmory:hilts")),
+    SPATHA(spec("spatha", "Spatha").antique()
+            .cast(20)
+            .forge(6, " I ", " I ", "N N")
+            .key('I', "ingot")
+            .key('N', "tag:" + Mappings.COMMON + ":nuggets/iron")
+            .assemble("tag:magistuarmory:hilts")),
+    TRIARII_SPEAR(spec("triarii_spear", "Triarii Spear").antique()
+            .part("Head")
+            .cast(10)
+            .forge(4, "  I", "   ", "N  ")
+            .key('I', "ingot")
+            .key('N', "tag:" + Mappings.COMMON + ":nuggets/iron")
+            .assemble("tag:magistuarmory:poles")),
+    XIPHOS(spec("xiphos", "Xiphos").antique()
+            .cast(28)
+            .forge(6, "  I", "IN ", " I ")
+            .key('I', "ingot")
+            .key('N', "tag:" + Mappings.COMMON + ":nuggets/iron")
+            .assemble("tag:magistuarmory:hilts")),
+
+    // ── Epic Knights: Dark Ages (steel only) ──
+
+    GOLDEN_MIGRATION_ERA_SWORD(spec("golden_migration_era_sword", "Golden Migration Era Sword").darkAges()
+            .result("darkagesarmory:golden_migration_era_sword")
+            .forge(8, " P ", "GPG", "G G")
+            .key('P', "item:overgeared:steel_plate")
+            .key('G', "tag:" + Mappings.COMMON + ":nuggets/gold")
+            .assemble("tag:magistuarmory:hilts")),
+    BYZANTINE_AXE(spec("byzantine_axe", "Byzantine Axe").darkAges()
+            .part("Head")
+            .cast(27)
+            .forge(5, " PP", "  P", "   ")
+            .key('P', "item:overgeared:steel_plate")
+            .assemble("tag:" + Mappings.COMMON + ":rods/wooden", "tag:magistuarmory:poles")),
+    CRAYKE_AXE(spec("crayke_axe", "Crayke Axe").darkAges()
+            .part("Head")
+            .cast(27)
+            .forge(5, "PP ", " P ", "   ")
+            .key('P', "item:overgeared:steel_plate")
+            .assemble("tag:magistuarmory:hilts", "tag:" + Mappings.COMMON + ":rods/wooden")),
+    DECORATED_SPEAR(spec("decorated_spear", "Decorated Spear").darkAges()
+            .part("Head")
+            .cast(9)
+            .forge(3, "  P", "   ", "   ")
+            .key('P', "item:overgeared:steel_plate")
+            .assemble("item:minecraft:red_dye", "tag:magistuarmory:poles", "item:minecraft:blue_dye")),
+    FALKOPING_AXE(spec("falkoping_axe", "Falkoping Axe").darkAges()
+            .part("Head")
+            .cast(27)
+            .forge(5, "PP ", "P  ", "   ")
+            .key('P', "item:overgeared:steel_plate")
+            .assemble("tag:magistuarmory:poles")),
+    HARNHAM_SPEAR(spec("harnham_spear", "Harnham Spear").darkAges()
+            .part("Head")
+            .cast(11)
+            .forge(5, "NP ", " N ", "   ")
+            .key('N', "item:overgeared:steel_nugget")
+            .key('P', "item:overgeared:steel_plate")
+            .assemble("tag:magistuarmory:poles")),
+    JARLS_SWORD(spec("jarls_sword", "Jarls Sword").darkAges()
+            .forge(8, " P ", "UPU", "U U")
+            .key('P', "item:overgeared:steel_plate")
+            .key('U', "tag:" + Mappings.COMMON + ":nuggets/bronze")
+            .assemble("tag:magistuarmory:hilts")),
+    JAVELIN(spec("javelin", "Javelin").darkAges()
+            .part("Head")
+            .cast(21)
+            .forge(5, "SP ", " S ", "   ")
+            .key('S', "item:magistuarmory:small_steel_plate")
+            .key('P', "item:overgeared:steel_plate")
+            .assemble("tag:magistuarmory:poles")),
+    KINGSTON_SPEAR(spec("kingston_spear", "Kingston Spear").darkAges()
+            .part("Head")
+            .cast(11)
+            .forge(5, "NI ", "N  ", "   ")
+            .key('N', "item:overgeared:steel_nugget")
+            .key('I', "ingot")
+            .assemble("tag:magistuarmory:poles")),
+    LANGSEAX(spec("langseax", "Langseax").darkAges()
+            .cast(10)
+            .forge(4, " N ", " I ", "   ")
+            .key('N', "item:overgeared:steel_nugget")
+            .key('I', "ingot")
+            .assemble("tag:magistuarmory:hilts")),
+    MAGYAR_SABRE(spec("magyar_sabre", "Magyar Sabre").darkAges()
+            .cast(27)
+            .forge(5, "  P", " I ", "P  ")
+            .key('P', "item:overgeared:steel_plate")
+            .key('I', "ingot")
+            .assemble("tag:magistuarmory:hilts")),
+    MIGRATION_ERA_AXE(spec("migration_era_axe", "Migration Era Axe").darkAges()
+            .part("Head")
+            .cast(27)
+            .forge(5, " PP", " P ", "   ")
+            .key('P', "item:overgeared:steel_plate")
+            .assemble("tag:magistuarmory:poles")),
+    RICH_NORDIC_SWORD(spec("rich_nordic_sword", "Rich Nordic Sword").darkAges()
+            .forge(6, " I ", " I ", "A A")
+            .key('I', "ingot")
+            .key('A', "tag:" + Mappings.COMMON + ":ingots/gold")
+            .assemble("tag:magistuarmory:hilts")),
+    RICH_SAXON_SWORD(spec("rich_saxon_sword", "Rich Saxon Sword").darkAges()
+            .forge(6, " P ", " I ", "A A")
+            .key('P', "item:overgeared:steel_plate")
+            .key('I', "ingot")
+            .key('A', "tag:" + Mappings.COMMON + ":ingots/gold")
+            .assemble("tag:magistuarmory:hilts")),
+    RUNIC_SWORD(spec("runic_sword", "Runic Sword").darkAges()
+            .cast(21)
+            .forge(5, " S ", " P ", " S ")
+            .key('S', "item:magistuarmory:small_steel_plate")
+            .key('P', "item:overgeared:steel_plate")
+            .assemble("item:minecraft:black_dye", "tag:magistuarmory:hilts")),
+    SCRAMASAX(spec("scramasax", "Scramasax").darkAges()
+            .forge(6, " N ", " I ", "G G")
+            .key('N', "item:overgeared:steel_nugget")
+            .key('I', "ingot")
+            .key('G', "tag:" + Mappings.COMMON + ":nuggets/gold")
+            .assemble("tag:magistuarmory:hilts")),
+    SITTINGBOURNE_SEAX(spec("sittingbourne_seax", "Sittingbourne Seax").darkAges()
+            .forge(6, " N ", " PG", "  G")
+            .key('N', "item:overgeared:steel_nugget")
+            .key('P', "item:overgeared:steel_plate")
+            .key('G', "tag:" + Mappings.COMMON + ":nuggets/gold")
+            .assemble("tag:magistuarmory:hilts")),
+    SMALL_BROADAXE(spec("small_broadaxe", "Small Broadaxe").darkAges()
+            .part("Head")
+            .cast(27)
+            .forge(5, " PI", " P ", "   ")
+            .key('P', "item:overgeared:steel_plate")
+            .key('I', "ingot")
+            .assemble("tag:magistuarmory:hilts")),
+    SMALL_SEAX(spec("small_seax", "Small Seax").darkAges()
+            .cast(15)
+            .forge(4, "   ", " S ", " P ")
+            .key('S', "item:magistuarmory:small_steel_plate")
+            .key('P', "item:overgeared:steel_plate")
+            .assemble("tag:magistuarmory:hilts")),
+    SUTTON_HOO_AXE(spec("sutton_hoo_axe", "Sutton Hoo Axe").darkAges()
+            .part("Head")
+            .cast(18)
+            .forge(4, "I I", "   ", "   ")
+            .key('I', "ingot")
+            .assemble("tag:magistuarmory:hilts", "tag:" + Mappings.COMMON + ":rods/wooden")),
+    SUTTON_HOO_SWORD(spec("sutton_hoo_sword", "Sutton Hoo Sword").darkAges()
+            .forge(8, " S ", "GIG", "G G")
+            .key('S', "item:magistuarmory:small_steel_plate")
+            .key('G', "tag:" + Mappings.COMMON + ":nuggets/gold")
+            .key('I', "ingot")
+            .assemble("tag:magistuarmory:hilts")),
+    VIKING_SWORD(spec("viking_sword", "Viking Sword").darkAges()
+            .cast(15)
+            .forge(4, " P ", " S ", "   ")
+            .key('P', "item:overgeared:steel_plate")
+            .key('S', "item:magistuarmory:small_steel_plate")
+            .assemble("tag:magistuarmory:hilts")),
+
     ;
 
     // ────────────────────────────────────────────────────────────────────────
@@ -518,7 +798,7 @@ public enum BladeType {
     private final String suffix;
     private final String part;
     private final String tooltype;
-    private final boolean addon;
+    private final AddonPack pack;
     private final String resultTemplate;
     private final Set<BladeMaterial> materials;
     private final int castingAmount;
@@ -535,9 +815,9 @@ public enum BladeType {
         this.suffix = s.suffix;
         this.part = s.part;
         this.tooltype = s.tooltype != null ? s.tooltype : s.name;
-        this.addon = s.addon;
+        this.pack = s.pack;
         this.resultTemplate = s.resultTemplate != null ? s.resultTemplate
-                : (s.addon ? "magistuarmoryaddon" : "magistuarmory") + ":{mat}_" + s.name;
+                : (s.pack != null ? s.pack.modId() : "magistuarmory") + ":{mat}_" + s.name;
         this.materials = s.materials == null
                 ? Collections.unmodifiableSet(EnumSet.allOf(BladeMaterial.class))
                 : Collections.unmodifiableSet(EnumSet.copyOf(Arrays.asList(s.materials)));
@@ -568,7 +848,6 @@ public enum BladeType {
     public String getSuffix() { return suffix; }
     /** Overgeared tool type / blueprint id. */
     public String getTooltype() { return tooltype; }
-    public boolean isAddon() { return addon; }
     public Set<BladeMaterial> getMaterials() { return materials; }
     /** Metal units needed for casting (0 = no casting). */
     public int getCastingAmount() { return castingAmount; }
@@ -606,20 +885,10 @@ public enum BladeType {
         return first != null ? first : BladeMaterial.STEEL;
     }
 
-    // ── Availability (addon entries need Epic Knights: Addon) ─────────────────
-
-    private static Boolean addonLoaded;
-
-    public static boolean isAddonLoaded() {
-        if (addonLoaded == null) {
-            ModList list = ModList.get();
-            addonLoaded = list != null && list.isLoaded(OvergearedEpicKnights.ADDON_MODID);
-        }
-        return addonLoaded;
-    }
+    // ── Availability (addon entries need their addon) ─────────────────────────
 
     /** True when this entry's items are registered in the current game (base entries always are). */
-    public boolean isAvailable() { return !addon || isAddonLoaded(); }
+    public boolean isAvailable() { return pack == null || pack.isLoaded(); }
 
     /** All entries whose items exist in this game. Use instead of {@link #values()} at runtime. */
     public static List<BladeType> active() {
@@ -628,10 +897,10 @@ public enum BladeType {
         return out;
     }
 
-    /** Entries of one section, regardless of availability (DataGen iterates these). */
-    public static List<BladeType> of(boolean addon) {
+    /** Entries of one pack ({@code null} = base mod), regardless of availability (DataGen iterates these). */
+    public static List<BladeType> of(AddonPack pack) {
         List<BladeType> out = new ArrayList<>();
-        for (BladeType t : values()) if (t.addon == addon) out.add(t);
+        for (BladeType t : values()) if (t.pack == pack) out.add(t);
         return out;
     }
 
@@ -642,7 +911,7 @@ public enum BladeType {
     static final class Spec {
         final String name, displayName;
         String suffix = "_blade", part = "Blade", tooltype, resultTemplate;
-        boolean addon;
+        AddonPack pack;
         BladeMaterial[] materials;
         int castingAmount, forgeHammering;
         String[] knapPattern, forgePattern, stoneBladePattern;
@@ -651,8 +920,12 @@ public enum BladeType {
 
         Spec(String name, String displayName) { this.name = name; this.displayName = displayName; }
 
-        /** Epic Knights: Addon entry — steel only, result in the addon namespace, data in the addon pack. */
-        Spec addon() { addon = true; materials = new BladeMaterial[]{BladeMaterial.STEEL}; return this; }
+        /** Addon entry in one material: result in the addon's namespace, data in its pack. */
+        private Spec pack(AddonPack p, BladeMaterial m) { pack = p; materials = new BladeMaterial[]{m}; return this; }
+        Spec addon() { return pack(AddonPack.EPIC_KNIGHTS_ADDON, BladeMaterial.STEEL); }
+        Spec slavic() { return pack(AddonPack.SLAVIC_ARMORY, BladeMaterial.STEEL); }
+        Spec antique() { return pack(AddonPack.ANTIQUE_LEGACY, BladeMaterial.IRON); }
+        Spec darkAges() { return pack(AddonPack.DARK_AGES, BladeMaterial.STEEL); }
         Spec suffix(String s) { suffix = s; return this; }
         Spec part(String p) { part = p; return this; }
         Spec tooltype(String t) { tooltype = t; return this; }

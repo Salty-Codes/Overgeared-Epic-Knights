@@ -17,8 +17,6 @@ import net.neoforged.fml.common.Mod;
 @Mod(OvergearedEpicKnights.MODID)
 public class OvergearedEpicKnights {
     public static final String MODID = "overgeared_epic_knights";
-    /** Epic Knights: Addon — optional; its blades and recipes only exist when it is loaded. */
-    public static final String ADDON_MODID = "magistuarmoryaddon";
 
     //? if forge {
     public OvergearedEpicKnights() {

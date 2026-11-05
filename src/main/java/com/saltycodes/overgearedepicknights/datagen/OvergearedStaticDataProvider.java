@@ -2,7 +2,9 @@ package com.saltycodes.overgearedepicknights.datagen;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.saltycodes.overgearedepicknights.AddonPack;
 import com.saltycodes.overgearedepicknights.Mappings;
+import com.saltycodes.overgearedepicknights.OvergearedEpicKnights;
 import com.saltycodes.overgearedepicknights.items.BladeMaterial;
 import com.saltycodes.overgearedepicknights.items.BladeType;
 import net.minecraft.data.CachedOutput;
@@ -18,15 +20,15 @@ import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 // Generates blueprint_tooltypes, casting_tooltypes, knapping_resources, and item tags.
-// With addon=true only the Epic Knights: Addon share of that is written (into the addon datapack).
+// With a pack only that addon's share is written (into its datapack).
 public class OvergearedStaticDataProvider implements DataProvider {
 
     private final PackOutput packOutput;
-    private final boolean addon;
+    private final AddonPack pack;
 
-    public OvergearedStaticDataProvider(PackOutput packOutput, boolean addon) {
+    public OvergearedStaticDataProvider(PackOutput packOutput, AddonPack pack) {
         this.packOutput = packOutput;
-        this.addon = addon;
+        this.pack = pack;
     }
 
     @Override
@@ -35,7 +37,8 @@ public class OvergearedStaticDataProvider implements DataProvider {
         generateBlueprintTooltypes(cache, futures);
         generateCastingTooltypes(cache, futures);
         generateForgedSteelTag(cache, futures);
-        if (!addon) {
+        if (pack == AddonPack.ANTIQUE_LEGACY) generateBronzePlateTag(cache, futures);
+        if (pack == null) {
             generateKnappingResources(cache, futures);
             generateKnappablesTag(cache, futures);
             generateSteelTags(cache, futures);
@@ -46,21 +49,21 @@ public class OvergearedStaticDataProvider implements DataProvider {
 
     @Override
     public String getName() {
-        return "Overgeared Static Data Provider" + (addon ? " (addon)" : "");
+        return "Overgeared Static Data Provider" + (pack != null ? " (" + pack.packName() + ")" : "");
     }
 
     private String fileName(String base) {
-        return addon ? "epicoverknights_addon_" + base : "epicoverknights_" + base;
+        return pack != null ? "epicoverknights_" + pack.packName() + "_" + base : "epicoverknights_" + base;
     }
 
     // ── blueprint_tooltypes ───────────────────────────────────────────────────
 
     private void generateBlueprintTooltypes(CachedOutput cache, List<CompletableFuture<?>> futures) {
         Set<String> tooltypes = new LinkedHashSet<>();
-        for (BladeType type : BladeType.of(addon)) {
+        for (BladeType type : BladeType.of(pack)) {
             tooltypes.add(type.getTooltype());
         }
-        if (!addon) tooltypes.addAll(ForgingTable.SHIELDS.keySet());
+        if (pack == null) tooltypes.addAll(ForgingTable.SHIELDS.keySet());
         JsonObject obj = new JsonObject();
         JsonArray arr = new JsonArray();
         for (String t : tooltypes) arr.add(t.toUpperCase(Locale.ROOT));
@@ -73,14 +76,14 @@ public class OvergearedStaticDataProvider implements DataProvider {
     private void generateCastingTooltypes(CachedOutput cache, List<CompletableFuture<?>> futures) {
         JsonObject obj = new JsonObject();
         JsonArray tools = new JsonArray();
-        for (BladeType type : BladeType.of(addon)) {
+        for (BladeType type : BladeType.of(pack)) {
             if (!type.hasCasting()) continue;
             JsonArray entry = new JsonArray();
             entry.add(type.getTooltype());
             entry.add(type.getCastingAmount());
             tools.add(entry);
         }
-        if (!addon) {
+        if (pack == null) {
             for (String shield : new String[]{"buckler", "target"}) {
                 JsonArray entry = new JsonArray();
                 entry.add(shield);
@@ -150,6 +153,17 @@ public class OvergearedStaticDataProvider implements DataProvider {
         }
     }
 
+    // ── common bronze plate tag: Antique Legacy's plates come off our anvil ──
+
+    private void generateBronzePlateTag(CachedOutput cache, List<CompletableFuture<?>> futures) {
+        JsonObject obj = new JsonObject();
+        obj.addProperty("replace", false);
+        JsonArray vals = new JsonArray();
+        vals.add(OvergearedEpicKnights.MODID + ":bronze_plate");
+        obj.add("values", vals);
+        saveTo(cache, futures, Mappings.COMMON, Mappings.TAG_ITEM_DIR + "/plates/bronze", obj);
+    }
+
     // ── forged/steel: steel gear that can be blasted back into nuggets ───────
 
     private static final String[] BASE_FORGED_STEEL = {
@@ -181,17 +195,19 @@ public class OvergearedStaticDataProvider implements DataProvider {
 
     private void generateForgedSteelTag(CachedOutput cache, List<CompletableFuture<?>> futures) {
         Set<String> items = new LinkedHashSet<>();
-        for (BladeType type : BladeType.of(addon)) {
+        for (BladeType type : BladeType.of(pack)) {
             if (type.getMaterials().contains(BladeMaterial.STEEL)) items.add(type.resultId(BladeMaterial.STEEL));
         }
-        for (ForgingTable.Entry entry : ForgingTable.of(addon)) {
+        for (ForgingTable.Entry entry : ForgingTable.of(pack)) {
             if (entry.quality() && entry.usesSteel()) items.add(entry.result());
         }
-        for (ForgingTable.AssemblyOnly a : ForgingTable.assemblyOnly(addon)) {
+        for (ForgingTable.AssemblyOnly a : ForgingTable.assemblyOnly(pack)) {
             items.add(a.result().replace("{mat}", "steel"));
         }
-        for (ForgingTable.Assembly a : ForgingTable.assemblies(addon)) items.add(a.result());
-        if (!addon) items.addAll(List.of(BASE_FORGED_STEEL));
+        for (ForgingTable.Assembly a : ForgingTable.assemblies(pack)) items.add(a.result());
+        items.addAll(ForgingTable.blastedSteel(pack));
+        if (pack == null) items.addAll(List.of(BASE_FORGED_STEEL));
+        if (items.isEmpty()) return;
 
         JsonObject obj = new JsonObject();
         obj.addProperty("replace", false);

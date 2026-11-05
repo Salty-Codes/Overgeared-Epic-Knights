@@ -24,7 +24,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        // Addon blades are only registered (and therefore only modelled) when the addon is on the
+        // Addon blades are only registered (and therefore only modelled) when their addon is on the
         // DataGen classpath; their textures still ship unconditionally, which is harmless.
         for (BladeType type : BladeType.active()) {
             for (BladeMaterial material : type.getMaterials()) {

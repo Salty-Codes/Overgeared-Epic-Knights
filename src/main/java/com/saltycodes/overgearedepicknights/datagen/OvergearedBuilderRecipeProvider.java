@@ -1,5 +1,6 @@
 package com.saltycodes.overgearedepicknights.datagen;
 
+import com.saltycodes.overgearedepicknights.AddonPack;
 import com.saltycodes.overgearedepicknights.Mappings;
 import com.saltycodes.overgearedepicknights.items.BladeMaterial;
 import com.saltycodes.overgearedepicknights.items.BladeType;
@@ -36,26 +37,26 @@ import java.util.Locale;
 import java.util.Map;
 
 // Builder-based recipes: casting, blade forging, plate forging.
-// Everything else is in OvergearedRecipeProvider. With addon=true only the Epic Knights: Addon
-// blades are written (into the addon datapack, under the addon/ recipe path).
+// Everything else is in OvergearedRecipeProvider. With a pack only that addon's blades are written
+// (into its datapack, under the <pack>/ recipe path).
 public class OvergearedBuilderRecipeProvider extends RecipeProvider {
 
     private final String modId;
-    private final boolean addon;
+    private final AddonPack pack;
 
     //? if forge {
-    public OvergearedBuilderRecipeProvider(PackOutput output, String modId, boolean addon) {
+    public OvergearedBuilderRecipeProvider(PackOutput output, String modId, AddonPack pack) {
         super(output);
         this.modId = modId;
-        this.addon = addon;
+        this.pack = pack;
     }
     //?} else {
     /*public OvergearedBuilderRecipeProvider(PackOutput output,
                                            CompletableFuture<HolderLookup.Provider> lookupProvider,
-                                           String modId, boolean addon) {
+                                           String modId, AddonPack pack) {
         super(output, lookupProvider);
         this.modId = modId;
-        this.addon = addon;
+        this.pack = pack;
     }
     *///?}
 
@@ -67,10 +68,10 @@ public class OvergearedBuilderRecipeProvider extends RecipeProvider {
     *///?}
         buildCasting(output);
         buildForging(output);
-        if (!addon) buildPlateForging(output);
+        if (pack == null) buildPlateForging(output);
     }
 
-    private String prefix() { return addon ? "addon/" : ""; }
+    private String prefix() { return pack != null ? pack.packName() + "/" : ""; }
 
     // ── Casting ──────────────────────────────────────────────────────────────
 
@@ -79,7 +80,7 @@ public class OvergearedBuilderRecipeProvider extends RecipeProvider {
     //?} else {
     /*private void buildCasting(RecipeOutput output) {
     *///?}
-        for (BladeType type : BladeType.of(addon)) {
+        for (BladeType type : BladeType.of(pack)) {
             if (!type.hasCasting()) continue;
             for (BladeMaterial mat : type.getMaterials()) {
                 if (!mat.hasCasting()) continue;
@@ -123,7 +124,7 @@ public class OvergearedBuilderRecipeProvider extends RecipeProvider {
     //?} else {
     /*private void buildForging(RecipeOutput output) {
     *///?}
-        for (BladeType type : BladeType.of(addon)) {
+        for (BladeType type : BladeType.of(pack)) {
             for (BladeMaterial mat : type.getMaterials()) {
                 if (mat == BladeMaterial.STONE) continue;   // stone blades are knapped, not forged
                 //? if forge {

@@ -1,8 +1,7 @@
 package com.saltycodes.overgearedepicknights.datagen;
 
-import com.saltycodes.overgearedepicknights.AddonDatapack;
+import com.saltycodes.overgearedepicknights.AddonPack;
 import com.saltycodes.overgearedepicknights.OvergearedEpicKnights;
-import com.saltycodes.overgearedepicknights.items.BladeType;
 import net.minecraft.SharedConstants;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
@@ -45,32 +44,35 @@ public class DataGenerators {
                 new ModLanguageProvider(packOutput));
 
         // ── Base data ────────────────────────────────────────────────────────
-        addData(event, generator, packOutput, false);
+        addData(event, generator, packOutput, null);
 
-        // ── Epic Knights: Addon data → built-in datapack, only enabled at runtime with the addon ──
+        // ── Addon data → one built-in datapack each, only enabled at runtime with the addon ──
         // Needs the addon on the DataGen classpath so its items and our addon blades exist.
-        if (BladeType.isAddonLoaded()) {
-            PackOutput addonOutput = new PackOutput(packOutput.getOutputFolder().resolve(AddonDatapack.PATH));
-            generator.addProvider(event.includeServer(), new PackMetadataGenerator(addonOutput)
-                    .add(PackMetadataSection.TYPE, packMetadata()));
-            addData(event, generator, addonOutput, true);
+        for (AddonPack pack : AddonPack.values()) {
+            if (!pack.isLoaded()) continue;
+            PackOutput addonOutput = new PackOutput(packOutput.getOutputFolder().resolve(pack.path()));
+            // DataGenerator rejects duplicate provider names, see named() below
+            generator.addProvider(event.includeServer(), named(new PackMetadataGenerator(addonOutput)
+                    .add(PackMetadataSection.TYPE, packMetadata(pack)), "Pack Metadata (" + pack.packName() + ")"));
+            addData(event, generator, addonOutput, pack);
         }
     }
 
-    private static void addData(GatherDataEvent event, DataGenerator generator, PackOutput output, boolean addon) {
+    private static void addData(GatherDataEvent event, DataGenerator generator, PackOutput output, AddonPack pack) {
         DataProvider builderRecipes =
                 //? if forge {
-                new OvergearedBuilderRecipeProvider(output, OvergearedEpicKnights.MODID, addon);
+                new OvergearedBuilderRecipeProvider(output, OvergearedEpicKnights.MODID, pack);
                 //?} else {
-                /*new OvergearedBuilderRecipeProvider(output, event.getLookupProvider(), OvergearedEpicKnights.MODID, addon);
+                /*new OvergearedBuilderRecipeProvider(output, event.getLookupProvider(), OvergearedEpicKnights.MODID, pack);
                 *///?}
         // RecipeProvider#getName is final ("Recipes") and DataGenerator rejects duplicate names,
-        // so the addon instance runs behind a renamed delegate.
-        generator.addProvider(event.includeServer(), addon ? named(builderRecipes, "Recipes (addon)") : builderRecipes);
+        // so the addon instances run behind a renamed delegate.
         generator.addProvider(event.includeServer(),
-                new OvergearedRecipeProvider(output, OvergearedEpicKnights.MODID, addon));
+                pack != null ? named(builderRecipes, "Recipes (" + pack.packName() + ")") : builderRecipes);
         generator.addProvider(event.includeServer(),
-                new OvergearedStaticDataProvider(output, addon));
+                new OvergearedRecipeProvider(output, OvergearedEpicKnights.MODID, pack));
+        generator.addProvider(event.includeServer(),
+                new OvergearedStaticDataProvider(output, pack));
     }
 
     private static DataProvider named(DataProvider delegate, String name) {
@@ -80,12 +82,12 @@ public class DataGenerators {
         };
     }
 
-    private static PackMetadataSection packMetadata() {
+    private static PackMetadataSection packMetadata(AddonPack pack) {
         int format = SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA);
         //? if forge {
-        return new PackMetadataSection(Component.literal(AddonDatapack.TITLE), format);
+        return new PackMetadataSection(Component.literal(pack.title()), format);
         //?} else {
-        /*return new PackMetadataSection(Component.literal(AddonDatapack.TITLE), format, Optional.empty());
+        /*return new PackMetadataSection(Component.literal(pack.title()), format, Optional.empty());
         *///?}
     }
 }
