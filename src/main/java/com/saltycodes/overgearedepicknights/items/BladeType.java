@@ -120,7 +120,7 @@ public enum BladeType {
 
     GUISARME(spec("guisarme", "Guisarme").part("Head").cast(27)
             .forge(5, "#I ", "   ", "   ").key('I', "ingot_tag").key('#', "blade:shortsword")
-            .stoneBlade("#I")
+            .stoneBlade("#", "I")   // upright: crafting mirrors, "#I" would be the claymore's "I#"
             .assemble("item:magistuarmory:pole")),
 
     // ── Single-material items with fixed ingredients ──────────────────────────
