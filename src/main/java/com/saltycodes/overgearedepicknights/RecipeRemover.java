@@ -3,19 +3,20 @@ package com.saltycodes.overgearedepicknights;
 import com.mojang.logging.LogUtils;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeManager;
 //? if forge {
-import net.minecraftforge.event.server.ServerStartingEvent;
+import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 //?} else {
 /*import net.minecraft.world.item.crafting.RecipeHolder;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.neoforged.neoforge.event.AddReloadListenerEvent;
 *///?}
 import org.slf4j.Logger;
 
@@ -94,11 +95,16 @@ public class RecipeRemover {
             "furnace/bronze_ingot_smelting", "furnace/bronze_ingot_blasting", "furnace/tin_ingot_smelting"
     );
 
+    /** Fires for every load of the data, server start and /reload alike, each brings all recipes back. */
     @SubscribeEvent
-    public static void onServerStarting(ServerStartingEvent event) {
-        RecipeManager recipeManager = event.getServer().getRecipeManager();
-        RegistryAccess registries = event.getServer().registryAccess();
+    public static void onAddReloadListeners(AddReloadListenerEvent event) {
+        RecipeManager recipeManager = event.getServerResources().getRecipeManager();
+        RegistryAccess registries = event.getRegistryAccess();
+        // listeners apply in order, the recipe manager's own comes first
+        event.addListener((ResourceManagerReloadListener) resources -> removeRecipes(recipeManager, registries));
+    }
 
+    private static void removeRecipes(RecipeManager recipeManager, RegistryAccess registries) {
         //? if forge {
         List<Recipe<?>> all = new ArrayList<>(recipeManager.getRecipes());
         //?} else {

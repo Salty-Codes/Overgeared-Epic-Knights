@@ -21,6 +21,7 @@ Overgeared x Epic Knights Changelog
   base instead of crafted, as is the flamebladed sword on 1.20.1
 - The kuyak chestplate now takes two steps: forge the breastplate, then join the mail by hand
 - Slavic Armory's forged steel gear blasts into Overgeared steel nuggets
+- Fixed the removed Epic Knights recipes coming back after /reload
 - Fixed the forged steel blasting recipe failing to load on 1.21.1
 - The pitchfork and all rusted gear blast into steel nuggets only, some of them could still give
   iron nuggets
