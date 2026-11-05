@@ -109,6 +109,9 @@ dependencies {
     // Ores and Alloys — Forge only, CurseForge only (file 5857444 = 1.1).
     modRuntimeOnly "curse.maven:epic-knights-ores-and-alloys-1125802:5857444"
 
+    // Thirty Years War — Forge only, CurseForge only (file 9386507 = 1.3).
+    modRuntimeOnly "curse.maven:epic-knights-thirty-years-war-1752267:9386507"
+
     // Runtime deps (mods Overgeared/EK rely on, plus dev-time tooling).
     modRuntimeOnly "maven.modrinth:architectury-api:9.2.14+forge"
     modRuntimeOnly "maven.modrinth:cloth-config:11.1.136+forge"

@@ -17,7 +17,9 @@ public enum AddonPack {
     ANTIQUE_LEGACY("antiquelegacy", "antique_legacy", "Antique Legacy"),
     DARK_AGES("darkagesarmory", "dark_ages", "Dark Ages"),
     /** Forge only, there is no NeoForge build. */
-    ORES_AND_ALLOYS("epic_knights_ores_and_alloys", "ores_and_alloys", "Ores and Alloys");
+    ORES_AND_ALLOYS("epic_knights_ores_and_alloys", "ores_and_alloys", "Ores and Alloys"),
+    /** Forge only, there is no NeoForge build. */
+    THIRTY_YEARS_WAR("thirtyyearswar", "thirty_years_war", "Thirty Years War");
 
     private final String modId;
     private final String name;

@@ -822,6 +822,94 @@ public enum BladeType {
             .key('#', "ingot")
             .assemble("item:minecraft:stick")),
 
+    // ── Epic Knights: Thirty Years War (steel only; the barrels are rolled from plates, like the real ones) ──
+
+    BAROQUE_HALBERD(spec("baroque_halberd", "Baroque Halberd").thirtyYearsWar()
+            .part("Head")
+            .result("thirtyyearswar:baroque_steel_halberd")
+            .cast(36)
+            .forge(6, " PI", "P I", "   ")
+            .key('P', "plate")
+            .key('I', "ingot")
+            .assemble("tag:magistuarmory:poles", "tag:magistuarmory:hilts")),
+    BAROQUE_PARTISAN(spec("baroque_partisan", "Baroque Partisan").thirtyYearsWar()
+            .part("Head")
+            .result("thirtyyearswar:baroque_steel_partisan")
+            .cast(19)
+            .forge(5, " IN", "  I", "   ")
+            .key('I', "ingot")
+            .key('N', "item:overgeared:steel_nugget")
+            .assemble("tag:magistuarmory:poles", "tag:magistuarmory:hilts")),
+    BAROQUE_PIKE(spec("baroque_pike", "Baroque Pike").thirtyYearsWar()
+            .part("Head")
+            .result("thirtyyearswar:baroque_steel_pike")
+            .cast(11)
+            .forge(5, " NP", "  N", "   ")
+            .key('P', "plate")
+            .key('N', "item:overgeared:steel_nugget")
+            .assemble("tag:magistuarmory:poles")),
+    BAROQUE_POLLAX(spec("baroque_pollax", "Baroque Pollax").thirtyYearsWar()
+            .part("Head")
+            .result("thirtyyearswar:baroque_steel_pollax")
+            .cast(27)
+            .forge(5, " P ", "I I", "   ")
+            .key('P', "plate")
+            .key('I', "ingot")
+            .assemble("tag:magistuarmory:poles", "tag:magistuarmory:hilts")),
+    BAROQUE_SIDESWORD(spec("baroque_sidesword", "Baroque Sidesword").thirtyYearsWar()
+            .result("thirtyyearswar:baroque_steel_sidesword")
+            .cast(20)
+            .forge(6, "  P", "NP ", " N ")
+            .key('P', "plate")
+            .key('N', "item:overgeared:steel_nugget")
+            .assemble("tag:magistuarmory:hilts")),
+    BAROQUE_RAPIER(spec("baroque_rapier", "Baroque Rapier").thirtyYearsWar()
+            .result("thirtyyearswar:baroque_steel_rapier")
+            .cast(31)
+            .forge(6, "NP ", "#N ", "   ")
+            .key('N', "item:overgeared:steel_nugget")
+            .key('P', "plate")
+            .key('#', "blade:baroque_sidesword")
+            .assemble("tag:magistuarmory:hilts")),
+    // The addon's two grids mirror each other, so only one could be crafted. Forging doesn't mirror
+    BAROQUE_CUPHILT_RAPIER(spec("baroque_cuphilt_rapier", "Baroque Cuphilt Rapier").thirtyYearsWar()
+            .result("thirtyyearswar:baroque_steel_cuphilt_rapier")
+            .cast(32)
+            .forge(4, "#N ", "   ", "   ")
+            .key('#', "blade:baroque_rapier")
+            .key('N', "item:overgeared:steel_nugget")
+            .assemble("tag:magistuarmory:hilts")),
+    BAROQUE_SWEPTHILT_RAPIER(spec("baroque_swepthilt_rapier", "Baroque Swepthilt Rapier").thirtyYearsWar()
+            .result("thirtyyearswar:baroque_steel_swepthilt_rapier")
+            .cast(32)
+            .forge(4, "N# ", "   ", "   ")
+            .key('N', "item:overgeared:steel_nugget")
+            .key('#', "blade:baroque_rapier")
+            .assemble("tag:magistuarmory:hilts")),
+    BAROQUE_WALLOON_SWORD(spec("baroque_walloon_sword", "Baroque Walloon Sword").thirtyYearsWar()
+            .result("thirtyyearswar:baroque_steel_walloon_sword")
+            .cast(29)
+            .forge(7, "  P", "PPN", " N ")
+            .key('P', "plate")
+            .key('N', "item:overgeared:steel_nugget")
+            .assemble("tag:magistuarmory:hilts")),
+    BAROQUE_MATCHLOCK_MUSKET(spec("baroque_matchlock_musket", "Matchlock Musket").thirtyYearsWar()
+            .suffix("_barrel")
+            .part("Barrel")
+            .result("thirtyyearswar:baroque_matchlock_musket")
+            .cast(27)
+            .forge(5, "   ", "PPP", "   ")
+            .key('P', "plate")
+            .assemble("tag:" + Mappings.COMMON + ":string", "item:overgeared:steel_nugget", "tag:minecraft:planks", "tag:minecraft:planks")),
+    BAROQUE_WHEELLOCK_PISTOL(spec("baroque_wheellock_pistol", "Wheellock Pistol").thirtyYearsWar()
+            .suffix("_barrel")
+            .part("Barrel")
+            .result("thirtyyearswar:baroque_wheellock_pistol")
+            .cast(18)
+            .forge(4, "   ", " PP", "   ")
+            .key('P', "plate")
+            .assemble("item:minecraft:flint_and_steel", "tag:" + Mappings.COMMON + ":nuggets/iron", "item:overgeared:steel_nugget", "tag:minecraft:planks")),
+
     ;
 
     // ────────────────────────────────────────────────────────────────────────
@@ -964,6 +1052,7 @@ public enum BladeType {
         Spec slavic() { return pack(AddonPack.SLAVIC_ARMORY, BladeMaterial.STEEL); }
         Spec antique() { return pack(AddonPack.ANTIQUE_LEGACY, BladeMaterial.IRON); }
         Spec darkAges() { return pack(AddonPack.DARK_AGES, BladeMaterial.STEEL); }
+        Spec thirtyYearsWar() { return pack(AddonPack.THIRTY_YEARS_WAR, BladeMaterial.STEEL); }
         /** A tool head in the metals Overgeared has no tools for, on Overgeared's tool type of the same name. */
         Spec oresAndAlloys() {
             pack = AddonPack.ORES_AND_ALLOYS;

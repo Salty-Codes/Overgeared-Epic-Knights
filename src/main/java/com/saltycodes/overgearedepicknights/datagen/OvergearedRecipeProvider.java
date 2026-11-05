@@ -233,7 +233,9 @@ public class OvergearedRecipeProvider implements DataProvider {
                 key.add(String.valueOf(k.getKey()), parseIngredient(k.getValue()));
             }
             obj.add("key", key);
-            obj.add("result", resultRef(c.result()));
+            JsonObject result = resultRef(c.result());
+            if (c.count() > 1) result.addProperty("count", c.count());
+            obj.add("result", result);
             save(cache, futures, "crafting/" + c.name(), obj);
         }
     }

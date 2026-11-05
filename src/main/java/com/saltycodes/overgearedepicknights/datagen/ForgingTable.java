@@ -105,7 +105,7 @@ public final class ForgingTable {
      * recipes are gone (see RecipeRemover), so the copy takes Overgeared's. The original is dropped
      * because its result is now one of ours.
      */
-    public record Crafted(String name, String[] pattern, Map<Character, String> keys, String result, AddonPack pack) {}
+    public record Crafted(String name, String[] pattern, Map<Character, String> keys, String result, int count, AddonPack pack) {}
 
     private static final List<Crafted> CRAFTED = new ArrayList<>();
 
@@ -420,6 +420,7 @@ public final class ForgingTable {
         slavicArmory();
         antiqueLegacy();
         darkAges();
+        thirtyYearsWar();
     }
 
     private static void slavicArmory() {
@@ -722,6 +723,59 @@ public final class ForgingTable {
                 "darkagesarmory:gilded_hairy_boar_decoration", BLACK_DYE, WOOL_FABRIC);
     }
 
+    private static void thirtyYearsWar() {
+        // ── Epic Knights: Thirty Years War — armour, everything with stock metal to hammer ──
+        thirtyYearsWar("baroque_skull_cap", "Skull Cap", "armor", 8, "thirtyyearswar:baroque_skull_cap",
+                p("PIP", "PWP", "   "), k('P', STEEL_PLATE), k('I', HEATED_STEEL), k('W', "item:thirtyyearswar:woollen_cloth"));
+        thirtyYearsWar("baroque_cuirass", "Cuirass", "armor", 8, "thirtyyearswar:baroque_cuirass",
+                p("I I", "III", " I "), k('I', HEATED_STEEL));
+        thirtyYearsWar("baroque_armour", "Armour", "armor", 5, "thirtyyearswar:baroque_armour",
+                p("PBP", "   ", "   "), k('P', STEEL_PLATE), k('B', "item:thirtyyearswar:baroque_cuirass"));
+        thirtyYearsWar("baroque_cabasset_helmet", "Cabasset Helmet", "armor", 6, "thirtyyearswar:baroque_cabasset_helmet",
+                p(" P ", "SBS", "   "), k('P', STEEL_PLATE), k('S', SMALL_PLATE), k('B', "item:thirtyyearswar:baroque_skull_cap"));
+        thirtyYearsWar("baroque_closed_helmet", "Closed Helmet", "armor", 11, "thirtyyearswar:baroque_closed_helmet",
+                p("PPP", "PBP", "PPP"), k('P', STEEL_PLATE), k('B', "item:thirtyyearswar:baroque_skull_cap"));
+        thirtyYearsWar("baroque_open_burgonet", "Burgonet", "armor", 8, "thirtyyearswar:baroque_open_burgonet",
+                p("PPP", "SBS", "   "), k('P', STEEL_PLATE), k('S', SMALL_PLATE), k('B', "item:thirtyyearswar:baroque_skull_cap"));
+        thirtyYearsWar("baroque_open_closed_burgonet", "Visorless Closed Burgonet", "armor", 6, "thirtyyearswar:baroque_open_closed_burgonet",
+                p(" P ", "PBP", "   "), k('P', STEEL_PLATE), k('B', "item:thirtyyearswar:baroque_open_burgonet"));
+        thirtyYearsWar("baroque_barred_closed_burgonet", "Barred Closed Burgonet", "armor", 4, "thirtyyearswar:baroque_barred_closed_burgonet",
+                p("P  ", "B  ", "   "), k('P', STEEL_PLATE), k('B', "item:thirtyyearswar:baroque_open_closed_burgonet"));
+        thirtyYearsWar("baroque_grilled_closed_burgonet", "Grilled Closed Burgonet", "armor", 6, "thirtyyearswar:baroque_grilled_closed_burgonet",
+                p("PBP", " P ", "   "), k('P', STEEL_PLATE), k('B', "item:thirtyyearswar:baroque_open_closed_burgonet"));
+        thirtyYearsWar("baroque_savoyard_helmet", "Savoyard Helmet", "armor", 7, "thirtyyearswar:baroque_savoyard_helmet",
+                p(" P ", "PBP", " P "), k('P', STEEL_PLATE), k('B', "item:thirtyyearswar:baroque_open_closed_burgonet"));
+        thirtyYearsWar("baroque_death_helmet", "Death Helmet", "armor", 4, "thirtyyearswar:baroque_death_helmet",
+                p("NB ", "   ", "   "), k('N', STEEL_NUGGET), k('B', "item:thirtyyearswar:baroque_savoyard_helmet"));
+        thirtyYearsWar("baroque_lobstertail_helmet", "Lobstertail Helmet", "armor", 6, "thirtyyearswar:baroque_lobstertail_helmet",
+                p(" BP", "PP ", "   "), k('B', "item:thirtyyearswar:baroque_skull_cap"), k('P', STEEL_PLATE));
+        thirtyYearsWar("baroque_barred_lobstertail_helmet", "Barred Lobstertail Helmet", "armor", 4, "thirtyyearswar:baroque_barred_lobstertail_helmet",
+                p("BP ", "   ", "   "), k('B', "item:thirtyyearswar:baroque_lobstertail_helmet"), k('P', STEEL_PLATE));
+        thirtyYearsWar("baroque_pikeman_pot_helmet", "Pikeman's Pot", "armor", 6, "thirtyyearswar:baroque_pikeman_pot_helmet",
+                p(" I ", "SBS", "   "), k('I', HEATED_STEEL), k('S', SMALL_PLATE), k('B', "item:thirtyyearswar:baroque_skull_cap"));
+        thirtyYearsWar("baroque_cavalry_armour_gauntlet", "Cavalry Armour with Gauntlet", "armor", 5, "thirtyyearswar:baroque_cavalry_armour_gauntlet",
+                p("BP ", " P ", "   "), k('B', "item:thirtyyearswar:baroque_cavalry_armour"), k('P', STEEL_PLATE));
+        thirtyYearsWar("baroque_cuirassier_armour", "Cuirassier Armour", "armor", 11, "thirtyyearswar:baroque_cuirassier_armour",
+                p("XBI", "IVI", "III"), k('X', "item:minecraft:netherite_ingot"), k('B', "item:thirtyyearswar:baroque_armour"), k('I', HEATED_STEEL), k('V', "item:thirtyyearswar:baroque_buff_waistcoat"));
+
+        // Cloth put on or under forged plate, its quality carries over
+        assemble(AddonPack.THIRTY_YEARS_WAR, "baroque_cavalry_armour", "item:thirtyyearswar:baroque_cuirass", "thirtyyearswar:baroque_cavalry_armour",
+                "item:thirtyyearswar:baroque_buff_coat");
+        assemble(AddonPack.THIRTY_YEARS_WAR, "baroque_officer_armour", "item:thirtyyearswar:baroque_cuirass", "thirtyyearswar:baroque_officer_armour",
+                "item:thirtyyearswar:baroque_officer_doublet");
+        assemble(AddonPack.THIRTY_YEARS_WAR, "baroque_pikeman_armour", "item:thirtyyearswar:baroque_armour", "thirtyyearswar:baroque_pikeman_armour",
+                "item:thirtyyearswar:baroque_coat");
+        assemble(AddonPack.THIRTY_YEARS_WAR, "baroque_pikeman_cuirass", "item:thirtyyearswar:baroque_cuirass", "thirtyyearswar:baroque_pikeman_cuirass",
+                "item:thirtyyearswar:baroque_coat");
+
+        // Its cloth and Epic Knights' fabric share a recipe, three wool in a row, so only one of them can be crafted.
+        // The cloth moves to a column: the skull cap and with it nearly every helmet hang on it
+        crafted(AddonPack.THIRTY_YEARS_WAR, "woollen_cloth", "thirtyyearswar:woollen_cloth", 3,
+                p("W", "W", "W"), k('W', "tag:minecraft:wool"));
+
+        // Everything else in the addon stays vanilla crafting.
+    }
+
     public static List<Entry> of(AddonPack pack) {
         List<Entry> out = new ArrayList<>();
         for (Entry e : ENTRIES) {
@@ -778,6 +832,11 @@ public final class ForgingTable {
         forged(AddonPack.DARK_AGES, null, name, displayName, category, hammering, result, pattern, keys);
     }
 
+    private static void thirtyYearsWar(String name, String displayName, String category, int hammering, String result,
+                                       String[] pattern, Key... keys) {
+        forged(AddonPack.THIRTY_YEARS_WAR, null, name, displayName, category, hammering, result, pattern, keys);
+    }
+
     private static void forged(AddonPack pack, String tier, String name, String displayName, String category,
                                int hammering, String result, String[] pattern, Key... keys) {
         ENTRIES.add(new Entry("forging/" + name, displayName, category, hammering, pattern, keys(keys),
@@ -793,6 +852,10 @@ public final class ForgingTable {
     }
 
     private static void crafted(AddonPack pack, String name, String result, String[] pattern, Key... keys) {
-        CRAFTED.add(new Crafted(name, pattern, keys(keys), result, pack));
+        crafted(pack, name, result, 1, pattern, keys);
+    }
+
+    private static void crafted(AddonPack pack, String name, String result, int count, String[] pattern, Key... keys) {
+        CRAFTED.add(new Crafted(name, pattern, keys(keys), result, count, pack));
     }
 }
