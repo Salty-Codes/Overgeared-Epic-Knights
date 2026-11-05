@@ -431,7 +431,7 @@ public class OvergearedRecipeProvider implements DataProvider {
             obj.addProperty("type", "minecraft:crafting_shaped");
             obj.addProperty("category", "equipment");
             JsonObject key = new JsonObject();
-            key.add("M", itemRef(plateItem(mat)));
+            key.add("M", itemRef(mat.getPlateItem()));
             key.add("P", tagRef("magistuarmory:poles"));
             key.add("H", tagRef("magistuarmory:hilts"));
             obj.add("key", key);
@@ -461,7 +461,7 @@ public class OvergearedRecipeProvider implements DataProvider {
             for (BladeMaterial mat : SHIELD_MATS) {
                 JsonObject obj = shieldForgingBase(shieldType, 6, false);
                 JsonObject key = new JsonObject();
-                key.add(plateKey, itemRef(plateItem(mat)));
+                key.add(plateKey, itemRef(mat.getPlateItem()));
                 key.add(woodKey, itemRef(woodItem));
                 obj.add("key", key);
                 obj.add("pattern", strArray(pat));
@@ -475,7 +475,7 @@ public class OvergearedRecipeProvider implements DataProvider {
         for (BladeMaterial mat : SHIELD_MATS) {
             JsonObject obj = shieldForgingBase("rondache", 10, false);
             JsonObject key = new JsonObject();
-            key.add("P", itemRef(plateItem(mat)));
+            key.add("P", itemRef(mat.getPlateItem()));
             key.add("S", itemRef("magistuarmory:wood_rondache"));
             obj.add("key", key);
             obj.add("pattern", strArray(new String[]{"PPP", "PSP", "PPP"}));
@@ -487,7 +487,7 @@ public class OvergearedRecipeProvider implements DataProvider {
         for (BladeMaterial mat : SHIELD_MATS) {
             JsonObject obj = shieldForgingBase("buckler", 7, true);
             JsonObject key = new JsonObject();
-            key.add("P", itemRef(plateItem(mat)));
+            key.add("P", itemRef(mat.getPlateItem()));
             key.add("S", tagRef(Mappings.COMMON + ":ingots/steel"));
             obj.add("key", key);
             obj.add("pattern", strArray(new String[]{"   ", "PPS", "PP "}));
@@ -499,7 +499,7 @@ public class OvergearedRecipeProvider implements DataProvider {
         for (BladeMaterial mat : SHIELD_MATS) {
             JsonObject obj = shieldForgingBase("target", 7, true);
             JsonObject key = new JsonObject();
-            key.add("P", itemRef(plateItem(mat)));
+            key.add("P", itemRef(mat.getPlateItem()));
             key.add("S", tagRef(Mappings.COMMON + ":ingots/steel"));
             obj.add("key", key);
             obj.add("pattern", strArray(new String[]{"   ", "PP ", "PPS"}));
@@ -522,15 +522,6 @@ public class OvergearedRecipeProvider implements DataProvider {
         obj.addProperty("need_quenching", quench);
         obj.addProperty("needs_minigame", true);
         return obj;
-    }
-
-    private String plateItem(BladeMaterial mat) {
-        return switch (mat) {
-            case BRONZE, GOLD, SILVER, TIN -> modId + ":" + mat.getName() + "_plate";
-            case COPPER, IRON -> "overgeared:" + mat.getName() + "_plate";
-            case STEEL -> "overgeared:steel_plate";
-            default -> throw new IllegalArgumentException("Stone has no plate");
-        };
     }
 
     // ── Shield casting ────────────────────────────────────────────────────────

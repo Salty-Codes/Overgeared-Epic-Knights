@@ -165,6 +165,8 @@ public class OvergearedBuilderRecipeProvider extends RecipeProvider {
             } else {
                 b.define(c, ItemTags.create(ResourceLocation.parse(mat.getForgingIngredient())));   // common ingot tag
             }
+        } else if (spec.equals("plate")) {
+            b.define(c, fromId(mat.getPlateItem()));
         } else if (spec.equals("ingot_tag")) {
             b.define(c, ItemTags.create(ResourceLocation.parse(Mappings.COMMON + ":ingots/" + mat.getName())));
         } else if (spec.startsWith("blade:")) {

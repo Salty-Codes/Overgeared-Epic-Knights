@@ -27,6 +27,7 @@ import java.util.Set;
  *   <li>{@code ingot} – the material's forging ingredient (heated ingot item for iron/copper/steel,
  *       common ingot tag for the rest)</li>
  *   <li>{@code ingot_tag} – the material's common ingot tag, never the heated item</li>
+ *   <li>{@code plate} – the material's plate</li>
  *   <li>{@code blade:<type>} – this mod's blade of {@code <type>} in the same material</li>
  *   <li>{@code item:<id>} / {@code tag:<id>} – a fixed item or tag</li>
  * </ul>
@@ -38,7 +39,9 @@ import java.util.Set;
  */
 public enum BladeType {
 
-    // ── Simple blades: '#' = material ingot, knappable from cobblestone ────────
+    // ── Simple blades: one metal, knappable from cobblestone ──────────────────
+    //    Flat, broad parts are plates, solid ones ingots. It also keeps these off Overgeared's tool
+    //    heads: same shape in ingots, and without a blueprint the larger pattern wins.
 
     STYLET(spec("stylet", "Stiletto").cast(9)
             .knap("  x", "   ", "   ")
@@ -52,12 +55,12 @@ public enum BladeType {
 
     KATZBALGER(spec("katzbalger", "Katzbalger").cast(18)
             .knap(" x ", " x ", "   ")
-            .forge(4, " # ", " # ", "   ").key('#', "ingot")
+            .forge(4, " # ", " # ", "   ").key('#', "plate")
             .assemble("item:magistuarmory:hilt")),
 
     PIKE(spec("pike", "Pike").part("Head").cast(9)
             .knap("   ", " x ", "   ")
-            .forge(3, "   ", " # ", "   ").key('#', "ingot")
+            .forge(3, "   ", " # ", "   ").key('#', "plate")
             .assemble("item:magistuarmory:pole")),
 
     AHLSPIESS(spec("ahlspiess", "Ahlspiess").part("Head").cast(36)
@@ -67,7 +70,7 @@ public enum BladeType {
 
     LOCHABERAXE(spec("lochaberaxe", "Lochaber Axe").part("Head").cast(27)
             .knap("xx ", "x  ", "   ")
-            .forge(5, "## ", "#  ", "   ").key('#', "ingot")
+            .forge(5, "PP ", "I  ", "   ").key('P', "plate").key('I', "ingot")
             .assemble("item:magistuarmory:pole")),
 
     CONCAVEHALBERD(spec("concavehalberd", "Concave Halberd").part("Head").cast(36)
@@ -77,7 +80,7 @@ public enum BladeType {
 
     HEAVYMACE(spec("heavymace", "Heavy Mace").part("Head").cast(27)
             .knap(" xx", "  x", "   ")
-            .forge(5, " ##", "  #", "   ").key('#', "ingot")
+            .forge(5, " PP", "  I", "   ").key('P', "plate").key('I', "ingot")
             .assemble("item:magistuarmory:hilt", "tag:" + Mappings.COMMON + ":rods/wooden")),
 
     HEAVYWARHAMMER(spec("heavywarhammer", "Heavy War Hammer").part("Head").cast(45)
@@ -142,7 +145,7 @@ public enum BladeType {
 
     HEAVY_CROSSBOW(spec("heavy_crossbow", "Heavy Crossbow").suffix("_prodd").part("Prodd").materials(BladeMaterial.STEEL)
             .result("magistuarmory:heavy_crossbow").cast(27)
-            .forge(5, "###", "   ", "   ").key('#', "ingot")
+            .forge(5, "###", "   ", "   ").key('#', "plate")
             .customAssembly()),   // shaped: prodd + string + tripwire hooks + pole
 
     MESSER_SWORD(spec("messer_sword", "Messer Sword").materials(BladeMaterial.IRON)
@@ -199,8 +202,8 @@ public enum BladeType {
             .assemble("tag:magistuarmory:poles")),
     BOLLOCK_DAGGER(spec("bollock_dagger", "Bollock Dagger").addon()
             .cast(9)
-            .forge(3, "   ", "I  ", "   ")
-            .key('I', "ingot")
+            .forge(3, "   ", "P  ", "   ")
+            .key('P', "plate")
             .assemble("tag:magistuarmory:hilts")),
     BROADAXE(spec("broadaxe", "Broadaxe").addon()
             .part("Head")
@@ -229,8 +232,8 @@ public enum BladeType {
     DAGGER(spec("dagger", "Dagger").addon()
             .tooltype("ek_dagger")
             .cast(9)
-            .forge(3, "I  ", "   ", "   ")
-            .key('I', "ingot")
+            .forge(3, "P  ", "   ", "   ")
+            .key('P', "plate")
             .assemble("tag:magistuarmory:hilts")),
     DANEAXE(spec("daneaxe", "Daneaxe").addon()
             .part("Head")
@@ -278,7 +281,8 @@ public enum BladeType {
     FRANCISCA_AXE(spec("francisca_axe", "Francisca Axe").addon()
             .part("Head")
             .cast(18)
-            .forge(4, "II ", "   ", "   ")
+            .forge(4, "PI ", "   ", "   ")
+            .key('P', "plate")
             .key('I', "ingot")
             .assemble("tag:magistuarmory:hilts", "tag:" + Mappings.COMMON + ":rods/wooden")),
     FRENCH_HALBERD(spec("french_halberd", "French Halberd").addon()
@@ -434,8 +438,8 @@ public enum BladeType {
     SHORT_SPEAR(spec("short_spear", "Short Spear").addon()
             .part("Head")
             .cast(9)
-            .forge(3, "   ", "  I", "   ")
-            .key('I', "ingot")
+            .forge(3, "   ", "  P", "   ")
+            .key('P', "plate")
             .assemble("tag:magistuarmory:poles")),
     SICKLE(spec("sickle", "Sickle").addon()
             .cast(12)
@@ -493,8 +497,9 @@ public enum BladeType {
     WAR_HAMMER(spec("war_hammer", "War Hammer").addon()
             .part("Head")
             .cast(18)
-            .forge(4, "I  ", " I ", "   ")
+            .forge(4, "I  ", " P ", "   ")
             .key('I', "ingot")
+            .key('P', "plate")
             .assemble("tag:magistuarmory:hilts", "tag:" + Mappings.COMMON + ":rods/wooden")),
     WELSH_GUISARME(spec("welsh_guisarme", "Welsh Guisarme").addon()
             .part("Head")

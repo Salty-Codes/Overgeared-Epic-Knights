@@ -1,6 +1,7 @@
 package com.saltycodes.overgearedepicknights.items;
 
 import com.saltycodes.overgearedepicknights.Mappings;
+import com.saltycodes.overgearedepicknights.OvergearedEpicKnights;
 
 // Each material carries casting/forging recipe data. STONE has no casting or forging — knapping only.
 public enum BladeMaterial {
@@ -42,4 +43,12 @@ public enum BladeMaterial {
     public boolean isForgingItem() { return forgingIsItem; }
     public String getForgingIngredient() { return forgingIngredient; }
     public String getForgingTier() { return forgingTier; }
+    /** The plate of this metal: Overgeared has copper, iron and steel, this mod adds the rest. */
+    public String getPlateItem() {
+        return switch (this) {
+            case BRONZE, GOLD, SILVER, TIN -> OvergearedEpicKnights.MODID + ":" + name + "_plate";
+            case COPPER, IRON, STEEL -> "overgeared:" + name + "_plate";
+            case STONE -> throw new IllegalArgumentException("Stone has no plate");
+        };
+    }
 }
