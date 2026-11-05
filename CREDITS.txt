@@ -14,6 +14,21 @@ Overgeared
   - Modrinth: https://modrinth.com/mod/overgeared
   - Material-based forging and crafting system
 
+Epic Knights: Addon
+  - Modrinth: https://modrinth.com/mod/epic-knights-addon
+
+Epic Knights: Slavic Armory
+  - Modrinth: https://modrinth.com/mod/epic-knights-slavic-armory
+
+Epic Knights: Antique Legacy
+  - Modrinth: https://modrinth.com/mod/epic-knights-antique-legacy
+
+Epic Knights: Dark Ages
+  - CurseForge: https://www.curseforge.com/minecraft/mc-mods/epic-knights-dark-ages-addon
+
+Epic Knights: Ores and Alloys
+  - CurseForge: https://www.curseforge.com/minecraft/mc-mods/epic-knights-ores-and-alloys
+
 
 DISCLAIMER
 ----------

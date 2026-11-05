@@ -4,6 +4,8 @@
 
 </div>
 
+> **Notice:** No further addons will be integrated from this point on. If anything, only maintenance updates and fixes will follow.
+
 ## What does it do?
 
 Epic Knights adds a large variety of medieval weapons and armor to Minecraft but out of the box, everything is crafted
@@ -28,7 +30,7 @@ recipes using **forging**, **casting**, and **assembly**.
 </td>
 </tr></table>
 
-**Blueprints** are also included for Armor, Shields and Weapons.
+**Blueprints** are also included for Shields and Weapons.
 
 ### New Items
 
@@ -44,12 +46,19 @@ This keeps the crafting process consistent with how Overgeared handles its own g
 </details>
 
 ## Compatibility
-Core mods maintained | Addon development open for contributions
+Maintenance updates and fixes only, no further addons
 
 | DLC | Status |
 |-----|--------|
 | [Epic Knights: Shields, Armor and Weapons](https://modrinth.com/mod/epic-knights-shields-armor-and-weapons) | 🟢 Supported |
 | [Epic Knights: Addon](https://modrinth.com/mod/epic-knights-addon) | 🟢 Supported (In Trial, can have bugs) |
+| [Epic Knights: Slavic Armory](https://modrinth.com/mod/epic-knights-slavic-armory) | 🟢 Supported (In Trial, can have bugs) |
+| [Epic Knights: Antique Legacy](https://modrinth.com/mod/epic-knights-antique-legacy) | 🟢 Supported (In Trial, can have bugs) |
+| [Epic Knights: Dark Ages](https://www.curseforge.com/minecraft/mc-mods/epic-knights-dark-ages-addon) | 🟢 Supported (In Trial, can have bugs) |
+| [Epic Knights: Ores and Alloys](https://www.curseforge.com/minecraft/mc-mods/epic-knights-ores-and-alloys) | 🟢 Supported on 1.20.1 (In Trial, can have bugs) |
+
+On 1.21.1 Slavic Armory and Dark Ages don't load their own crafting recipes, which is a bug in those mods.
+Everything this mod forges is craftable there, the rest of their items isn't.
 
 | Minecraft Version | Status |
 |-------------------|--------|
@@ -78,6 +87,11 @@ Core mods maintained | Addon development open for contributions
 ### Original Mods
 - **[Epic Knights: Shields, Armor and Weapons](https://modrinth.com/mod/epic-knights-shields-armor-and-weapons)** - Medieval weapons and armor system
 - **[Overgeared](https://modrinth.com/mod/overgeared)** - Material-based forging and crafting system
+- **[Epic Knights: Addon](https://modrinth.com/mod/epic-knights-addon)** - Additional weapons and armor
+- **[Epic Knights: Slavic Armory](https://modrinth.com/mod/epic-knights-slavic-armory)** - Slavic weapons and armor
+- **[Epic Knights: Antique Legacy](https://modrinth.com/mod/epic-knights-antique-legacy)** - Antique weapons and armor
+- **[Epic Knights: Dark Ages](https://www.curseforge.com/minecraft/mc-mods/epic-knights-dark-ages-addon)** - Early medieval weapons and armor
+- **[Epic Knights: Ores and Alloys](https://www.curseforge.com/minecraft/mc-mods/epic-knights-ores-and-alloys)** - Ores, alloys and tools
 
 ### Disclaimer
 This is an **unofficial** compatibility mod created by the community.
@@ -88,4 +102,4 @@ All rights to the original mods remain with their respective creators. This mod 
 Thanks to [Magistu](https://github.com/Magistu) for letting me use and edit their textures
 
 ### Development Tools
-Code is Co-Authored by Claude Code. All design decisions, textures and recipe balancing were done manually.
+Code and recipe tables are Co-Authored by Claude Code. Design decisions and textures were done manually.

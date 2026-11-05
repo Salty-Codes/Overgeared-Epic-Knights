@@ -1,6 +1,43 @@
 Overgeared x Epic Knights Changelog
 =========================
 
+1.3.0 (2026-11-05)
+------------------
+- Epic Knights: Slavic Armory, Antique Legacy and Dark Ages support (all optional, each with its
+  own built-in datapack that is only enabled when the addon is installed): forging, casting,
+  assembly, blueprints and tool types for all 45 addon weapons, and anvil forging for every
+  armour piece, decoration and shield with metal to hammer
+- Epic Knights: Ores and Alloys support on 1.20.1 (optional, there is no NeoForge build): bronze,
+  silver and tin tools are forged and cast as heads and assembled like Overgeared's own, its steel
+  recipes and its copper and steel tools are removed in favour of Overgeared's. Its silver also
+  makes our silver gear obtainable. With Antique Legacy installed too, Ores and Alloys' tin, bronze
+  and copper nuggets take over: Antique Legacy's recipes, tags and ore generation for them are
+  gone, its items stay in the game like Epic Knights' steel
+- Antique Legacy's bronze and iron plates now come off the anvil: its plate recipes are replaced
+  by our bronze plate and Overgeared's iron plate, its small plates are forged
+- Pieces of bronze alone only need a stone anvil, like the bronze blades
+- Forged pieces keep their quality through every step: the alla tedesca chestplate, greenwich
+  boots, saracen helmet, kuyak chestplate and hairy boar decorations are assembled on their forged
+  base instead of crafted, as is the flamebladed sword on 1.20.1
+- The kuyak chestplate now takes two steps: forge the breastplate, then join the mail by hand
+- Slavic Armory's forged steel gear blasts into Overgeared steel nuggets
+- Fixed the forged steel blasting recipe failing to load on 1.21.1
+- The pitchfork and all rusted gear blast into steel nuggets only, some of them could still give
+  iron nuggets
+- Every weapon with a casting recipe can now really be cast: only a few tool types had a cast
+  capacity, the casts of all others held no metal
+- Stone blades work as templates for tool casts, like Overgeared's stone heads
+- The katzbalger, lochaber axe, heavy mace, heavy crossbow prodd, francisca axe, war hammer, pike,
+  dagger, bollock dagger, short spear and antique spear are forged from plates where the part is
+  flat: in plain ingots they took the place of Overgeared's tool heads when forging without a
+  blueprint
+- Fixed the stone guisarme blade: its recipe mirrored the stone claymore blade's, so only one of
+  them could be crafted. Cobblestone now goes below the blade
+- The forging tab moves to the front in EMI and right behind crafting in JEI. For JEI this edits
+  its recipe-category-sort-order.ini once per installation, later changes there are kept
+- Verified against Overgeared 1.20.1-1.6.37 and 1.21.1-1.6.20 and Epic Knights 10.15 (1.20.1) and
+  10.17 (1.21.1); minimum versions raised accordingly
+
 1.1.1 (2026-09-18)
 ------------------
 - Armour no longer needs or accepts a blueprint to forge — Overgeared itself doesn't
