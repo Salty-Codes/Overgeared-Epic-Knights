@@ -29,7 +29,7 @@ description='''${mod_description}'''
 [[dependencies.${mod_id}]]
     modId="magistuarmory"
     mandatory=true
-    versionRange="[10.11,)"
+    versionRange="[10.15,)"
     ordering="AFTER"
     side="BOTH"
 
@@ -37,7 +37,7 @@ description='''${mod_description}'''
 [[dependencies.${mod_id}]]
     modId="overgeared"
     mandatory=true
-    versionRange="[1.6.34.1,)"
+    versionRange="[1.6.37,)"
     ordering="AFTER"
     side="BOTH"
 

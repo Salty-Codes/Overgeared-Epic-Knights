@@ -92,15 +92,14 @@ configurations { runtimeClasspath.extendsFrom localRuntime }
 
 dependencies {
     // Overgeared — compile (builder API) + runtime. 1.21.1 mods are in official mappings (no remap).
-    // Pinned by Modrinth version id ("neoforge-1.21.1-1.6.18.1").
-    compileOnly "maven.modrinth:overgeared:DP5dRoPl"
-    localRuntime "maven.modrinth:overgeared:DP5dRoPl"
+    // Pinned by Modrinth version id ("neoforge-1.21.1-1.6.20").
+    compileOnly "maven.modrinth:overgeared:U1jaXO19"
+    localRuntime "maven.modrinth:overgeared:U1jaXO19"
 
     // Epic Knights — runtime only, local jar with the DataGen fix (1.21.1 jars are official-mapped).
-    // Rebased onto official 10.15: the upstream crusader-armour colour fix superseded our copy
-    // of it, only the Minecraft.getInstance() DataGen guard in MedievalShieldItem's constructor
-    // still needed reapplying (bytecode-patched, no upstream source available).
-    localRuntime "local:epic-knights-neoforge:10.15"
+    // Official 10.17 with the Minecraft.getInstance() DataGen guard in MedievalShieldItem's
+    // constructor (bytecode-patched, no upstream source available).
+    localRuntime "local:epic-knights-neoforge:10.17"
 
     // Epic Knights: Addon — optional at runtime, but needed on the DataGen classpath so the
     // addon blades and their datapack are generated. Pinned by Modrinth version id ("2.5"
