@@ -23,12 +23,14 @@ public class OvergearedEpicKnights {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.register(modEventBus);
+        JeiCategoryOrder.apply();
 
         MinecraftForge.EVENT_BUS.register(this);
     }
     //?} else {
     /*public OvergearedEpicKnights(IEventBus modEventBus, ModContainer modContainer) {
         ModItems.register(modEventBus);
+        JeiCategoryOrder.apply();
         modEventBus.addListener(ModCreativeModeTabs::onBuildCreativeTab);
         modEventBus.addListener(AddonDatapack::onAddPackFinders);
         modEventBus.addListener(DataGenerators::gatherData);
