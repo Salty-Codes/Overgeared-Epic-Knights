@@ -1,7 +1,7 @@
 Overgeared x Epic Knights Changelog
 =========================
 
-1.3.0 (2026-11-05)
+1.2.0 (2026-11-05)
 ------------------
 - Epic Knights: Slavic Armory, Antique Legacy and Dark Ages support (all optional, each with its
   own built-in datapack that is only enabled when the addon is installed): forging, casting,
