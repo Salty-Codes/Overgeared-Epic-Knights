@@ -610,6 +610,7 @@ public class OvergearedRecipeProvider implements DataProvider {
         // Weapons: representative = the steel (or first non-stone) blade the blueprint forges.
         // Armour has no blueprints — Overgeared itself doesn't use them for armour either.
         for (BladeType type : types) {
+            if (!type.hasOwnTooltype()) continue;
             saveBlueprintRecipe(cache, futures, type.getTooltype(), type.itemId(type.canonicalMaterial()));
         }
         if (pack == null) {
@@ -664,7 +665,7 @@ public class OvergearedRecipeProvider implements DataProvider {
 
         List<String> tooltypes = new ArrayList<>();
         for (BladeType type : types) {
-            if (!tooltypes.contains(type.getTooltype())) tooltypes.add(type.getTooltype());
+            if (type.hasOwnTooltype() && !tooltypes.contains(type.getTooltype())) tooltypes.add(type.getTooltype());
         }
         if (pack == null) tooltypes.add("chainmorgenstern");
 

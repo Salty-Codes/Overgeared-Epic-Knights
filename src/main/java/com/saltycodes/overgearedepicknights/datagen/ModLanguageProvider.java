@@ -34,7 +34,7 @@ public class ModLanguageProvider extends LanguageProvider {
             for (BladeMaterial mat : type.getMaterials()) {
                 lang.put(ITEM + type.itemPath(mat), type.itemName(mat));
             }
-            lang.put(TOOLTYPE + type.getTooltype(), type.getDisplayName());
+            if (type.hasOwnTooltype()) lang.put(TOOLTYPE + type.getTooltype(), type.getDisplayName());
         }
         lang.put(TOOLTYPE + "chainmorgenstern", "Flail");
 

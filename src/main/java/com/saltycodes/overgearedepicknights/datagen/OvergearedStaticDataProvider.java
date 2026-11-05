@@ -38,6 +38,11 @@ public class OvergearedStaticDataProvider implements DataProvider {
         generateCastingTooltypes(cache, futures);
         generateForgedSteelTag(cache, futures);
         if (pack == AddonPack.ANTIQUE_LEGACY) generateBronzePlateTag(cache, futures);
+        // its steel joins the common tags too; this pack loads last, so the replace is sure to win
+        if (pack == AddonPack.ORES_AND_ALLOYS) {
+            generateSteelTags(cache, futures);
+            generateAntiqueDuplicateRemoval(cache, futures);
+        }
         if (pack == null) {
             generateKnappingResources(cache, futures);
             generateKnappablesTag(cache, futures);
@@ -61,7 +66,7 @@ public class OvergearedStaticDataProvider implements DataProvider {
     private void generateBlueprintTooltypes(CachedOutput cache, List<CompletableFuture<?>> futures) {
         Set<String> tooltypes = new LinkedHashSet<>();
         for (BladeType type : BladeType.of(pack)) {
-            tooltypes.add(type.getTooltype());
+            if (type.hasOwnTooltype()) tooltypes.add(type.getTooltype());
         }
         if (pack == null) tooltypes.addAll(ForgingTable.SHIELDS.keySet());
         JsonObject obj = new JsonObject();
@@ -77,7 +82,7 @@ public class OvergearedStaticDataProvider implements DataProvider {
         JsonObject obj = new JsonObject();
         JsonArray tools = new JsonArray();
         for (BladeType type : BladeType.of(pack)) {
-            if (!type.hasCasting()) continue;
+            if (!type.hasCasting() || !type.hasOwnTooltype()) continue;
             JsonArray entry = new JsonArray();
             entry.add(type.getTooltype());
             entry.add(type.getCastingAmount());
@@ -162,6 +167,40 @@ public class OvergearedStaticDataProvider implements DataProvider {
         vals.add(OvergearedEpicKnights.MODID + ":bronze_plate");
         obj.add("values", vals);
         saveTo(cache, futures, Mappings.COMMON, Mappings.TAG_ITEM_DIR + "/plates/bronze", obj);
+    }
+
+    // ── Antique Legacy's copies of Ores and Alloys' metals: with both installed only the latter stay ──
+    // Written unconditionally into the Ores and Alloys pack, so neither may need Antique Legacy: the
+    // tag entries are optional and the empty features name nothing of it.
+
+    private void generateAntiqueDuplicateRemoval(CachedOutput cache, List<CompletableFuture<?>> futures) {
+        for (String[] tag : new String[][]{
+                {"ingots/bronze",  "bronze_ingot"},
+                {"nuggets/bronze", "bronze_nugget"},
+                {"ingots/tin",     "tin_ingot"},
+                {"nuggets/tin",    "tin_nugget"},
+                {"nuggets/copper", "copper_nugget"}}) {
+            JsonObject entry = new JsonObject();
+            entry.addProperty("id", "antiquelegacy:" + tag[1]);
+            entry.addProperty("required", false);
+            JsonArray remove = new JsonArray();
+            remove.add(entry);
+            JsonObject obj = new JsonObject();
+            obj.addProperty("replace", false);
+            obj.add("values", new JsonArray());
+            obj.add("remove", remove);
+            saveTo(cache, futures, Mappings.COMMON, Mappings.TAG_ITEM_DIR + "/" + tag[0], obj);
+        }
+        // Antique Legacy adds its ores in code, so what it places is emptied instead
+        for (String ore : new String[]{"tin_ore", "deepslate_tin_ore"}) {
+            JsonObject feature = new JsonObject();
+            feature.addProperty("type", "minecraft:no_op");
+            feature.add("config", new JsonObject());
+            JsonObject obj = new JsonObject();
+            obj.add("feature", feature);
+            obj.add("placement", new JsonArray());
+            saveTo(cache, futures, "antiquelegacy", "worldgen/placed_feature/" + ore, obj);
+        }
     }
 
     // ── forged/steel: steel gear that can be blasted back into nuggets ───────

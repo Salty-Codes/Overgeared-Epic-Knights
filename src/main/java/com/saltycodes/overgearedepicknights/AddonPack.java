@@ -15,7 +15,9 @@ public enum AddonPack {
     EPIC_KNIGHTS_ADDON("magistuarmoryaddon", "addon", "Addon"),
     SLAVIC_ARMORY("slavicarmory", "slavic_armory", "Slavic Armory"),
     ANTIQUE_LEGACY("antiquelegacy", "antique_legacy", "Antique Legacy"),
-    DARK_AGES("darkagesarmory", "dark_ages", "Dark Ages");
+    DARK_AGES("darkagesarmory", "dark_ages", "Dark Ages"),
+    /** Forge only, there is no NeoForge build. */
+    ORES_AND_ALLOYS("epic_knights_ores_and_alloys", "ores_and_alloys", "Ores and Alloys");
 
     private final String modId;
     private final String name;

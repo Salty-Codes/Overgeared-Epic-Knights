@@ -106,6 +106,9 @@ dependencies {
     modRuntimeOnly "maven.modrinth:epic-knights-antique-legacy:4DhbZFhg"
     modRuntimeOnly "curse.maven:epic-knights-dark-ages-addon-1361923:7107406"
 
+    // Ores and Alloys — Forge only, CurseForge only (file 5857444 = 1.1).
+    modRuntimeOnly "curse.maven:epic-knights-ores-and-alloys-1125802:5857444"
+
     // Runtime deps (mods Overgeared/EK rely on, plus dev-time tooling).
     modRuntimeOnly "maven.modrinth:architectury-api:9.2.14+forge"
     modRuntimeOnly "maven.modrinth:cloth-config:11.1.136+forge"

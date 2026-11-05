@@ -32,8 +32,9 @@ import java.util.stream.Stream;
  * forges instead. The rule is derived, not listed: any recipe from those mods whose result item is
  * also the result of one of our recipes is dropped. Adding a blade type or armour recipe therefore
  * needs no change here. The only hand-kept list covers the steel ingot/nugget/plate recipes, which
- * are replaced by Overgeared's steel via tags rather than by a recipe of ours, and Antique Legacy's
- * plates, which are replaced by the plates forged on the anvil.
+ * are replaced by Overgeared's steel via tags rather than by a recipe of ours, Antique Legacy's
+ * plates, which are replaced by the plates forged on the anvil, and what Ores and Alloys duplicates
+ * of Overgeared.
  */
 //? if forge {
 @Mod.EventBusSubscriber(modid = OvergearedEpicKnights.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -65,6 +66,34 @@ public class RecipeRemover {
             ResourceLocation.fromNamespaceAndPath(AddonPack.ANTIQUE_LEGACY.modId(), "iron_plate")
     );
 
+    /**
+     * Ores and Alloys' steel skips Overgeared's process, its blasting recipe even takes the iron ingot
+     * Overgeared heats, and Overgeared has copper and steel tools of its own.
+     */
+    private static final Set<String> ORES_AND_ALLOYS_RECIPES = Set.of(
+            "steel_ingot_r",
+            "steel_ingot_r_2",
+            "steel_ingot_r_3",
+            "steel_nugget_r",
+            "steel_block_r",
+            "steel_sword_r",
+            "steel_pickaxe_recipe",
+            "steel_axe_r",
+            "steel_shovel_r",
+            "steel_hoe_r",
+            "copper_sword_recipe",
+            "copper_pickaxe_recipe",
+            "copper_axe_recipe",
+            "copper_shovel_recipe",
+            "copper_hoe_recipe"
+    );
+
+    /** Antique Legacy's recipes for what Ores and Alloys also brings; with both installed only the latter stay. */
+    private static final Set<String> ANTIQUE_DUPLICATE_RECIPES = Set.of(
+            "bronze_ingot", "bronze_nugget", "bronze_mixture", "tin_ingot", "tin_nugget", "copper_nugget", "copper_ingot",
+            "furnace/bronze_ingot_smelting", "furnace/bronze_ingot_blasting", "furnace/tin_ingot_smelting"
+    );
+
     @SubscribeEvent
     public static void onServerStarting(ServerStartingEvent event) {
         RecipeManager recipeManager = event.getServer().getRecipeManager();
@@ -94,6 +123,11 @@ public class RecipeRemover {
         for (var entry : all) {
             ResourceLocation id = id(entry);
             boolean drop = EXTRA_RECIPES_TO_REMOVE.contains(id)
+                    || (id.getNamespace().equals(AddonPack.ORES_AND_ALLOYS.modId())
+                        && ORES_AND_ALLOYS_RECIPES.contains(id.getPath()))
+                    || (AddonPack.ORES_AND_ALLOYS.isLoaded()
+                        && id.getNamespace().equals(AddonPack.ANTIQUE_LEGACY.modId())
+                        && ANTIQUE_DUPLICATE_RECIPES.contains(id.getPath()))
                     || (REPLACED_NAMESPACES.contains(id.getNamespace())
                         && replaced.contains(resultItem(entry, registries)));
             if (drop) removed.add(id); else kept.add(entry);

@@ -789,6 +789,39 @@ public enum BladeType {
             .key('S', "item:magistuarmory:small_steel_plate")
             .assemble("tag:magistuarmory:hilts")),
 
+    // ── Epic Knights: Ores and Alloys (bronze, silver and tin tool heads, built like Overgeared's own;
+    //    its copper and steel tools are dropped, see RecipeRemover) ──
+
+    SWORD(spec("sword", "Sword").oresAndAlloys()
+            .cast(18)
+            .forge(4, "#", "#")
+            .key('#', "ingot")
+            .assemble("item:minecraft:stick")),
+    PICKAXE(spec("pickaxe", "Pickaxe").oresAndAlloys()
+            .suffix("_head").part("Head")
+            .cast(27)
+            .forge(5, "###")
+            .key('#', "ingot")
+            .assemble("item:minecraft:stick")),
+    AXE(spec("axe", "Axe").oresAndAlloys()
+            .suffix("_head").part("Head")
+            .cast(27)
+            .forge(5, "##", "# ")
+            .key('#', "ingot")
+            .assemble("item:minecraft:stick")),
+    SHOVEL(spec("shovel", "Shovel").oresAndAlloys()
+            .suffix("_head").part("Head")
+            .cast(9)
+            .forge(3, "#")
+            .key('#', "ingot")
+            .assemble("item:minecraft:stick")),
+    HOE(spec("hoe", "Hoe").oresAndAlloys()
+            .suffix("_head").part("Head")
+            .cast(18)
+            .forge(4, "##")
+            .key('#', "ingot")
+            .assemble("item:minecraft:stick")),
+
     ;
 
     // ────────────────────────────────────────────────────────────────────────
@@ -799,6 +832,7 @@ public enum BladeType {
     private final String part;
     private final String tooltype;
     private final AddonPack pack;
+    private final boolean ownTooltype;
     private final String resultTemplate;
     private final Set<BladeMaterial> materials;
     private final int castingAmount;
@@ -816,6 +850,7 @@ public enum BladeType {
         this.part = s.part;
         this.tooltype = s.tooltype != null ? s.tooltype : s.name;
         this.pack = s.pack;
+        this.ownTooltype = s.ownTooltype;
         this.resultTemplate = s.resultTemplate != null ? s.resultTemplate
                 : (s.pack != null ? s.pack.modId() : "magistuarmory") + ":{mat}_" + s.name;
         this.materials = s.materials == null
@@ -848,6 +883,8 @@ public enum BladeType {
     public String getSuffix() { return suffix; }
     /** Overgeared tool type / blueprint id. */
     public String getTooltype() { return tooltype; }
+    /** False for Overgeared's own tool types: those need no blueprint, tool cast or name from us. */
+    public boolean hasOwnTooltype() { return ownTooltype; }
     public Set<BladeMaterial> getMaterials() { return materials; }
     /** Metal units needed for casting (0 = no casting). */
     public int getCastingAmount() { return castingAmount; }
@@ -912,6 +949,7 @@ public enum BladeType {
         final String name, displayName;
         String suffix = "_blade", part = "Blade", tooltype, resultTemplate;
         AddonPack pack;
+        boolean ownTooltype = true;
         BladeMaterial[] materials;
         int castingAmount, forgeHammering;
         String[] knapPattern, forgePattern, stoneBladePattern;
@@ -926,6 +964,13 @@ public enum BladeType {
         Spec slavic() { return pack(AddonPack.SLAVIC_ARMORY, BladeMaterial.STEEL); }
         Spec antique() { return pack(AddonPack.ANTIQUE_LEGACY, BladeMaterial.IRON); }
         Spec darkAges() { return pack(AddonPack.DARK_AGES, BladeMaterial.STEEL); }
+        /** A tool head in the metals Overgeared has no tools for, on Overgeared's tool type of the same name. */
+        Spec oresAndAlloys() {
+            pack = AddonPack.ORES_AND_ALLOYS;
+            materials = new BladeMaterial[]{BladeMaterial.BRONZE, BladeMaterial.SILVER, BladeMaterial.TIN};
+            ownTooltype = false;
+            return this;
+        }
         Spec suffix(String s) { suffix = s; return this; }
         Spec part(String p) { part = p; return this; }
         Spec tooltype(String t) { tooltype = t; return this; }
