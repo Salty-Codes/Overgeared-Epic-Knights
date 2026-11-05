@@ -40,6 +40,8 @@ public final class ForgingTable {
     private static final String BLAZE_POWDER  = "item:minecraft:blaze_powder";
     private static final String FEATHER       = "item:minecraft:feather";
     private static final String LEATHER_BOOTS = "item:minecraft:leather_boots";
+    private static final String STRING        = "item:minecraft:string";
+    private static final String RED_DYE       = "item:minecraft:red_dye";
 
     /** Epic Knights shield types (forged from plates around the wooden shield) and their names. */
     public static final Map<String, String> SHIELDS = new LinkedHashMap<>();
@@ -316,6 +318,13 @@ public final class ForgingTable {
         // Nothing to hammer: parts joined by hand onto a forged base, its quality carries over
         assemble("proto_maximilian_boots", "item:magistuarmory:knight_boots", "magistuarmoryaddon:proto_maximilian_boots", BLAZE_POWDER, BLAZE_POWDER);  // Proto Maximilian Boots
         assemble("proto_maximilian_chestplate", "item:magistuarmory:knight_chestplate", "magistuarmoryaddon:proto_maximilian_chestplate", BLAZE_POWDER, BLAZE_POWDER, BLAZE_POWDER);  // Proto Maximilian Chestplate
+        // Dye and cloth rule the anvil out, but the forged base must not lose its quality in the crafting grid
+        assemble("alla_tedesca_chestplate", "item:magistuarmory:halfarmor_chestplate", "magistuarmoryaddon:alla_tedesca_chestplate",
+                STEEL_PLATE, STEEL_PLATE, STEEL_PLATE, STEEL_PLATE, WOOL_FABRIC, WOOL_FABRIC, RED_DYE);
+        assemble("greenwich_boots", "item:magistuarmory:knight_boots", "magistuarmoryaddon:greenwich_boots",
+                STEEL_NUGGET, STEEL_NUGGET, WOOL_FABRIC, RED_DYE);
+        assemble("saracen_helmet", "item:magistuarmory:norman_helmet", "magistuarmoryaddon:saracen_helmet",
+                STRING, WOOL_FABRIC, RED_DYE, RED_DYE);
 
         // Everything else in the addon stays vanilla crafting.
     }

@@ -58,6 +58,9 @@ public class OvergearedRecipeProvider implements DataProvider {
         generateToolCastPlaceholders(cache, futures);
         if (!addon) {
             generateChainmorgensternAssembly(cache, futures);
+            //? if forge {
+            generateFlamebladedAssembly(cache, futures);
+            //?}
             generateSpecialCrafting(cache, futures);
             generateSmithing(cache, futures);
             generateBlasting(cache, futures);
@@ -161,6 +164,26 @@ public class OvergearedRecipeProvider implements DataProvider {
                     "crafting/chainmorgenstern/" + mat.getName() + "_chainmorgenstern", obj);
         }
     }
+
+    //? if forge {
+    /**
+     * Epic Knights 10.11 crafts the flamebladed sword from a finished zweihander in the vanilla grid,
+     * which would lose its forging quality. On 1.21.1 it is a smithing recipe, which keeps it.
+     */
+    private void generateFlamebladedAssembly(CachedOutput cache, List<CompletableFuture<?>> futures) {
+        for (String mat : new String[]{"bronze", "copper", "diamond", "gold", "iron", "silver", "steel", "tin"}) {
+            JsonObject obj = new JsonObject();
+            obj.addProperty("type", "overgeared:crafting_shapeless");
+            obj.addProperty("category", "equipment");
+            JsonArray ingredients = new JsonArray();
+            ingredients.add(itemRef("magistuarmory:" + mat + "_zweihander"));
+            for (int i = 0; i < 4; i++) ingredients.add(itemRef("minecraft:blaze_powder"));
+            obj.add("ingredients", ingredients);
+            obj.add("result", resultRef("magistuarmory:" + mat + "_flamebladedsword"));
+            save(cache, futures, "crafting/flamebladedsword/" + mat + "_flamebladedsword", obj);
+        }
+    }
+    //?}
 
     /** Weapons without a blade item of their own: another blade plus handle parts (ranseur, glaive). */
     private void generateAssemblyOnly(CachedOutput cache, List<CompletableFuture<?>> futures) {
