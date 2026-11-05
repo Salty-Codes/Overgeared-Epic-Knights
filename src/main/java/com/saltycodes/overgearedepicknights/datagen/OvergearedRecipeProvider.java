@@ -317,11 +317,8 @@ public class OvergearedRecipeProvider implements DataProvider {
             JsonObject obj = new JsonObject();
             obj.addProperty("type", "overgeared:item_to_tooltype");
             JsonArray items = new JsonArray();
-            for (BladeMaterial mat : type.getMaterials()) {
-                if (mat == BladeMaterial.STONE) continue;
-                items.add(itemRef(type.itemId(mat)));
-            }
-            if (items.isEmpty()) continue;
+            // stone included: like Overgeared's stone heads it is the template for the first tool cast
+            for (BladeMaterial mat : type.getMaterials()) items.add(itemRef(type.itemId(mat)));
             obj.add("item", items);
             obj.addProperty("tooltype", type.getTooltype());
             save(cache, futures, "tooltypes/" + type.getName() + "_to_tooltype", obj);

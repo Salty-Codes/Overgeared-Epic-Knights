@@ -40,22 +40,22 @@ public enum BladeType {
 
     // ── Simple blades: '#' = material ingot, knappable from cobblestone ────────
 
-    STYLET(spec("stylet", "Stiletto").cast(9).castableType()
+    STYLET(spec("stylet", "Stiletto").cast(9)
             .knap("  x", "   ", "   ")
             .forge(3, "  #", "   ", "   ").key('#', "ingot")
             .assemble("item:magistuarmory:hilt")),
 
-    SHORTSWORD(spec("shortsword", "Short Sword").cast(18).castableType()
+    SHORTSWORD(spec("shortsword", "Short Sword").cast(18)
             .knap("  x", " X ", "   ")
             .forge(4, "  #", " # ", "   ").key('#', "ingot")
             .assemble("item:magistuarmory:hilt")),
 
-    KATZBALGER(spec("katzbalger", "Katzbalger").cast(18).castableType()
+    KATZBALGER(spec("katzbalger", "Katzbalger").cast(18)
             .knap(" x ", " x ", "   ")
             .forge(4, " # ", " # ", "   ").key('#', "ingot")
             .assemble("item:magistuarmory:hilt")),
 
-    PIKE(spec("pike", "Pike").part("Head").cast(9).castableType()
+    PIKE(spec("pike", "Pike").part("Head").cast(9)
             .knap("   ", " x ", "   ")
             .forge(3, "   ", " # ", "   ").key('#', "ingot")
             .assemble("item:magistuarmory:pole")),
@@ -199,7 +199,6 @@ public enum BladeType {
             .assemble("tag:magistuarmory:poles")),
     BOLLOCK_DAGGER(spec("bollock_dagger", "Bollock Dagger").addon()
             .cast(9)
-            .castableType()
             .forge(3, "   ", "I  ", "   ")
             .key('I', "ingot")
             .assemble("tag:magistuarmory:hilts")),
@@ -230,7 +229,6 @@ public enum BladeType {
     DAGGER(spec("dagger", "Dagger").addon()
             .tooltype("ek_dagger")
             .cast(9)
-            .castableType()
             .forge(3, "I  ", "   ", "   ")
             .key('I', "ingot")
             .assemble("tag:magistuarmory:hilts")),
@@ -280,7 +278,6 @@ public enum BladeType {
     FRANCISCA_AXE(spec("francisca_axe", "Francisca Axe").addon()
             .part("Head")
             .cast(18)
-            .castableType()
             .forge(4, "II ", "   ", "   ")
             .key('I', "ingot")
             .assemble("tag:magistuarmory:hilts", "tag:" + Mappings.COMMON + ":rods/wooden")),
@@ -306,7 +303,6 @@ public enum BladeType {
     GOEDENDAG(spec("goedendag", "Goedendag").addon()
             .part("Head")
             .cast(9)
-            .castableType()
             .forge(3, "   ", "   ", "  I")
             .key('I', "ingot")
             .assemble("tag:" + Mappings.COMMON + ":rods/wooden")),
@@ -396,7 +392,6 @@ public enum BladeType {
             .assemble("tag:magistuarmory:hilts")),
     RONDEL_DAGGER(spec("rondel_dagger", "Rondel Dagger").addon()
             .cast(9)
-            .castableType()
             .forge(3, " I ", "   ", "   ")
             .key('I', "ingot")
             .assemble("tag:magistuarmory:hilts")),
@@ -433,14 +428,12 @@ public enum BladeType {
             .assemble("tag:" + Mappings.COMMON + ":rods/wooden")),
     SHORT_SEAX(spec("short_seax", "Short Seax").addon()
             .cast(18)
-            .castableType()
             .forge(4, " I ", "I  ", "   ")
             .key('I', "ingot")
             .assemble("tag:magistuarmory:hilts")),
     SHORT_SPEAR(spec("short_spear", "Short Spear").addon()
             .part("Head")
             .cast(9)
-            .castableType()
             .forge(3, "   ", "  I", "   ")
             .key('I', "ingot")
             .assemble("tag:magistuarmory:poles")),
@@ -500,7 +493,6 @@ public enum BladeType {
     WAR_HAMMER(spec("war_hammer", "War Hammer").addon()
             .part("Head")
             .cast(18)
-            .castableType()
             .forge(4, "I  ", " I ", "   ")
             .key('I', "ingot")
             .assemble("tag:magistuarmory:hilts", "tag:" + Mappings.COMMON + ":rods/wooden")),
@@ -525,7 +517,6 @@ public enum BladeType {
     private final String resultTemplate;
     private final Set<BladeMaterial> materials;
     private final int castingAmount;
-    private final boolean castableType;
     private final String[] knapPattern;
     private final int forgeHammering;
     private final String[] forgePattern;
@@ -546,7 +537,6 @@ public enum BladeType {
                 ? Collections.unmodifiableSet(EnumSet.allOf(BladeMaterial.class))
                 : Collections.unmodifiableSet(EnumSet.copyOf(Arrays.asList(s.materials)));
         this.castingAmount = s.castingAmount;
-        this.castableType = s.castableType;
         this.knapPattern = s.knapPattern;
         this.forgeHammering = s.forgeHammering;
         this.forgePattern = s.forgePattern;
@@ -578,8 +568,6 @@ public enum BladeType {
     /** Metal units needed for casting (0 = no casting). */
     public int getCastingAmount() { return castingAmount; }
     public boolean hasCasting() { return castingAmount > 0; }
-    /** Whether a clay/nether tool cast exists for this tool type (listed in casting_tooltypes). */
-    public boolean isCastableType() { return castableType; }
     public String[] getKnapPattern() { return knapPattern; }
     public boolean hasKnapping() { return knapPattern != null; }
     public int getForgeHammering() { return forgeHammering; }
@@ -649,7 +637,7 @@ public enum BladeType {
     static final class Spec {
         final String name, displayName;
         String suffix = "_blade", part = "Blade", tooltype, resultTemplate;
-        boolean addon, castableType;
+        boolean addon;
         BladeMaterial[] materials;
         int castingAmount, forgeHammering;
         String[] knapPattern, forgePattern, stoneBladePattern;
@@ -667,7 +655,6 @@ public enum BladeType {
         Spec result(String template) { resultTemplate = template; return this; }
         Spec materials(BladeMaterial... m) { materials = m; return this; }
         Spec cast(int units) { castingAmount = units; return this; }
-        Spec castableType() { castableType = true; return this; }
         Spec knap(String... rows) { knapPattern = rows; return this; }
         Spec forge(int hammering, String... rows) { forgeHammering = hammering; forgePattern = rows; return this; }
         Spec key(char c, String spec) { forgeKeys.put(c, spec); return this; }

@@ -74,7 +74,7 @@ public class OvergearedStaticDataProvider implements DataProvider {
         JsonObject obj = new JsonObject();
         JsonArray tools = new JsonArray();
         for (BladeType type : BladeType.of(addon)) {
-            if (!type.isCastableType()) continue;
+            if (!type.hasCasting()) continue;
             JsonArray entry = new JsonArray();
             entry.add(type.getTooltype());
             entry.add(type.getCastingAmount());
