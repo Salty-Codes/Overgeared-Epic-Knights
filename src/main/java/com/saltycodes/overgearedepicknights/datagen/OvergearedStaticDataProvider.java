@@ -174,7 +174,9 @@ public class OvergearedStaticDataProvider implements DataProvider {
             "magistuarmory:xivcenturyknight_leggings","magistuarmory:wingedhussar_chestplate","magistuarmory:cuirassier_helmet",
             "magistuarmory:cuirassier_chestplate","magistuarmory:cuirassier_leggings","magistuarmory:grand_bascinet",
             "magistuarmory:kastenbrust_chestplate","magistuarmory:kastenbrust_leggings","magistuarmory:kastenbrust_boots",
-            "magistuarmory:face_helmet","magistuarmory:lamellar_chestplate"
+            "magistuarmory:face_helmet","magistuarmory:lamellar_chestplate",
+            "magistuarmory:rusted_bastardsword","magistuarmory:rusted_heavymace",
+            "magistuarmory:rustedchainmail_boots","magistuarmory:rustedcrusader_boots"
     };
 
     private void generateForgedSteelTag(CachedOutput cache, List<CompletableFuture<?>> futures) {

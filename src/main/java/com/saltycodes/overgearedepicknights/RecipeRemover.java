@@ -50,6 +50,8 @@ public class RecipeRemover {
             ResourceLocation.fromNamespaceAndPath("magistuarmory", "steel_nuggets_to_steel_ingot"),
             ResourceLocation.fromNamespaceAndPath("magistuarmory", "furnace/steel_ingot_blasting"),
             ResourceLocation.fromNamespaceAndPath("magistuarmory", "furnace/steel_nugget_blasting"),
+            // lists the pitchfork and the rusted gear, which are steel; our copy leaves them out
+            ResourceLocation.fromNamespaceAndPath("magistuarmory", "furnace/iron_nugget_blasting"),
             // the addon's counterpart: its steel weapons blast into Overgeared nuggets via our forged/steel tag
             ResourceLocation.fromNamespaceAndPath(OvergearedEpicKnights.ADDON_MODID, "furnace/steel_nugget_blasting")
     );

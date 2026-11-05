@@ -375,7 +375,21 @@ public class OvergearedRecipeProvider implements DataProvider {
         return obj;
     }
 
-    // ── Blasting (steel nugget) ──────────────────────────────────────────────
+    // ── Blasting (steel and iron nuggets) ────────────────────────────────────
+
+    /** Epic Knights' iron_nugget_blasting without the pitchfork and the rusted gear: those are steel. */
+    private static final String[] BLASTED_IRON = {
+            "magistuarmory:iron_stylet", "magistuarmory:iron_shortsword",
+            "magistuarmory:iron_katzbalger", "magistuarmory:iron_pike", "magistuarmory:iron_ranseur",
+            "magistuarmory:iron_ahlspiess", "magistuarmory:iron_chivalrylance",
+            "magistuarmory:iron_bastardsword", "magistuarmory:iron_estoc",
+            "magistuarmory:iron_claymore", "magistuarmory:iron_zweihander",
+            "magistuarmory:iron_flamebladedsword", "magistuarmory:iron_lochaberaxe",
+            "magistuarmory:iron_concavehalberd", "magistuarmory:iron_heavymace",
+            "magistuarmory:iron_heavywarhammer", "magistuarmory:iron_lucernhammer",
+            "magistuarmory:iron_morgenstern", "magistuarmory:iron_chainmorgenstern",
+            "magistuarmory:iron_guisarme", "magistuarmory:noble_sword", "magistuarmory:messer_sword"
+    };
 
     private void generateBlasting(CachedOutput cache, List<CompletableFuture<?>> futures) {
         JsonObject obj = new JsonObject();
@@ -384,8 +398,27 @@ public class OvergearedRecipeProvider implements DataProvider {
         obj.addProperty("cookingtime", 200);
         obj.addProperty("experience", 0.1f);
         obj.add("ingredient", tagRef(Mappings.COMMON + ":forged/steel"));
+        //? if forge {
         obj.addProperty("result", "overgeared:steel_nugget");
+        //?} else {
+        /*obj.add("result", resultRef("overgeared:steel_nugget"));
+        *///?}
         save(cache, futures, "blasting/overgeared_steel_nugget_from_blasting", obj);
+
+        JsonObject iron = new JsonObject();
+        iron.addProperty("type", "minecraft:blasting");
+        iron.addProperty("category", "misc");
+        iron.addProperty("cookingtime", 100);
+        iron.addProperty("experience", 0.1f);
+        JsonArray ingredients = new JsonArray();
+        for (String item : BLASTED_IRON) ingredients.add(itemRef(item));
+        iron.add("ingredient", ingredients);
+        //? if forge {
+        iron.addProperty("result", "minecraft:iron_nugget");
+        //?} else {
+        /*iron.add("result", resultRef("minecraft:iron_nugget"));
+        *///?}
+        save(cache, futures, "blasting/iron_nugget_from_blasting", iron);
     }
 
     // ── Chivalry lance ────────────────────────────────────────────────────────
