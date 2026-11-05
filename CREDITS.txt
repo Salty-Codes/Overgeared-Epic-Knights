@@ -29,6 +29,9 @@ Epic Knights: Dark Ages
 Epic Knights: Ores and Alloys
   - CurseForge: https://www.curseforge.com/minecraft/mc-mods/epic-knights-ores-and-alloys
 
+Epic Knights: Thirty Years War
+  - CurseForge: https://www.curseforge.com/minecraft/mc-mods/epic-knights-thirty-years-war
+
 
 DISCLAIMER
 ----------

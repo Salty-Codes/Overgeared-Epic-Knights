@@ -56,6 +56,7 @@ Maintenance updates and fixes only, no further addons
 | [Epic Knights: Antique Legacy](https://modrinth.com/mod/epic-knights-antique-legacy) | 🟢 Supported (In Trial, can have bugs) |
 | [Epic Knights: Dark Ages](https://www.curseforge.com/minecraft/mc-mods/epic-knights-dark-ages-addon) | 🟢 Supported (In Trial, can have bugs) |
 | [Epic Knights: Ores and Alloys](https://www.curseforge.com/minecraft/mc-mods/epic-knights-ores-and-alloys) | 🟢 Supported on 1.20.1 (In Trial, can have bugs) |
+| [Epic Knights: Thirty Years War](https://www.curseforge.com/minecraft/mc-mods/epic-knights-thirty-years-war) | 🟢 Supported on 1.20.1 (In Trial, can have bugs) |
 
 On 1.21.1 Slavic Armory and Dark Ages don't load their own crafting recipes, which is a bug in those mods.
 Everything this mod forges is craftable there, the rest of their items isn't.
@@ -92,6 +93,7 @@ Everything this mod forges is craftable there, the rest of their items isn't.
 - **[Epic Knights: Antique Legacy](https://modrinth.com/mod/epic-knights-antique-legacy)** - Antique weapons and armor
 - **[Epic Knights: Dark Ages](https://www.curseforge.com/minecraft/mc-mods/epic-knights-dark-ages-addon)** - Early medieval weapons and armor
 - **[Epic Knights: Ores and Alloys](https://www.curseforge.com/minecraft/mc-mods/epic-knights-ores-and-alloys)** - Ores, alloys and tools
+- **[Epic Knights: Thirty Years War](https://www.curseforge.com/minecraft/mc-mods/epic-knights-thirty-years-war)** - 17th century weapons, armor and firearms
 
 ### Disclaimer
 This is an **unofficial** compatibility mod created by the community.

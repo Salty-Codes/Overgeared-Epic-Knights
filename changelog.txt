@@ -13,6 +13,11 @@ Overgeared x Epic Knights Changelog
   makes our silver gear obtainable. With Antique Legacy installed too, Ores and Alloys' tin, bronze
   and copper nuggets take over: Antique Legacy's recipes, tags and ore generation for them are
   gone, its items stay in the game like Epic Knights' steel
+- Epic Knights: Thirty Years War support on 1.20.1 (optional, there is no NeoForge build): forging,
+  casting and assembly for its weapons, barrels forged from plates for the musket and the pistol,
+  and anvil forging for its armour. Both rapier hilts can be made now, the addon's mirrored
+  recipes only allowed one of them. Its woollen cloth shared a recipe with Epic Knights' woolen
+  fabric and could not be crafted, it now takes three wool in a column
 - Antique Legacy's bronze and iron plates now come off the anvil: its plate recipes are replaced
   by our bronze plate and Overgeared's iron plate, its small plates are forged
 - Pieces of bronze alone only need a stone anvil, like the bronze blades
